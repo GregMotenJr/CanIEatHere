@@ -54,15 +54,15 @@ namespace CanIEatHere
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1849090605411596",
+               appSecret: "b2c61160b19412e3d4082297f15b32be");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "686604804558-meh64m88ghccfugrq1149h27o1t692ou.apps.googleusercontent.com",
+                ClientSecret = "hACZF2NgsewxfA8BaPSGiLlF"
+            });
         }
     }
 }
