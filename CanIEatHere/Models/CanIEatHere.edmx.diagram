@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="33c80978a7244a89be3ac90f35d42981" Name="Diagram1">
+        <EntityTypeShape EntityType="CanIEatHereModel.Course" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CanIEatHereModel.DietaryRestriction" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CanIEatHereModel.FoodItem" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CanIEatHereModel.Restaurant" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CanIEatHereModel.Review" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CanIEatHereModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CanIEatHereModel.FK_FoodItem_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="CanIEatHereModel.FK_FoodItem_DietaryRestriction" ManuallyRouted="false" />
+        <AssociationConnector Association="CanIEatHereModel.FK_FoodItem_DietaryRestriction1" ManuallyRouted="false" />
+        <AssociationConnector Association="CanIEatHereModel.FK_FoodItem_DietaryRestriction2" ManuallyRouted="false" />
+        <AssociationConnector Association="CanIEatHereModel.FK_FoodItem_Review" ManuallyRouted="false" />
+        <AssociationConnector Association="CanIEatHereModel.FK_Review_Restaurant" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
