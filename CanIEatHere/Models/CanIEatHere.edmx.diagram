@@ -7,7 +7,7 @@
       <Diagram DiagramId="33c80978a7244a89be3ac90f35d42981" Name="Diagram1">
         <EntityTypeShape EntityType="CanIEatHereModel.Course" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CanIEatHereModel.DietaryRestriction" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CanIEatHereModel.FoodItem" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CanIEatHereModel.FoodItem" Width="1.5" PointX="4" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CanIEatHereModel.Restaurant" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CanIEatHereModel.Review" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CanIEatHereModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
@@ -17,6 +17,14 @@
         <AssociationConnector Association="CanIEatHereModel.FK_FoodItem_DietaryRestriction2" ManuallyRouted="false" />
         <AssociationConnector Association="CanIEatHereModel.FK_FoodItem_Review" ManuallyRouted="false" />
         <AssociationConnector Association="CanIEatHereModel.FK_Review_Restaurant" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CanIEatHereModel.AspNetRole" Width="1.5" PointX="1.5" PointY="12.625" />
+        <EntityTypeShape EntityType="CanIEatHereModel.AspNetUserClaim" Width="1.5" PointX="3" PointY="17.75" />
+        <EntityTypeShape EntityType="CanIEatHereModel.AspNetUserLogin" Width="1.5" PointX="3" PointY="15.25" />
+        <EntityTypeShape EntityType="CanIEatHereModel.AspNetUser" Width="1.5" PointX="4.875" PointY="7.5" />
+        <AssociationConnector Association="CanIEatHereModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CanIEatHereModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CanIEatHereModel.FK_Review_AspNetUsers" />
+        <AssociationConnector Association="CanIEatHereModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
