@@ -1,0 +1,93 @@
+﻿@model IEnumerable<CanIEatHere.Models.Review>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumFoodOptions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumFoodOptionsRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneralComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OverallRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurantPriceRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.PlaceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumFoodOptions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumFoodOptionsRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneralComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OverallRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeStamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RestaurantPriceRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Img1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Img2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Img3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant.PlaceID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReviewID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })
+        </td>
+    </tr>
+}
+
+</table>

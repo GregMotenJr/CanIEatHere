@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CanIEatHere.Models.FoodItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListIngredients)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FoodItemRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DietaryRestriction.DietType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DietaryRestriction1.DietType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DietaryRestriction2.DietType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review.UserID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListIngredients)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodItemRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DietaryRestriction.DietType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DietaryRestriction1.DietType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DietaryRestriction2.DietType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Review.UserID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FoodItemID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FoodItemID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FoodItemID })
+        </td>
+    </tr>
+}
+
+</table>
