@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -30,4 +30,14 @@
     </tr>
 }
 
-</table>
+</table>*@
+
+
+<div id="map"></div>
+@section Scripts {
+   <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk0uA5zKZMDJmD5WUVLJq2gosxwV5GM_c&libraries=places&callback=initMap">
+</script>
+
+}
+@RenderSection("scripts", required: false)
