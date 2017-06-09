@@ -5,9 +5,17 @@
 @*Custom CSS for home index:*@
 <link rel="stylesheet" href="~/Content/custom-homepage.css" />
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("h1.fadeMe").fadeIn();
+});
+</script>
+
+
 
 <div class="container-fluid">
-    <div class="jumbotron translucent" id="quotes">
+    <div class="jumbotron translucent" id="fadeIn">
         <h1 class="text-center">Translucent box</h1>
         <p class="lead text-center">Catchphrase? Background: mezze or sliced tomatoes</p>
         <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
