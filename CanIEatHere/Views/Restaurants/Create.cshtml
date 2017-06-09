@@ -5,6 +5,11 @@
 }
 
 <h2>Create</h2>
+
+<div class="input-group">
+    <label for="userSearchBar">Type the name of your restaurant!</label>
+    <input id="userSearchBar" name="searchBar" class="form-control" type="text" />
+</div>
 <div class="col-md-12">
     <h1>Get Place ID is @*<span data-bind="text:Object.results[1].place_id"></span>*@</h1>
     <ul id="resultsList">
@@ -16,9 +21,14 @@
 <button>Get Place ID</button>
 <script>
         var placesID = Object();
+        var searchStringValue = "";
         $(document).ready(function () {
+            //button which searches the api and displays top ten results
             $("button").click(function () {
-                $.get("@Url.Action("GetPlaceId","Restaurants")", function(response){
+                searchStringValue = $("input[name=searchBar]").val();
+                $("li").remove();
+                $.get("@Url.Action("GetPlaceId", "Restaurants", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function(response){
+
                     console.log(response);
                     //placesId = ko.mapping.fromJS(response);
                     //ko.applyBindings(placesID);
@@ -26,7 +36,9 @@
                         $("#resultsList").append("<li>"+ response.results[i].name +"</li>");
                     }
                     //$("#paragraph").text(response.results[1].place_id);
-            });
+                });
+
+
             });
         });
 </script>
