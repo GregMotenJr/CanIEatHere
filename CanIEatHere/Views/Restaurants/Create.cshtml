@@ -26,20 +26,30 @@
             //button which searches the api and displays top ten results
             $("button").click(function () {
                 searchStringValue = $("input[name=searchBar]").val();
-                $("li").remove();
+                $(".resultItems").remove();
                 $.get("@Url.Action("GetPlaceId", "Restaurants", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function(response){
 
                     console.log(response);
                     //placesId = ko.mapping.fromJS(response);
                     //ko.applyBindings(placesID);
                     for (var i = 0; i < 10; i++) {
-                        $("#resultsList").append("<li>"+ response.results[i].name +"</li>");
+                        $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
                     }
                     //$("#paragraph").text(response.results[1].place_id);
+                    
+
                 });
 
-
             });
+
+           
+            $("#resultsList").on('click', '.resultItems', function () {
+                //alert("you clicked " + $(this).text());
+                $("#idInput").val($(this).children(".placeid").text());
+            });
+
+            
+           
         });
 </script>
 
@@ -49,14 +59,14 @@
 
     
     
-    @*<div class="form-horizontal">
+    <div class="form-horizontal">
         <h4>Restaurant</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.PlaceID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PlaceID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PlaceID, new { htmlAttributes = new { @class = "form-control", id = "idInput"} })
                 @Html.ValidationMessageFor(model => model.PlaceID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +76,7 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>*@
+    </div>
 }
 
 <div>
