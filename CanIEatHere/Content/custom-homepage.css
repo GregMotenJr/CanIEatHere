@@ -1,8 +1,14 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css?family=Lobster+Two');
+
+body {
     background-image: url(../Content/Images/homepage-tomatoSoup.jpg);
     color: white;
 }
 
 .translucent {
     background-color:rgba(0,0,0,0.5);
+}
+
+.pacifico-font{
+    font-family: 'Lobster Two', cursive;
 }

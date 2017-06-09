@@ -303,6 +303,7 @@
     <Content Include="Content\Images\homeIndex_slicedTomatoes.jpg" />
     <Content Include="Content\Images\homepage-blueberry.jpg" />
     <Content Include="Content\Images\homepage-tomatoSoup.jpg" />
+    <Content Include="Content\Images\homepage-tomatoSoupDark.jpg" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\logo2.png" />
     <Content Include="favicon.ico" />
