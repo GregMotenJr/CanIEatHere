@@ -1,0 +1,7 @@
+﻿body {
+    background-image:url(../Content/Images/homepage-tomatoSoup.jpg)
+}
+
+.translucent {
+    background-color: rgba(0,0,0,0.5);
+}
