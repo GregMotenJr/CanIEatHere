@@ -1,5 +1,6 @@
 ﻿body {
-    background-image:url(../Content/Images/homepage-tomatoSoup.jpg)
+    background-image:url(../Content/Images/homepage-tomatoSoup.jpg);
+    color:white;
 }
 
 .translucent {
