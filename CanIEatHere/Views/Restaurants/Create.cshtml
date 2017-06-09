@@ -5,13 +5,39 @@
 }
 
 <h2>Create</h2>
+<div class="col-md-12">
+    <h1>Get Place ID is @*<span data-bind="text:Object.results[1].place_id"></span>*@</h1>
+    <ul id="resultsList">
 
+    </ul>
+    
+</div>
+<p id="paragraph"></p>
+<button>Get Place ID</button>
+<script>
+        var placesID = Object();
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.get("@Url.Action("GetPlaceId","Restaurants")", function(response){
+                    console.log(response);
+                    //placesId = ko.mapping.fromJS(response);
+                    //ko.applyBindings(placesID);
+                    for (var i = 0; i < 10; i++) {
+                        $("#resultsList").append("<li>"+ response.results[i].name +"</li>");
+                    }
+                    //$("#paragraph").text(response.results[1].place_id);
+            });
+            });
+        });
+</script>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+
     
-    <div class="form-horizontal">
+    
+    @*<div class="form-horizontal">
         <h4>Restaurant</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -28,7 +54,7 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>
+    </div>*@
 }
 
 <div>
