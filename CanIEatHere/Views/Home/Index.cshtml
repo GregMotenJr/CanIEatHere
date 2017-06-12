@@ -6,11 +6,11 @@
 <link rel="stylesheet" href="~/Content/custom-homepage.css" />
 
 <div class="container-fluid">
-    <div class="jumbotron translucent" id="grower">
-        <div class="container-fluid" id="box1" style="background:white;height:2px;width:0px;margin:6px;margin-left:25%"></div>
-        <h1 class="text-center pacifico-font">Can I Eat Here?</h1>
-        <p class="lead text-center pacifico-font">Find the best vegetarian options near you!</p>
-        <div class="container-fluid" id="box2" style="background:white;height:2px;width:0%;margin:6px;margin-left:25%"></div>
+    <div class="jumbotron translucent">
+        <div class="container-fluid" id="box1" style="background:white;height:1px;width:0px;margin:6px;margin-left:25%"></div>
+        <h1 class="text-center pacifico-font" id="text1" style="display:none">Can I Eat Here?</h1>
+        <p class="lead text-center pacifico-font" id="text2" style="display:none">Find the best vegetarian options near you!</p>
+        <div class="container-fluid" id="box2" style="background:white;height:1px;width:0%;margin:6px;margin-left:25%"></div>
     </div>
     
     @*Save the example row for later, if needed.*@
@@ -73,13 +73,14 @@
 <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+@*HOMEPAGE JQUERY:*@
 <script>
+    //LINES:
     $(document).ready(function(){
-        $("#box1").animate({width: "50%"}, 1500);
-    });
-
-    $(document).ready(function(){
-        $("#box2").animate({width: "50%"}, 1500);
+        $("#box1").animate({width: "50%"}, 3000);
+        $("#box2").animate({width: "50%"}, 3000);
+        $("#text1").fadeIn(1500);
+        $("#text2").fadeIn(1500);
     });
 </script>
 
