@@ -7,8 +7,10 @@
 
 <div class="container-fluid">
     <div class="jumbotron translucent" id="grower">
+        <div id="box" style="background:white;height:2px;width:0px;margin:6px;margin-left:25%"></div>
         <h1 class="text-center pacifico-font">Can I Eat Here?</h1>
         <p class="lead text-center pacifico-font">Find the best vegetarian options near you!</p>
+        <div id="box2" style="background:white;height:2px;width:0%;margin:6px;margin-left:25%"></div>
     </div>
     
     @*Save the example row for later, if needed.*@
@@ -69,6 +71,17 @@
 </script>
 <!--FILESTACK BUTTON-->
 <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#box").animate({width: "300px"}, 1500);
+    });
+
+    $(document).ready(function(){
+        $("#box2").animate({left:"0px", width: "300px"}, 1500);
+    });
+</script>
 
 <script>
     var client = filestack.init('AbbxbmtG7Qzmx3N6F8qgmz');
