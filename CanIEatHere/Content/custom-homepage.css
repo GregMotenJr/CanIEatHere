@@ -9,6 +9,10 @@ body {
     background-color:rgba(0,0,0,0.5);
 }
 
-.pacifico-font{
+.pacifico-font {
     font-family: 'Lobster Two', cursive;
+}
+
+.jumbotron h1 {
+    font-size: 80px;
 }
