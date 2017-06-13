@@ -1,12 +1,8 @@
-﻿// JavaScript source code
+﻿//jQuery for home page:
 $(document).ready(function () {
-    //BACKGROUND:
-    //TRANSLUCENT BOX:
-    $("#testDiv").slideDown("slow");
-    //LINES:
-    //$("#box1").delay(3000).animate({ width: "50%" }, 3000);
-    //$("#box2").delay(3000).animate({ width: "50%" }, 3000);
-    //TEXT:
-    $("#text1").fadeIn(1500);
-    $("#text2").delay(1000).fadeIn(1500);
+    //ANIMATED LINE:
+    $("#box2").delay(1500).animate({ width: "50%" }, 2200);
+    //FADE-IN TEXT:
+    $("#text1").fadeIn(1700);
+    $("#text2").delay(1000).fadeIn(2000);
 });

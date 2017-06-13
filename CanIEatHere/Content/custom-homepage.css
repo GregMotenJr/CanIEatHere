@@ -1,25 +1,45 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Lobster+Two');
+﻿@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Lobster+Two');
 
 /*FONT COLOR, BACKGROUND IMAGE*/
 body {
-    background-image: url('Images/homepage-tomatoSoupDark.jpg');
+    background-image: url('Images/homepage-salad-darker.png');
     color: white;
 }
 
 /*FONT FAMILY*/
-.pacifico-font {
-    font-family: 'Lobster Two', cursive;
+.lobster-font {
+    font-family: 'Lobster', cursive;
 }
 
-/*TRANSLUCENT BOX*/
+/*CUSTOM JUMBO DIV (NOT A REAL JUMBO)*/
 .testDiv {
+    border-radius: 25px;
     padding-top: 20px;
     padding-bottom: 20px;
     margin-top: 100px;
-    /*background-color: rgba(0,0,0,0.5);*/
 }
 
 /*H1 FONT SIZE IN .TESTDIV*/
 .testDiv h1 {
-    font-size: 80px;
+    font-size: 110px;
+}
+
+/*P FONT SIZE IN .TESTDIV*/
+.testDiv p {
+    font-size: 35px;
+}
+
+/*HIDES THE TEXT BEFORE FADEIN()*/
+.hide-before-fade {
+    display:none;
+}
+
+/*SLIDING LINE ON HOME PAGE*/
+#box2 {
+    background:white;
+    height:2px;
+    width:0%;
+    margin:0px;
+    margin-left:25%;
 }
