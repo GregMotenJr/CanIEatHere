@@ -21,6 +21,7 @@ namespace CanIEatHere.Models
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.Reviews = new HashSet<Review>();
             this.AspNetRoles = new HashSet<AspNetRole>();
+            this.AppUsers = new HashSet<AppUser>();
         }
     
         public string Id { get; set; }
@@ -44,5 +45,7 @@ namespace CanIEatHere.Models
         public virtual ICollection<Review> Reviews { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AppUser> AppUsers { get; set; }
     }
 }
