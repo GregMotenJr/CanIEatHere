@@ -23,28 +23,25 @@
         var placesID = Object();
         var searchStringValue = "";
         $(document).ready(function () {
-            //button which searches the api and displays top ten results
+            //button which searches the api and displays top ten restaurants that match user text
             $("button").click(function () {
                 searchStringValue = $("input[name=searchBar]").val();
                 $(".resultItems").remove();
                 $.get("@Url.Action("GetPlaceId", "Restaurants", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function(response){
 
                     console.log(response);
-                    //placesId = ko.mapping.fromJS(response);
-                    //ko.applyBindings(placesID);
+                    
                     for (var i = 0; i < 10; i++) {
                         $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
                     }
-                    //$("#paragraph").text(response.results[1].place_id);
-                    
+                                      
 
                 });
 
             });
 
-           
+           //after user clicks on the restaurant that they want the value of the place id property is set
             $("#resultsList").on('click', '.resultItems', function () {
-                //alert("you clicked " + $(this).text());
                 $("#idInput").val($(this).children(".placeid").text());
             });
 

@@ -5,6 +5,8 @@
 }
 
 <h2>Create</h2>
+<p class="errorMessage"></p>
+<p class="createRestaurantLink">@Html.ActionLink("New Restaurant", "Create", "Restaurants")</p>
 <div class="form-horizontal">
     <div class="form-group">
         <label for="restaurantSearchBar" class="col-md-2">What restaurant are you reviewing?</label>
@@ -137,49 +139,54 @@
 
 <script>
     
-    var options = $("#restaurantId option");
     $(document).ready(function () {
         
         var searchStringValue = "";
+        
+       
+      //Allows user to enter a search term for restaurant
+      //and displays top results from the google places api
+      //displays name, address and place id
 
-    
-
-    $(".searchButton").click(function () {
+      $(".searchButton").click(function () {
         searchStringValue = $("input[name=restaurantSearchBar]").val();
         $(".resultItems").remove();
         $.get("@Url.Action("GetPlaceId", "Reviews", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function(response){
 
             console.log(response);
-            //placesId = ko.mapping.fromJS(response);
-            //ko.applyBindings(placesID);
             for (var i = 0; i < 10; i++) {
                 $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
             }
-            //$("#paragraph").text(response.results[1].place_id);
-                    
+                           
 
         });
-       
-        $("#resultsList").on('click', '.resultItems', function () {
-           
+
+          //when user clicks on the restaurant they want
+          //checks to see if the restaurant id matches an option in the dropdown
+          //if it isn't an error message is displayed
+          //if it is then the corresponding id is selected
+
+          var options = [];
+          var hasMatch = false;
+          $("#resultsList").on('click', '.resultItems', function () {
+          
+           options = $("#restaurantId option");
+
             var placeID = $(this).children(".placeid").text();
-            @*if (@RestaurantID.Items.IndexOf(RestaurantID.Items.FindByText(placeID))) {
-                alert("yay, that's a restaurant in our database");
-            }*@
-            //alert("you clicked " + $(this).text());
-            //alert($(this).children(".placeid").text());
-            //$("#restaurantID").val($(this).children(".placeid").text());
-            
-            
+                       
             options.each(function () {
                 if ($(this).text() == placeID) {
-                    alert("yes" + $(this).text());
+                   //alert("yes" + $(this).text());
+                    hasMatch = true;
+                    $(this).prop('selected', true);
                     
                 }
-                else {
-                    alert("no" + $(this).text());
-                }
+                
             });
+            if (hasMatch === false) {
+                $(".errorMessage").html("<p>The restaurant you entered was not found. Would you like to add it to our site?</p>");
+                $(".createRestaurantLink").show();
+            }
         });
 
     });
