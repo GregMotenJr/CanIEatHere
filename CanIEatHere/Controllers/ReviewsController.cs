@@ -63,6 +63,13 @@ namespace CanIEatHere.Controllers
             return View(review);
         }
 
+        public JsonResult GetPlaceId(string searchString)
+        {
+            PlacesAPI placesAPI = new PlacesAPI();
+
+            return Json(placesAPI.getPlaceID(searchString), JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Reviews/Edit/5
         public ActionResult Edit(int? id)
         {

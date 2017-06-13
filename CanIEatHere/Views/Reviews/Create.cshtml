@@ -5,7 +5,27 @@
 }
 
 <h2>Create</h2>
-
+<p class="errorMessage"></p>
+<p class="createRestaurantLink">@Html.ActionLink("New Restaurant", "Create", "Restaurants")</p>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label for="restaurantSearchBar" class="col-md-2">What restaurant are you reviewing?</label>
+        <div class="col-md-10">
+            <input class="form-control" id="restaurantSearchBar" name="restaurantSearchBar" type="text" />
+        </div>
+    </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-primary searchButton">Search</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <ul id="resultsList"></ul>
+            </div>
+        </div>
+    
+</div>
 
 @using (Html.BeginForm()) 
 {
@@ -63,10 +83,12 @@
             </div>
         </div>
 
+        
+
         <div class="form-group">
-            @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.DropDownList("RestaurantID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("RestaurantID", null, htmlAttributes: new { @class = "form-control", id = "restaurantId" })
                 @Html.ValidationMessageFor(model => model.RestaurantID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -114,6 +136,62 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script>
+    
+    $(document).ready(function () {
+        
+        var searchStringValue = "";
+        
+       
+      //Allows user to enter a search term for restaurant
+      //and displays top results from the google places api
+      //displays name, address and place id
+
+      $(".searchButton").click(function () {
+        searchStringValue = $("input[name=restaurantSearchBar]").val();
+        $(".resultItems").remove();
+        $.get("@Url.Action("GetPlaceId", "Reviews", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function(response){
+
+            console.log(response);
+            for (var i = 0; i < 10; i++) {
+                $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
+            }
+                           
+
+        });
+
+          //when user clicks on the restaurant they want
+          //checks to see if the restaurant id matches an option in the dropdown
+          //if it isn't an error message is displayed
+          //if it is then the corresponding id is selected
+
+          var options = [];
+          var hasMatch = false;
+          $("#resultsList").on('click', '.resultItems', function () {
+          
+           options = $("#restaurantId option");
+
+            var placeID = $(this).children(".placeid").text();
+                       
+            options.each(function () {
+                if ($(this).text() == placeID) {
+                   //alert("yes" + $(this).text());
+                    hasMatch = true;
+                    $(this).prop('selected', true);
+                    
+                }
+                
+            });
+            if (hasMatch === false) {
+                $(".errorMessage").html("<p>The restaurant you entered was not found. Would you like to add it to our site?</p>");
+                $(".createRestaurantLink").show();
+            }
+        });
+
+    });
+    });
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

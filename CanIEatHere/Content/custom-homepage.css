@@ -37,9 +37,15 @@ body {
 
 /*SLIDING LINE ON HOME PAGE*/
 #box2 {
+    margin-top:40px;
     background:white;
     height:2px;
     width:0%;
     margin:0px;
     margin-left:25%;
+}
+
+/*FILESTACK SECTION*/
+.filestack-section{
+    padding-top: 500px;
 }

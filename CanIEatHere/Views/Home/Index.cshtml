@@ -9,26 +9,40 @@
 <script src="~/Scripts/custom-jquery.js"></script>
 
 @*Font Awesome CDN:*@
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 <div class="container-fluid">
     <div id="testDiv" class="testDiv">
         <h1 class="text-center lobster-font hide-before-fade" id="text1">Can I Eat Here?</h1>
         <br />
         <p class="lead text-center lobster-font hide-before-fade" id="text2">Find vegetarian options near you!</p>
-        <div class="container-fluid" id="box2"></div>
+        <div class="container-fluid hide-before-fade" id="box2"></div>
+
     </div>
-    <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+</div>
+<br />
+<br />
+<center><a href="~/Views/Home/Index.cshtml" style="color:white">
+    <i id="arrow-button" class="fa fa-arrow-circle-down fa-5x" aria-hidden="true"></i>
+    </a>
+</center>
+
+<div id="testScroll"></div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div id="filestack-section">
+<h1>button below is filestack test</h1>
+    <input type="button" value="FileStackButton" onclick="showPicker()" />
+    <!-- onclick={()=> this.uploadImg() -->
 </div>
 
-@*Commented the stuff below to play with styling.*@
-
-@*<h1>button below is filestack test</h1>*@
-
-
-
-
-@*<!--FILESTACK LIB-->
+<!--FILESTACK LIB-->
 <script type="text/javascript" src="//static.filestackapi.com/v3/filestack-0.6.3.js"></script>
 <script> filepicker.setKey("AbbxbmtG7Qzmx3N6F8qgmz");</script>
 <script type="text/javascript">
@@ -71,5 +85,3 @@
         });
     }
 </script>
-<input type="button" value="FileStackButton" onclick="showPicker()" />
-<!-- onclick={()=> this.uploadImg() -->*@
