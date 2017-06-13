@@ -5,47 +5,43 @@
 @*Custom CSS for home index:*@
 <link rel="stylesheet" href="~/Content/custom-homepage.css" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("h1.fadeMe").fadeIn();
-});
-</script>
+@*Custom jQuery file:*@
+<script src="~/Scripts/custom-jquery.js"></script>
 
-
+@*Font Awesome CDN:*@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 <div class="container-fluid">
-    <div class="jumbotron translucent" id="fadeIn">
-        <h1 class="text-center">Translucent box</h1>
-        <p class="lead text-center">Catchphrase? Background: mezze or sliced tomatoes</p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+    <div id="testDiv" class="testDiv">
+        <h1 class="text-center lobster-font hide-before-fade" id="text1">Can I Eat Here?</h1>
+        <br />
+        <p class="lead text-center lobster-font hide-before-fade" id="text2">Find vegetarian options near you!</p>
+        <div class="container-fluid hide-before-fade" id="box2"></div>
 
-    <div class="row text-center">
-        <div class="col-md-4 translucent">
-            <h2>Example</h2>
-            <p>
-                abc
-            </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Example</h2>
-            <p>
-                abc
-            </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4 translucent">
-            <h2>Example</h2>
-            <p>
-                abc
-            </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>
     </div>
 </div>
+<br />
+<br />
+<center><a href="~/Views/Home/Index.cshtml" style="color:white">
+    <i id="arrow-button" class="fa fa-arrow-circle-down fa-5x" aria-hidden="true"></i>
+    </a>
+</center>
+
+<div id="testScroll"></div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div id="filestack-section">
 <h1>button below is filestack test</h1>
+    <input type="button" value="FileStackButton" onclick="showPicker()" />
+    <!-- onclick={()=> this.uploadImg() -->
+</div>
+
 <!--FILESTACK LIB-->
 <script type="text/javascript" src="//static.filestackapi.com/v3/filestack-0.6.3.js"></script>
 <script> filepicker.setKey("AbbxbmtG7Qzmx3N6F8qgmz");</script>
@@ -74,10 +70,11 @@ $(document).ready(function(){
               }
             );
     }
-
 </script>
+
 <!--FILESTACK BUTTON-->
 <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
     var client = filestack.init('AbbxbmtG7Qzmx3N6F8qgmz');
@@ -88,5 +85,3 @@ $(document).ready(function(){
         });
     }
 </script>
-<input type="button" value="FileStackButton" onclick="showPicker()" />
-<!-- onclick={()=> this.uploadImg() -->
