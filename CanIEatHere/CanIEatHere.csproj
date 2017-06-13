@@ -301,7 +301,11 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\homeIndex_slicedTomatoes.jpg" />
+    <Content Include="Content\Images\homepage-apricots.jpg" />
+    <Content Include="Content\Images\homepage-artichokes.jpg" />
     <Content Include="Content\Images\homepage-blueberry.jpg" />
+    <Content Include="Content\Images\homepage-mezze-smaller.jpg" />
+    <Content Include="Content\Images\homepage-mezze.jpg" />
     <Content Include="Content\Images\homepage-tomatoSoup.jpg" />
     <Content Include="Content\Images\homepage-tomatoSoupDark.jpg" />
     <Content Include="Content\logo1.png" />
@@ -344,6 +348,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom-jquery.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
