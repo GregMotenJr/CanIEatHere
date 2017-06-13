@@ -6,10 +6,55 @@
 
 <h2>Create</h2>
 
+<div class="input-group">
+    <label for="userSearchBar">Type the name of your restaurant!</label>
+    <input id="userSearchBar" name="searchBar" class="form-control" type="text" />
+</div>
+<div class="col-md-12">
+    <h1>Get Place ID is @*<span data-bind="text:Object.results[1].place_id"></span>*@</h1>
+    <ul id="resultsList">
+
+    </ul>
+    
+</div>
+<p id="paragraph"></p>
+<button>Get Place ID</button>
+<script>
+        var placesID = Object();
+        var searchStringValue = "";
+        $(document).ready(function () {
+            //button which searches the api and displays top ten restaurants that match user text
+            $("button").click(function () {
+                searchStringValue = $("input[name=searchBar]").val();
+                $(".resultItems").remove();
+                $.get("@Url.Action("GetPlaceId", "Restaurants", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function(response){
+
+                    console.log(response);
+                    
+                    for (var i = 0; i < 10; i++) {
+                        $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
+                    }
+                                      
+
+                });
+
+            });
+
+           //after user clicks on the restaurant that they want the value of the place id property is set
+            $("#resultsList").on('click', '.resultItems', function () {
+                $("#idInput").val($(this).children(".placeid").text());
+            });
+
+            
+           
+        });
+</script>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+
+    
     
     <div class="form-horizontal">
         <h4>Restaurant</h4>
@@ -18,7 +63,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PlaceID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PlaceID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PlaceID, new { htmlAttributes = new { @class = "form-control", id = "idInput"} })
                 @Html.ValidationMessageFor(model => model.PlaceID, "", new { @class = "text-danger" })
             </div>
         </div>
