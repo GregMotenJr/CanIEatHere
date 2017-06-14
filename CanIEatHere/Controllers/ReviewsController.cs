@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CanIEatHere.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CanIEatHere.Controllers
 {
@@ -18,6 +19,15 @@ namespace CanIEatHere.Controllers
         public ActionResult Index()
         {
             var reviews = db.Reviews.Include(r => r.Restaurant).Include(r => r.AspNetUser);
+
+            var loggedInUser = User.Identity.GetUserId();
+
+            var userReviewIDs = db.Reviews
+                 .Where(r => r.UserID == loggedInUser)
+                 .Select(r => r.ReviewID);
+
+            ViewBag.UsersReviews = userReviewIDs.ToList();
+
             return View(reviews.ToList());
         }
 
@@ -40,7 +50,7 @@ namespace CanIEatHere.Controllers
         public ActionResult Create()
         {
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID");
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
+            //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
@@ -53,13 +63,14 @@ namespace CanIEatHere.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.UserID = User.Identity.GetUserId();
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
+            //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
             return View(review);
         }
 
@@ -71,7 +82,7 @@ namespace CanIEatHere.Controllers
         }
 
         // GET: Reviews/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string userID)
         {
             if (id == null)
             {

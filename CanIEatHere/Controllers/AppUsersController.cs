@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CanIEatHere.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CanIEatHere.Controllers
 {
+    [Authorize]
     public class AppUsersController : Controller
     {
         private CanIEatHereEntities db = new CanIEatHereEntities();
@@ -17,8 +19,15 @@ namespace CanIEatHere.Controllers
         // GET: AppUsers
         public ActionResult Index()
         {
-            var appUsers = db.AppUsers.Include(a => a.AspNetUser).Include(a => a.DietaryRestriction).Include(a => a.DietaryRestriction1).Include(a => a.DietaryRestriction2);
-            return View(appUsers.ToList());
+            //var appUsers = db.AppUsers.Include(a => a.AspNetUser).Include(a => a.DietaryRestriction).Include(a => a.DietaryRestriction1).Include(a => a.DietaryRestriction2);
+
+            var loggedInUser = User.Identity.GetUserId();
+
+            var loggedInUserProfile = db.AppUsers.Include(a => a.AspNetUser).Include(a => a.DietaryRestriction).Include(a => a.DietaryRestriction1).Include(a => a.DietaryRestriction2)
+                .Where(p => p.ASPUserID == loggedInUser)
+                .Select(p => p);
+
+            return View(loggedInUserProfile);
         }
 
         // GET: AppUsers/Details/5
@@ -39,7 +48,7 @@ namespace CanIEatHere.Controllers
         // GET: AppUsers/Create
         public ActionResult Create()
         {
-            ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email");
+            //ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email");
             ViewBag.DietaryRestrictionID1 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType");
             ViewBag.DietaryRestrictionID2 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType");
             ViewBag.DietaryRestrictionID3 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType");
@@ -55,12 +64,13 @@ namespace CanIEatHere.Controllers
         {
             if (ModelState.IsValid)
             {
+                appUser.ASPUserID = User.Identity.GetUserId();
                 db.AppUsers.Add(appUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email", appUser.ASPUserID);
+            //ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email", appUser.ASPUserID);
             ViewBag.DietaryRestrictionID1 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID1);
             ViewBag.DietaryRestrictionID2 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID2);
             ViewBag.DietaryRestrictionID3 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID3);
