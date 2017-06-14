@@ -1,13 +1,22 @@
-﻿@*@{
+﻿@{
     ViewBag.Title = "About Us";
-}*@
+}
 
+@*Custom CSS for 'About' page:*@
+<link href="~/Content/custom-css/ABOUTPAGE.css" rel="stylesheet" />
 
-@*Custom CSS:*@
-<link href="~/Content/custom-aboutpage.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
 
-@*Custom jQuery:*@
-<script src="~/Scripts/custom-jquery-about.js"></script>
+@*Custom jQuery file:*@
+<script src="~/Scripts/custom-jquery/aboutpage_jquery.js"></script>
+<script src="~/Scripts/custom-about-jquery.js"></script>
 
 @*Background fade-in image:*@
 <div id="back"></div>
+
+<input type="button" value="submit" onclick="greeting()" />
+
+
+

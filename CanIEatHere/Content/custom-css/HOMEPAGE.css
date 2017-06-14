@@ -1,25 +1,10 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Lobster|Lobster+Two');
 
-/*BACKGROUND IMAGE:*/
-html { 
-    height:100%;
-}
-
-#back {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -100;
-    background-size: 100%;
-}​
-​
- /*FONT COLOR, BACKGROUND IMAGE*/
+/*FONT COLOR, BACKGROUND IMAGE*/
 body {
     color: white;
-    background-image: url('Images/home_about_artichokes.jpg');
+    background-image: url('../Images/home_about_artichokes.jpg');
 }
 
 /*FONT FAMILY*/

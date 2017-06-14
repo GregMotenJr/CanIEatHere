@@ -302,7 +302,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom-aboutpage.css" />
-    <Content Include="Content\custom-homepage.css" />
+    <Content Include="Content\custom-css\ABOUTPAGE.css" />
+    <Content Include="Content\custom-css\HOMEPAGE.css" />
     <Content Include="Content\custom-layout.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -353,7 +354,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom-about-jquery.js" />
-    <Content Include="Scripts\custom-jquery.js" />
+    <Content Include="Scripts\custom-jquery\aboutpage_jquery.js" />
+    <Content Include="Scripts\custom-jquery\homepage_jquery.js" />
     <Content Include="Scripts\imageUploader.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
