@@ -301,6 +301,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom-aboutpage.css" />
     <Content Include="Content\custom-homepage.css" />
     <Content Include="Content\custom-layout.css" />
     <Content Include="Content\font-awesome.css" />
@@ -313,7 +314,6 @@
     <Content Include="Content\Images\home_about_artichoke_alt.jpg" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\logo2.png" />
-    <Content Include="Content\Site_About.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -352,6 +352,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom-about-jquery.js" />
     <Content Include="Scripts\custom-jquery.js" />
     <Content Include="Scripts\imageUploader.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
