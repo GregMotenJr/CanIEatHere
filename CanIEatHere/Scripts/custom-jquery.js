@@ -6,5 +6,5 @@ $(document).ready(function () {
     $("#text1").fadeIn(1000);
     $("#text2").delay(500).fadeIn(1200);
 
-    $('#back').animate({ opacity: 0 }, 0).css({ 'background-image': 'url(https://cdn.pixabay.com/photo/2017/04/11/17/54/appetizers-2222361_960_720.jpg)' }).animate({ opacity: 1 }, 2500);
+    $('#back').animate({ opacity: 0 }, 0).css({ 'background-image': 'url(https://cdn.pixabay.com/photo/2016/10/02/20/02/salad-1710328_960_720.jpg)' }).animate({ opacity: 1 }, 4000);
 });
