@@ -82,7 +82,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.AspNetUser.Email)
         </td>
-        <td>
+        <td  id="userAccessToBtns">
             @Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ReviewID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })
@@ -91,3 +91,4 @@
 }
 
 </table>
+

@@ -78,7 +78,7 @@
                 @Html.DisplayFor(modelItem => item.DietaryRestriction2.DietType)
             </td>
 
-            <td id="userAccessToBtns">
+            <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.AppUserID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.AppUserID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.AppUserID })
@@ -88,11 +88,3 @@
 
 </table>
 
-<script>
-    
-   
-    {
-        $('#userAccessToBtns').show()
-    }
-
-</script>
