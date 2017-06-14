@@ -15,3 +15,51 @@ html {
     z-index: -100;
     background-size: 100%;
 }​
+
+  /*FONT COLOR, BACKGROUND IMAGE*/
+body {
+    color: white;
+    background-image: url('Images/home_about_artichokes.jpg');
+}
+
+/*FONT FAMILY*/
+.lobster-font {
+    font-family: 'Lobster', cursive;
+}
+
+/*CUSTOM JUMBO DIV (NOT A REAL JUMBO)*/
+.testDiv {
+    border-radius: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 100px;
+}
+
+/*H1 FONT SIZE IN .TESTDIV*/
+.testDiv h1 {
+    font-size: 110px;
+}
+
+/*P FONT SIZE IN .TESTDIV*/
+.testDiv p {
+    font-size: 35px;
+}
+
+/*HIDES THE TEXT BEFORE FADEIN()*/
+.hide-before-fade {
+    display:none;
+}
+
+/*SLIDING LINE ON HOME PAGE*/
+#box2 {
+    margin-top:40px;
+    background:white;
+    height:2px;
+    width:0%;
+    margin:0px;
+    margin-left:25%;
+}
+
+#panel {
+    padding: 50px;
+}
