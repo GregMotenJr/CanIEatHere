@@ -45,7 +45,6 @@ body {
     margin-left:25%;
 }
 
-/*FILESTACK SECTION*/
-.filestack-section{
-    padding-top: 500px;
+#panel {
+    padding: 50px;
 }
