@@ -9,18 +9,94 @@
 <div>
     <h4>Restaurant</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PlaceID)
-        </dt>
+         
+    <p class="hide" id="placeID">@Html.DisplayFor(model => model.PlaceID)</p>
+    <h2 id="restaurantName"></h2>
+    <h3>Address: <span id="restaurantAddress"></span></h3>
+    <h3>Phone: <span id="restaurantPhoneNumber"></span></h3>
+    <h3>Open Now? <span id="openNow"></span></h3>
+    <h3>Hours: </h3>
+    <ul id="restaurantHours"></ul>
+    
+</div>
+<hr />
+<div>
+    <h2>Reviews</h2>
+    <dl class="class-horizontal">
+        @foreach (var review in Model.Reviews)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => review.UserID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => review.UserID)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => review.NumFoodOptions)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => review.NumFoodOptions)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => review.GeneralComments)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => review.GeneralComments)
+            </dd>
+            
+            <dt>
+                @Html.DisplayNameFor(model => review.OverallRating)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => review.OverallRating)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => review.TimeStamp)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => review.TimeStamp)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => review.RestaurantPriceRating)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => review.RestaurantPriceRating)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PlaceID)
-        </dd>
+            
 
+        }
     </dl>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.RestaurantID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+<script>
+    var placeID = $("#placeID").text();
+    $(document).ready(function(){
+        $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
+            console.log(response);
+            $("#restaurantName").text(response.result.name);
+            $("#restaurantAddress").text(response.result.formatted_address);
+            $("#restaurantPhoneNumber").text(response.result.formatted_phone_number);
+           
+            if(response.result.opening_hours.open_now == false)
+            {
+                $("#openNow").text("Nope, try again later");
+            }
+            else if(response.result.opening_hours.open_now == "true")
+            {
+                $("#openNow").text("Yep, come on down");
+            }
+
+            (response.result.opening_hours.weekday_text).forEach(function(day) {
+
+                $("#restaurantHours").append("<li>" + day + "</li>")
+
+            });
+            
+        });
+    });
+</script>
