@@ -5,6 +5,22 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="CanIEatHereModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="AppUserID" />
+          </Key>
+          <Property Name="AppUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ASPUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AppUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="87" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="ZIP" Type="varchar" MaxLength="15" />
+          <Property Name="DietaryRestrictionID1" Type="int" />
+          <Property Name="DietaryRestrictionID2" Type="int" />
+          <Property Name="DietaryRestrictionID3" Type="int" />
+        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -118,6 +134,54 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_AppUser_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="ASPUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_DietaryRestriction">
+          <End Role="DietaryRestriction" Type="Self.DietaryRestriction" Multiplicity="0..1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaryRestriction">
+              <PropertyRef Name="DietaryRestrictionID" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="DietaryRestrictionID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_DietaryRestriction1">
+          <End Role="DietaryRestriction" Type="Self.DietaryRestriction" Multiplicity="0..1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaryRestriction">
+              <PropertyRef Name="DietaryRestrictionID" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="DietaryRestrictionID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_DietaryRestriction2">
+          <End Role="DietaryRestriction" Type="Self.DietaryRestriction" Multiplicity="0..1" />
+          <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaryRestriction">
+              <PropertyRef Name="DietaryRestrictionID" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="DietaryRestrictionID3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -259,6 +323,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CanIEatHereModelStoreContainer">
+          <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -270,6 +335,22 @@
           <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AppUser_AspNetUsers" Association="Self.FK_AppUser_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AppUser" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_DietaryRestriction" Association="Self.FK_AppUser_DietaryRestriction">
+            <End Role="DietaryRestriction" EntitySet="DietaryRestriction" />
+            <End Role="AppUser" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_DietaryRestriction1" Association="Self.FK_AppUser_DietaryRestriction1">
+            <End Role="DietaryRestriction" EntitySet="DietaryRestriction" />
+            <End Role="AppUser" EntitySet="AppUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_DietaryRestriction2" Association="Self.FK_AppUser_DietaryRestriction2">
+            <End Role="DietaryRestriction" EntitySet="DietaryRestriction" />
+            <End Role="AppUser" EntitySet="AppUser" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -336,6 +417,9 @@
           <NavigationProperty Name="FoodItems" Relationship="Self.FK_FoodItem_DietaryRestriction" FromRole="DietaryRestriction" ToRole="FoodItem" />
           <NavigationProperty Name="FoodItems1" Relationship="Self.FK_FoodItem_DietaryRestriction1" FromRole="DietaryRestriction" ToRole="FoodItem" />
           <NavigationProperty Name="FoodItems2" Relationship="Self.FK_FoodItem_DietaryRestriction2" FromRole="DietaryRestriction" ToRole="FoodItem" />
+          <NavigationProperty Name="AppUsers" Relationship="CanIEatHereModel.FK_AppUser_DietaryRestriction" FromRole="DietaryRestriction" ToRole="AppUser" />
+          <NavigationProperty Name="AppUsers1" Relationship="CanIEatHereModel.FK_AppUser_DietaryRestriction1" FromRole="DietaryRestriction" ToRole="AppUser" />
+          <NavigationProperty Name="AppUsers2" Relationship="CanIEatHereModel.FK_AppUser_DietaryRestriction2" FromRole="DietaryRestriction" ToRole="AppUser" />
         </EntityType>
         <EntityType Name="FoodItem">
           <Key>
@@ -517,6 +601,23 @@
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="AppUsers" EntityType="CanIEatHereModel.AppUser" />
+          <AssociationSet Name="FK_AppUser_AspNetUsers" Association="CanIEatHereModel.FK_AppUser_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AppUser" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_DietaryRestriction" Association="CanIEatHereModel.FK_AppUser_DietaryRestriction">
+            <End Role="DietaryRestriction" EntitySet="DietaryRestrictions" />
+            <End Role="AppUser" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_DietaryRestriction1" Association="CanIEatHereModel.FK_AppUser_DietaryRestriction1">
+            <End Role="DietaryRestriction" EntitySet="DietaryRestrictions" />
+            <End Role="AppUser" EntitySet="AppUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppUser_DietaryRestriction2" Association="CanIEatHereModel.FK_AppUser_DietaryRestriction2">
+            <End Role="DietaryRestriction" EntitySet="DietaryRestrictions" />
+            <End Role="AppUser" EntitySet="AppUsers" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -567,6 +668,7 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="CanIEatHereModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="Reviews" Relationship="CanIEatHereModel.FK_Review_AspNetUsers" FromRole="AspNetUser" ToRole="Review" />
           <NavigationProperty Name="AspNetRoles" Relationship="CanIEatHereModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <NavigationProperty Name="AppUsers" Relationship="CanIEatHereModel.FK_AppUser_AspNetUsers" FromRole="AspNetUser" ToRole="AppUser" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="CanIEatHereModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -611,6 +713,74 @@
         <Association Name="AspNetUserRoles">
           <End Type="CanIEatHereModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="CanIEatHereModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="AppUserID" />
+          </Key>
+          <Property Name="AppUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASPUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AppUserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="87" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ZIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DietaryRestrictionID1" Type="Int32" />
+          <Property Name="DietaryRestrictionID2" Type="Int32" />
+          <Property Name="DietaryRestrictionID3" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="CanIEatHereModel.FK_AppUser_AspNetUsers" FromRole="AppUser" ToRole="AspNetUser" />
+          <NavigationProperty Name="DietaryRestriction" Relationship="CanIEatHereModel.FK_AppUser_DietaryRestriction" FromRole="AppUser" ToRole="DietaryRestriction" />
+          <NavigationProperty Name="DietaryRestriction1" Relationship="CanIEatHereModel.FK_AppUser_DietaryRestriction1" FromRole="AppUser" ToRole="DietaryRestriction" />
+          <NavigationProperty Name="DietaryRestriction2" Relationship="CanIEatHereModel.FK_AppUser_DietaryRestriction2" FromRole="AppUser" ToRole="DietaryRestriction" />
+        </EntityType>
+        <Association Name="FK_AppUser_AspNetUsers">
+          <End Type="CanIEatHereModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="CanIEatHereModel.AppUser" Role="AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="ASPUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_DietaryRestriction">
+          <End Type="CanIEatHereModel.DietaryRestriction" Role="DietaryRestriction" Multiplicity="0..1" />
+          <End Type="CanIEatHereModel.AppUser" Role="AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaryRestriction">
+              <PropertyRef Name="DietaryRestrictionID" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="DietaryRestrictionID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_DietaryRestriction1">
+          <End Type="CanIEatHereModel.DietaryRestriction" Role="DietaryRestriction" Multiplicity="0..1" />
+          <End Type="CanIEatHereModel.AppUser" Role="AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaryRestriction">
+              <PropertyRef Name="DietaryRestrictionID" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="DietaryRestrictionID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppUser_DietaryRestriction2">
+          <End Type="CanIEatHereModel.DietaryRestriction" Role="DietaryRestriction" Multiplicity="0..1" />
+          <End Type="CanIEatHereModel.AppUser" Role="AppUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietaryRestriction">
+              <PropertyRef Name="DietaryRestrictionID" />
+            </Principal>
+            <Dependent Role="AppUser">
+              <PropertyRef Name="DietaryRestrictionID3" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -739,6 +909,23 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="AppUsers">
+            <EntityTypeMapping TypeName="CanIEatHereModel.AppUser">
+              <MappingFragment StoreEntitySet="AppUser">
+                <ScalarProperty Name="DietaryRestrictionID3" ColumnName="DietaryRestrictionID3" />
+                <ScalarProperty Name="DietaryRestrictionID2" ColumnName="DietaryRestrictionID2" />
+                <ScalarProperty Name="DietaryRestrictionID1" ColumnName="DietaryRestrictionID1" />
+                <ScalarProperty Name="ZIP" ColumnName="ZIP" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AppUserName" ColumnName="AppUserName" />
+                <ScalarProperty Name="ASPUserID" ColumnName="ASPUserID" />
+                <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

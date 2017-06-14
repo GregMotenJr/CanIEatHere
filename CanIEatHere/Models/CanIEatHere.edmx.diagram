@@ -25,6 +25,11 @@
         <AssociationConnector Association="CanIEatHereModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="CanIEatHereModel.FK_Review_AspNetUsers" />
         <AssociationConnector Association="CanIEatHereModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="CanIEatHereModel.AppUser" Width="1.5" PointX="7.125" PointY="4.875" />
+        <AssociationConnector Association="CanIEatHereModel.FK_AppUser_AspNetUsers" />
+        <AssociationConnector Association="CanIEatHereModel.FK_AppUser_DietaryRestriction" />
+        <AssociationConnector Association="CanIEatHereModel.FK_AppUser_DietaryRestriction1" />
+        <AssociationConnector Association="CanIEatHereModel.FK_AppUser_DietaryRestriction2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

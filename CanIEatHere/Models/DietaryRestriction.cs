@@ -20,6 +20,9 @@ namespace CanIEatHere.Models
             this.FoodItems = new HashSet<FoodItem>();
             this.FoodItems1 = new HashSet<FoodItem>();
             this.FoodItems2 = new HashSet<FoodItem>();
+            this.AppUsers = new HashSet<AppUser>();
+            this.AppUsers1 = new HashSet<AppUser>();
+            this.AppUsers2 = new HashSet<AppUser>();
         }
     
         public int DietaryRestrictionID { get; set; }
@@ -31,5 +34,11 @@ namespace CanIEatHere.Models
         public virtual ICollection<FoodItem> FoodItems1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FoodItem> FoodItems2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AppUser> AppUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AppUser> AppUsers1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AppUser> AppUsers2 { get; set; }
     }
 }
