@@ -26,7 +26,7 @@ namespace CanIEatHere.Controllers
                  .Where(r => r.UserID == loggedInUser)
                  .Select(r => r.ReviewID);
 
-            ViewBag.UsersReviews = userReviewIDs.ToList();
+            ViewBag.LoggedInUsersReviews = userReviewIDs.ToList();
 
             return View(reviews.ToList());
         }
@@ -94,7 +94,7 @@ namespace CanIEatHere.Controllers
                 return HttpNotFound();
             }
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
+            //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
             return View(review);
         }
 
@@ -112,7 +112,7 @@ namespace CanIEatHere.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
-            ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
+            //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
             return View(review);
         }
 

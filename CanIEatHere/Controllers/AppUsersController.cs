@@ -89,7 +89,7 @@ namespace CanIEatHere.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email", appUser.ASPUserID);
+            //ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email", appUser.ASPUserID);
             ViewBag.DietaryRestrictionID1 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID1);
             ViewBag.DietaryRestrictionID2 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID2);
             ViewBag.DietaryRestrictionID3 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID3);
@@ -109,7 +109,7 @@ namespace CanIEatHere.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email", appUser.ASPUserID);
+            //ViewBag.ASPUserID = new SelectList(db.AspNetUsers, "Id", "Email", appUser.ASPUserID);
             ViewBag.DietaryRestrictionID1 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID1);
             ViewBag.DietaryRestrictionID2 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID2);
             ViewBag.DietaryRestrictionID3 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", appUser.DietaryRestrictionID3);

@@ -84,7 +84,7 @@
                 @Html.DisplayFor(modelItem => item.AspNetUser.Email)
             </td>
 
-            @foreach (var r in ViewBag.UsersReviews)
+            @foreach (var r in ViewBag.LoggedInUsersReviews)
             {
                 if (r == item.ReviewID)
                 {
@@ -93,10 +93,6 @@
                         @Html.ActionLink("Details", "Details", new { id = item.ReviewID }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
                     </td>
-                    
-                }
-                else
-                {
 
                 }
             }
