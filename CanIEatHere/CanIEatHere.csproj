@@ -354,6 +354,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom-about-jquery.js" />
     <Content Include="Scripts\custom-jquery.js" />
+    <Content Include="Scripts\custom\CUSTOM.js" />
     <Content Include="Scripts\imageUploader.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
