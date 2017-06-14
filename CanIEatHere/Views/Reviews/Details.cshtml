@@ -101,10 +101,19 @@
     </dl>
 </div>
 <!--STAR SYSTEM-->
-<div class="rating">
-    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-</div>
-<!--SECOND-BIGGER-->
+<ul class="c-rating">
+    <li class="c-rating__item is-active" data-index="0"></li>
+    <li class="c-rating__item is-active" data-index="1"></li>
+    <li class="c-rating__item is-active" data-index="2"></li>
+    <li class="c-rating__item" data-index="3"></li>
+    <li class="c-rating__item" data-index="4"></li>
+</ul>
+
+@* <!--RATING 2-->
+    <div class="rating">
+    <span id="star1">☆</span><span id="star2">☆</span><span id="star3">☆</span><span id="star4">☆</span><span id="star5">☆</span>
+</div>*@
+<!--RATING 3 STYLE BIGGER-->
 @*<input id="input-1-ltr-star-xs" name="input-1-ltr-star-xs" class="kv-ltr-theme-fa-star rating-loading" value="1" dir="ltr" data-size="xs">
 @*<br />
 <input id="input-2-ltr-star-sm" name="input-2-ltr-star-sm" class="kv-ltr-theme-fa-star rating-loading" value="2" dir="ltr" data-size="sm">
@@ -116,7 +125,9 @@
 <input id="input-5-ltr-star-xl" name="input-5-ltr-star-xl" class="kv-ltr-theme-fa-star rating-loading" value="5" dir="ltr" data-size="xl">
 <br />*@
 
-@*<script>
+@* GOES WITH RATING 3
+    
+    <script>
 $(document).on('ready', function(){
     $('.kv-ltr-theme-fa-star').rating({
         hoverOnClear: false,
