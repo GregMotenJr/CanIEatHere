@@ -14,23 +14,23 @@
             <input class="form-control" id="restaurantSearchBar" name="restaurantSearchBar" type="text" />
         </div>
     </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button class="btn btn-primary searchButton">Search</button>
-            </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-primary searchButton">Search</button>
         </div>
-        <div class="form-group">
-            <div class="col-md-12">
-                <ul id="resultsList"></ul>
-            </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <ul id="resultsList"></ul>
         </div>
-    
+    </div>
+
 </div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Review</h4>
         <hr />
@@ -83,10 +83,10 @@
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("RestaurantID", null, htmlAttributes: new { @class = "form-control", id = "restaurantId" })
                 @Html.ValidationMessageFor(model => model.RestaurantID, "", new { @class = "text-danger" })
@@ -104,7 +104,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Img1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Img1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Img1, new { htmlAttributes = new { @class = "form-control", id="firstImage" } })
                 @Html.ValidationMessageFor(model => model.Img1, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -112,7 +112,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Img2, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Img2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Img2, new { htmlAttributes = new { @class = "form-control", id = "secondImage" } })
                 @Html.ValidationMessageFor(model => model.Img2, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -120,89 +120,125 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Img3, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Img3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Img3, new { htmlAttributes = new { @class = "form-control", id="thirdImage" } })
                 @Html.ValidationMessageFor(model => model.Img3, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" id="create" />
             </div>
         </div>
     </div>
 }
 <!--FILESTACK BUTTON-->
-<div>
-    <input type="button" value="FileStackButton" onclick="showPicker()" />
-</div>
-<!--DISPLAY THE UPLOADED IMAGE-->
-<div id="image-container">
-</div>
+<section id="filestack">
+
+    <div>
+        <input type="button" value="FileStackButton" id="fileStackButton" />
+    </div>
+
+    <!--DISPLAY THE UPLOADED IMAGE-->
+    <div id="image-container">
+    </div>
+
+    <button id="getUrl">URL</button>
+</section>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
 <script>
-    
+
     $(document).ready(function () {
-        
+
         //Get the image src from filestack and store it in the Img inputs
 
+        $('#fileStackButton').click(showPicker);
 
+        var count = 0;
+        $('#image-container').on('click', '#addAnother', function () {
+            count = $('.uploadedImage').length;
 
+            if (count > 2) {
+                $('#addAnother').val("Sorry, there is a maximum of 3 images.");
+            }
+            else {
+                showPicker();
+            }
 
+        });
+
+        $('#getUrl').click(function () {
+            var firstImageUrl = $('#image-container:nth-child(1)').attr('src');
+            var secondImageUrl = $('#image-container:nth-child(2)').attr('src');
+            var thirdImageUrl = $('#image-container:nth-child(3)').attr('src');
+
+            console.log(firstImageUrl);
+            console.log(secondImageUrl);
+            
+            if (firstImageUrl != null) {
+                $('#firstImage').val(firstImageUrl);
+            }
+            if (secondImageUrl != null) {
+                $('#secondImage').val(secondImageUrl);
+            }
+            if (thirdImageUrl != null) {
+                $('#thirdImage').val(thirdImageUrl);
+            }
+
+        });
 
         var searchStringValue = "";
-        
-       
-      //Allows user to enter a search term for restaurant
-      //and displays top results from the google places api
-      //displays name, address and place id
 
-      $(".searchButton").click(function () {
-        searchStringValue = $("input[name=restaurantSearchBar]").val();
-        $(".resultItems").remove();
-        $.get("@Url.Action("GetPlaceId", "Reviews", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function(response){
 
-            console.log(response);
-            for (var i = 0; i < 10; i++) {
-                $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
-            }
-                           
+        //Allows user to enter a search term for restaurant
+        //and displays top results from the google places api
+        //displays name, address and place id
 
-        });
+        $(".searchButton").click(function () {
+            searchStringValue = $("input[name=restaurantSearchBar]").val();
+            $(".resultItems").remove();
+            $.get("@Url.Action("GetPlaceId", "Reviews", new { searchString = "tempVar" })".replace("tempVar", searchStringValue), function (response) {
 
-          //when user clicks on the restaurant they want
-          //checks to see if the restaurant id matches an option in the dropdown
-          //if it isn't an error message is displayed
-          //if it is then the corresponding id is selected
-
-          var options = [];
-          var hasMatch = false;
-          $("#resultsList").on('click', '.resultItems', function () {
-          
-           options = $("#restaurantId option");
-
-            var placeID = $(this).children(".placeid").text();
-                       
-            options.each(function () {
-                if ($(this).text() == placeID) {
-                   //alert("yes" + $(this).text());
-                    hasMatch = true;
-                    $(this).prop('selected', true);
-                    
+                console.log(response);
+                for (var i = 0; i < 10; i++) {
+                    $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
                 }
-                
-            });
-            if (hasMatch === false) {
-                $(".errorMessage").html("<p>The restaurant you entered was not found. Would you like to add it to our site?</p>");
-                $(".createRestaurantLink").show();
-            }
-        });
 
-    });
+            });
+
+            //when user clicks on the restaurant they want
+            //checks to see if the restaurant id matches an option in the dropdown
+            //if it isn't an error message is displayed
+            //if it is then the corresponding id is selected
+
+            var options = [];
+            var hasMatch = false;
+            $("#resultsList").on('click', '.resultItems', function () {
+
+                options = $("#restaurantId option");
+
+                var placeID = $(this).children(".placeid").text();
+
+                options.each(function () {
+                    if ($(this).text() == placeID) {
+                        //alert("yes" + $(this).text());
+                        hasMatch = true;
+                        $(this).prop('selected', true);
+
+                    }
+
+                });
+                if (hasMatch === false) {
+                    $(".errorMessage").html("<p>The restaurant you entered was not found. Would you like to add it to our site?</p>");
+                    $(".createRestaurantLink").show();
+                }
+            });
+
+        });
     });
 </script>
 
