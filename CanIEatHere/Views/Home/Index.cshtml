@@ -2,94 +2,104 @@
     ViewBag.Title = "Home Page";
 }
 
-@*Custom CSS for home index:*@
-<link rel="stylesheet" href="~/Content/custom-homepage.css" />
-
-@*Custom jQuery file:*@
-<script src="~/Scripts/custom-jquery.js"></script>
-
-@*Font Awesome CDN:*@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
-<div class="container-fluid">
-    <div id="testDiv" class="testDiv">
-        <h1 class="text-center lobster-font hide-before-fade" id="text1">Can I Eat Here?</h1>
-        <br />
-        <p class="lead text-center lobster-font hide-before-fade" id="text2">Find vegetarian options near you!</p>
-        <div class="container-fluid hide-before-fade" id="box2"></div>
+    <main class="o-content">
+        <div class="o-container">
+            <div class="o-section">
+                <div id="shop"></div>
+            </div>
+            <div class="o-section">
+                <div id="github-icons"></div>
+            </div>
+        </div>
+    </main>
 
-    </div>
-</div>
-<br />
-<br />
-@*<center>
-    <div id="scroll-button" style="color:white">
-        <i id="arrow-button" class="fa fa-arrow-circle-down fa-5x" aria-hidden="true"></i>
-    </div>
-</center>*@
+    <footer class="o-footer">
+        <div class="o-container">
+            <small>&copy; 2015, callmenick.com</small>
+        </div>
+    </footer>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+    <script src="js/dist/rating.min.js"></script>
+    <script>
 
+  /**
+   * Demo in action!
+   */
+  (function() {
 
+    'use strict';
 
+    // SHOP ELEMENT
+    var shop = document.querySelector('#shop');
 
-@*<div id="filestack-section">
-<h1>button below is filestack test</h1>
-    <input type="button" value="FileStackButton" onclick="showPicker()" />
-    <!-- onclick={()=> this.uploadImg() -->
-</div>
+    // DUMMY DATA
+    var data = [
+      {
+        title: "Dope Hat",
+        description: "Dope hat dolor sit amet, consectetur adipisicing elit. Commodi consectetur similique ullam natus ut debitis praesentium.",
+        rating: 3
+      },
+      {
+        title: "Hot Top",
+        description: "Hot top dolor sit amet, consectetur adipisicing elit. Commodi consectetur similique ullam natus ut debitis praesentium.",
+        rating: 2
+      },
+      {
+        title: "Fresh Kicks",
+        description: "Fresh kicks dolor sit amet, consectetur adipisicing elit. Commodi consectetur similique ullam natus ut debitis praesentium.",
+        rating: null
+      }
+    ];
 
+    // INITIALIZE
+    (function init() {
+      for (var i = 0; i < data.length; i++) {
+        addRatingWidget(buildShopItem(data[i]), data[i]);
+      }
+    })();
 
-<!--FILESTACK LIB-->
-<script type="text/javascript" src="//static.filestackapi.com/v3/filestack-0.6.3.js"></script>
-<script> filepicker.setKey("AbbxbmtG7Qzmx3N6F8qgmz");</script>
-<script type="text/javascript">
-    var client = filestack.init('AbbxbmtG7Qzmx3N6F8qgmz', { policy: 'policy', signature: 'signature' });
-    client.pick(pickerOptions);
-</script>
+    // BUILD SHOP ITEM
+    function buildShopItem(data) {
+      var shopItem = document.createElement('div');
 
-<!--FILESTACK set pick-->
-<script>
-    uploadImg(){
-        filepicker.pick (
-              {
-                  mimetype: 'image/*',
-                  container: 'modal',
-                  services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'URL', 'IMGUR', 'PICASA'],
-                  openTo: 'COMPUTER'
-              },
-              function (Blob) {
-                  console.log(JSON.stringify(Blob));
-                  handler = Blob.url.substring(Blob.url.lastIndexOf('/') + 1);
-                  $('#profile-pic').attr('src', `https://process.filestackapi.com/crop_faces=mode:fill/rounded_corners=radius:${$('.mdl-js-slider').val()}/${handler}`);
-              },
-              function (FPError) {
-                  console.log(FPError.toString());
-              }
-            );
+      var html = '<div class="c-shop-item__img"></div>' +
+        '<div class="c-shop-item__details">' +
+          '<h3 class="c-shop-item__title">' + data.title + '</h3>' +
+          '<p class="c-shop-item__description">' + data.description + '</p>' +
+          '<ul class="c-rating"></ul>' +
+        '</div>';
+
+      shopItem.classList.add('c-shop-item');
+      shopItem.innerHTML = html;
+      shop.appendChild(shopItem);
+
+      return shopItem;
     }
-</script>
 
-<!--FILESTACK BUTTON-->
-<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script>
-    var client = filestack.init('AbbxbmtG7Qzmx3N6F8qgmz');
-    function showPicker() {
-        client.pick({
-        }).then(function(result) {
-            console.log(JSON.stringify(result.filesUploaded))
-        });
+    // ADD RATING WIDGET
+    function addRatingWidget(shopItem, data) {
+      var ratingElement = shopItem.querySelector('.c-rating');
+      var currentRating = data.rating;
+      var maxRating = 5;
+      var callback = function(rating) { alert(rating); };
+      var r = rating(ratingElement, currentRating, maxRating, callback);
     }
-</script>*@
+
+  })();
+
+    </script>
+
+    
+    <!--STAR SYSTEM-->
+    <ul class="c-rating">
+        <li class="c-rating__item is-active" data-index="0">☆</li>
+        <li class="c-rating__item is-active" data-index="1">☆</li>
+        <li class="c-rating__item is-active" data-index="2">☆</li>
+        <li class="c-rating__item" data-index="3">☆</li>
+        <li class="c-rating__item" data-index="4">☆</li>
+    </ul>
+</body>
+</html>
+
