@@ -11,7 +11,7 @@
 @*Font Awesome CDN:*@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-
+<div id="back"></div>
 <div class="container-fluid">
     <div id="testDiv" class="testDiv">
         <h1 class="text-center lobster-font hide-before-fade" id="text1">Can I Eat Here?</h1>
@@ -23,73 +23,3 @@
 </div>
 <br />
 <br />
-@*<center>
-    <div id="scroll-button" style="color:white">
-        <i id="arrow-button" class="fa fa-arrow-circle-down fa-5x" aria-hidden="true"></i>
-    </div>
-</center>*@
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
-
-
-
-@*<div id="filestack-section">
-<h1>button below is filestack test</h1>
-    <input type="button" value="FileStackButton" onclick="showPicker()" />
-    <!-- onclick={()=> this.uploadImg() -->
-</div>
-
-
-<!--FILESTACK LIB-->
-<script type="text/javascript" src="//static.filestackapi.com/v3/filestack-0.6.3.js"></script>
-<script> filepicker.setKey("AbbxbmtG7Qzmx3N6F8qgmz");</script>
-<script type="text/javascript">
-    var client = filestack.init('AbbxbmtG7Qzmx3N6F8qgmz', { policy: 'policy', signature: 'signature' });
-    client.pick(pickerOptions);
-</script>
-
-<!--FILESTACK set pick-->
-<script>
-    uploadImg(){
-        filepicker.pick (
-              {
-                  mimetype: 'image/*',
-                  container: 'modal',
-                  services: ['COMPUTER', 'FACEBOOK', 'INSTAGRAM', 'URL', 'IMGUR', 'PICASA'],
-                  openTo: 'COMPUTER'
-              },
-              function (Blob) {
-                  console.log(JSON.stringify(Blob));
-                  handler = Blob.url.substring(Blob.url.lastIndexOf('/') + 1);
-                  $('#profile-pic').attr('src', `https://process.filestackapi.com/crop_faces=mode:fill/rounded_corners=radius:${$('.mdl-js-slider').val()}/${handler}`);
-              },
-              function (FPError) {
-                  console.log(FPError.toString());
-              }
-            );
-    }
-</script>
-
-<!--FILESTACK BUTTON-->
-<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script>
-    var client = filestack.init('AbbxbmtG7Qzmx3N6F8qgmz');
-    function showPicker() {
-        client.pick({
-        }).then(function(result) {
-            console.log(JSON.stringify(result.filesUploaded))
-        });
-    }
-</script>*@
