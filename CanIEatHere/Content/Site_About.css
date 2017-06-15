@@ -14,7 +14,67 @@ html {
 }
 
 .aboutUsGrid {
+    margin-top: 50px;
+    padding-right: 30px;
+    padding-left: 30px;
+    
     color: white;
     background: rgba(0,0,0, 0.5);
     display: none;
 }
+
+
+
+
+
+/* ABOUT US DIVS */
+
+#Megan {
+    color:Green;
+    background-color:#eee;
+    border:2px solid #333;
+    display:none;
+    text-align:justify;
+}
+#Megan p {
+    margin: 15px;
+    font-size: 0.917em;
+}
+
+#Greg {
+    color:Green;
+    background-color:#eee;
+    border:2px solid #333;
+    display:none;
+    text-align:justify;
+}
+#Greg p {
+    margin: 15px;
+    font-size: 0.917em;
+}
+
+#Anthony {
+    color:Green;
+    background-color:#eee;
+    border:2px solid #333;
+    display:none;
+    text-align:justify;
+}
+#Anthony p {
+    margin: 15px;
+    font-size: 0.917em;
+}
+
+#Liberty {
+    color:Green;
+    background-color:#eee;
+    border:2px solid #333;
+    display:none;
+    text-align:justify;
+}
+#Liberty p {
+    margin: 15px;
+    font-size: 0.917em;
+}
+
+
