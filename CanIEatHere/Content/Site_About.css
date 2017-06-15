@@ -12,3 +12,7 @@ html {
     z-index: -100;
     background-size: 100%;
 }​
+
+ body {
+     background-image: url(../Content/Images/appetizers-2222361_1280.jpg);
+ }
