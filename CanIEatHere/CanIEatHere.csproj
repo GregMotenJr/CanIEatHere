@@ -302,8 +302,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom-aboutpage.css" />
-    <Content Include="Content\custom-css\ABOUTPAGE.css" />
-    <Content Include="Content\custom-css\HOMEPAGE.css" />
+    <Content Include="Content\Custom-CSS\ABOUTPAGE.css" />
+    <Content Include="Content\Custom-CSS\HOMEPAGE.css" />
     <Content Include="Content\custom-layout.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -313,6 +313,7 @@
     <Content Include="Content\Images\homepage-salad.jpg" />
     <Content Include="Content\Images\home_about_artichokes.jpg" />
     <Content Include="Content\Images\home_about_artichoke_alt.jpg" />
+    <Content Include="Content\Images\Mezze.jpg" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\logo2.png" />
     <Content Include="favicon.ico" />
@@ -354,8 +355,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom-about-jquery.js" />
-    <Content Include="Scripts\custom-jquery\aboutpage_jquery.js" />
-    <Content Include="Scripts\custom-jquery\homepage_jquery.js" />
+    <Content Include="Scripts\Custom-jQuery\aboutpage_jquery.js" />
+    <Content Include="Scripts\Custom-jQuery\homepage_jquery.js" />
     <Content Include="Scripts\imageUploader.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
