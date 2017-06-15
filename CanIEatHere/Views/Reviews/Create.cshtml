@@ -172,9 +172,9 @@
         });
 
         $('#getUrl').click(function () {
-            var firstImageUrl = $('#image-container:nth-child(1)').attr('src');
-            var secondImageUrl = $('#image-container:nth-child(2)').attr('src');
-            var thirdImageUrl = $('#image-container:nth-child(3)').attr('src');
+            var firstImageUrl = $('#image-container div:nth-child(1)').children('img').attr('src');
+            var secondImageUrl = $('#image-container div:nth-child(2)').children('img').attr('src');
+            var thirdImageUrl = $('#image-container div:nth-child(3)').children('img').attr('src');
 
             console.log(firstImageUrl);
             console.log(secondImageUrl);
