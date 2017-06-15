@@ -9,6 +9,7 @@ function showPicker() {
         imageSrc = result.filesUploaded[0].url;
         $('#fileStackButton').remove();
         $('#addAnother').remove();
+        console.log(imageSrc);
         show();
     });
 }
@@ -50,15 +51,20 @@ function deleteSelectedImage() {
     if (deleteButton === 0) {
         $('#image-container div:nth-child(1)').remove();
         $(this).remove();
+        $('#addAnother').remove();
+        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
     }
     else if (deleteButton === 1) {
         $('#image-container div:nth-child(2)').remove();
         $(this).remove();
+        $('#addAnother').remove();
+        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
     }
     else if (deleteButton === 2) {
-        var stuff = $('#image-container div:nth-child(3)').remove();
+        $('#image-container div:nth-child(3)').remove();
         $(this).remove();
-        $('#addAnother').val("Add Another Image");
+        $('#addAnother').remove();
+        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
     }
 }
 
@@ -78,27 +84,43 @@ function storeImagesInReview() {
     }
 }
 
-function displayImages() {
+function displayImagesForEdit() {
     var imageSrc1 = $('#firstImage').val();
     var imageSrc2 = $('#secondImage').val();
     var imageSrc3 = $('#thirdImage').val();
 
-    if (imageSrc1 != null) {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc1 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>'
+    if (imageSrc1 != "") {
+        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc1 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
     }
-    if (imageSrc2 != null) {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc2 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>'
+    if (imageSrc2 != "") {
+        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc2 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
     }
-    if (imageSrc3 != null) {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc3 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>'
+    if (imageSrc3 != "") {
+        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc3 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
     }
+}
 
+function addAddImagesButton() {
     var deleteCount = $('.deleteImage').length;
 
     if (deleteCount < 3) {
         $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
     }
+}
 
+function displayImages() {
+    var imageSrc1 = $('#firstImage').val();
+    var imageSrc2 = $('#secondImage').val();
+    var imageSrc3 = $('#thirdImage').val();
 
+    if (imageSrc1 != "") {
+        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc1 + '"/></div>'
+    }
+    if (imageSrc2 != "") {
+        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc2 + '"/></div>'
+    }
+    if (imageSrc3 != "") {
+        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc3 + '"/></div>'
+    }
 }
 
