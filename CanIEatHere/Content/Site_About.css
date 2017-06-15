@@ -12,3 +12,9 @@ html {
     z-index: -100;
     background-size: 100%;
 }
+
+.aboutUsGrid {
+    color: white;
+    background: rgba(0,0,0, 0.5);
+    display: none;
+}

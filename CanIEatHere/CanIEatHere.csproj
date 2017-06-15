@@ -303,6 +303,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom-homepage.css" />
     <Content Include="Content\custom-layout.css" />
+    <Content Include="Content\custom-RESTAURANT.css" />
+    <Content Include="Content\custom-REVIEW.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\homeIndex_slicedTomatoes.jpg" />
@@ -353,6 +355,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom-jquery-about.js" />
+    <Content Include="Scripts\custom-jquery-RESTAURANT.js" />
+    <Content Include="Scripts\custom-jquery-REVIEW.js" />
     <Content Include="Scripts\custom-jquery.js" />
     <Content Include="Scripts\imageUploader.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
