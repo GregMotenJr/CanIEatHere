@@ -104,7 +104,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Img1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Img1, new { htmlAttributes = new { @class = "form-control", id="firstImage" } })
+                @Html.EditorFor(model => model.Img1, new { htmlAttributes = new { @class = "form-control", id = "firstImage" } })
                 @Html.ValidationMessageFor(model => model.Img1, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -120,7 +120,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Img3, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Img3, new { htmlAttributes = new { @class = "form-control", id="thirdImage" } })
+                @Html.EditorFor(model => model.Img3, new { htmlAttributes = new { @class = "form-control", id = "thirdImage" } })
                 @Html.ValidationMessageFor(model => model.Img3, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -143,7 +143,8 @@
     <div id="image-container">
     </div>
 
-    <button id="getUrl">URL</button>
+    <p>Are these the photos you want in your review?</p>
+    <button id="getUrl">Add photos to review.</button>
 </section>
 
 <div>
@@ -157,39 +158,9 @@
         //Get the image src from filestack and store it in the Img inputs
 
         $('#fileStackButton').click(showPicker);
-
-        var count = 0;
-        $('#image-container').on('click', '#addAnother', function () {
-            count = $('.uploadedImage').length;
-
-            if (count > 2) {
-                $('#addAnother').val("Sorry, there is a maximum of 3 images.");
-            }
-            else {
-                showPicker();
-            }
-
-        });
-
-        $('#getUrl').click(function () {
-            var firstImageUrl = $('#image-container div:nth-child(1)').children('img').attr('src');
-            var secondImageUrl = $('#image-container div:nth-child(2)').children('img').attr('src');
-            var thirdImageUrl = $('#image-container div:nth-child(3)').children('img').attr('src');
-
-            console.log(firstImageUrl);
-            console.log(secondImageUrl);
-            
-            if (firstImageUrl != null) {
-                $('#firstImage').val(firstImageUrl);
-            }
-            if (secondImageUrl != null) {
-                $('#secondImage').val(secondImageUrl);
-            }
-            if (thirdImageUrl != null) {
-                $('#thirdImage').val(thirdImageUrl);
-            }
-
-        });
+        $('#image-container').on('click', '#addAnother', addMoreImages);
+        $('#image-container').on('click', '.deleteImage', deleteSelectedImage);
+        $('#getUrl').click(storeImagesInReview);
 
         var searchStringValue = "";
 
