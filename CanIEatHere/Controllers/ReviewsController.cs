@@ -110,6 +110,7 @@ namespace CanIEatHere.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.UserID = User.Identity.GetUserId();
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
