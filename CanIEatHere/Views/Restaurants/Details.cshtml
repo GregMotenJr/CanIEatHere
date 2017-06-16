@@ -22,51 +22,52 @@
 <hr />
 <div>
     <h2>Reviews</h2>
-    <dl class="class-horizontal">
+   
         @foreach (var review in Model.Reviews)
         {
-            <dt>
-                @Html.DisplayNameFor(model => review.UserID)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.UserID)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.NumFoodOptions)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.NumFoodOptions)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.GeneralComments)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.GeneralComments)
-            </dd>
-            
-            <dt>
-                @Html.DisplayNameFor(model => review.OverallRating)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.OverallRating)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.TimeStamp)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.TimeStamp)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.RestaurantPriceRating)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.RestaurantPriceRating)
-            </dd>
+            <dl class="class-horizontal">
+                @*<dt>
+                        @Html.DisplayNameFor(model => review.UserID)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => review.UserID)
+                    </dd>*@
+                <dt>
+                    @Html.DisplayNameFor(model => review.NumFoodOptions)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => review.NumFoodOptions)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => review.GeneralComments)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => review.GeneralComments)
+                </dd>
 
-            
+                <dt>
+                    @Html.DisplayNameFor(model => review.OverallRating)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => review.OverallRating)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => review.TimeStamp)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => review.TimeStamp)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => review.RestaurantPriceRating)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => review.RestaurantPriceRating)
+                </dd>
 
-        }
-    </dl>
+
+                </dl>
+                }
+            
 
 </div>
 @*<p>
