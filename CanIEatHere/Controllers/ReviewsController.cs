@@ -76,6 +76,7 @@ namespace CanIEatHere.Controllers
             return View(review);
         }
 
+
         public JsonResult GetPlaceId(string searchString)
         {
             PlacesAPI placesAPI = new PlacesAPI();
@@ -109,6 +110,7 @@ namespace CanIEatHere.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.UserID = User.Identity.GetUserId();
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
