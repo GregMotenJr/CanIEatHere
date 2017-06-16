@@ -1,4 +1,7 @@
-﻿/*BACKGROUND IMAGE:*/
+﻿@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Lobster+Two');
+
+/* BACKGROUND IMAGE w/custom jQuery: */
 html { 
     height:100%;
 }
@@ -12,69 +15,45 @@ html {
     z-index: -100;
     background-size: 100%;
 }
+/* END BACKGROUND IMAGE */
 
-.aboutUsGrid {
-    margin-top: 50px;
-    padding-right: 30px;
-    padding-left: 30px;
-    
-    color: white;
-    background: rgba(0,0,0, 0.5);
-    display: none;
+
+/* FONT FAMILY */
+.lobster-font {
+    font-family: 'Lobster', cursive;
+    color: #FFFFF0;
 }
 
 
 
+/* CUSTOM ANIMATE.CSS */
 
-
-/* ABOUT US DIVS */
-
-#Megan {
-    color:Green;
-    background-color:#eee;
-    border:2px solid #333;
-    display:none;
-    text-align:justify;
-}
-#Megan p {
-    margin: 15px;
-    font-size: 0.917em;
-}
-
-#Greg {
-    color:Green;
-    background-color:#eee;
-    border:2px solid #333;
-    display:none;
-    text-align:justify;
-}
-#Greg p {
-    margin: 15px;
-    font-size: 0.917em;
-}
-
-#Anthony {
-    color:Green;
-    background-color:#eee;
-    border:2px solid #333;
-    display:none;
-    text-align:justify;
-}
-#Anthony p {
-    margin: 15px;
-    font-size: 0.917em;
+#aboutUsTitle {
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -ms-transition-animation-duration: 2s;
 }
 
 #Liberty {
-    color:Green;
-    background-color:#eee;
-    border:2px solid #333;
-    display:none;
-    text-align:justify;
-}
-#Liberty p {
-    margin: 15px;
-    font-size: 0.917em;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -ms-transition-animation-duration: 2s;
 }
 
+#Greg {
+    -webkit-animation-duration: 3s;
+    -moz-animation-duration: 3s;
+    -ms-transition-animation-duration: 3s;
+}
 
+#Megan {
+    -webkit-animation-duration: 4s;
+    -moz-animation-duration: 4s;
+    -ms-transition-animation-duration: 4s;
+}
+
+#Anthony {
+    -webkit-animation-duration: 5s;
+    -moz-animation-duration: 5s;
+    -ms-transition-animation-duration: 5s;
+}

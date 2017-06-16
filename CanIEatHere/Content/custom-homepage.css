@@ -15,11 +15,11 @@ html {
     z-index: -100;
     background-size: 100%;
 }
+/*END BACKGROUND IMAGE*/
 
 
 
-
-/*FONT COLOR, BACKGROUND IMAGE*/
+/*FONT COLOR, ALT. BACKGROUND IMAGE*/
 body {
     /*background-image: url('Images/homepage-salad-darker.png');*/
     color: #FFFFF0;
