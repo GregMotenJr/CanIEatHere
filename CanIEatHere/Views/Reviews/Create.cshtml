@@ -5,8 +5,28 @@
 }
 
 <h2>Create</h2>
-<p class="errorMessage"></p>
-<p class="createRestaurantLink">@Html.ActionLink("New Restaurant", "Create", "Restaurants")</p>
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+            </div>*@
+            <div class="modal-body">
+                
+                <h3 class="errorMessage"></h3>
+            </div>
+            <div class="modal-footer">
+                <button class="btn createRestaurantLink">@Html.ActionLink("Add New Restaurant", "Create", "Restaurants")</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="form-horizontal">
     <div class="form-group">
@@ -21,8 +41,8 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-12">
-            <ul id="resultsList"></ul>
+        <div class="col-md-12 col-sm-12 ">
+            <ul id="resultsList" class="col-sm-12 text-center"></ul>
         </div>
     </div>
 
@@ -69,7 +89,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.TimeStamp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TimeStamp, new { htmlAttributes = new { @class = "form-control", id = "timeStamp" } })
@@ -79,7 +99,7 @@
 
 
 
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("RestaurantID", null, htmlAttributes: new { @class = "form-control", id = "restaurantId" })
@@ -175,7 +195,7 @@
 
                 console.log(response);
                 for (var i = 0; i < 10; i++) {
-                    $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
+                    $("#resultsList").append("<div class='resultItems alert alert-success'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='hide placeid'>" + response.results[i].place_id + "</p></div>");
                 }
 
             });
@@ -188,6 +208,12 @@
             var options = [];
             var hasMatch = false;
             $("#resultsList").on('click', '.resultItems', function () {
+
+                $(this).removeClass("alert-success").addClass("alert-info").addClass("animated bounce");
+                $(".alert-success").fadeOut("slow", "swing");
+                //window.setTimeout(function () {
+                //    element.removeClass('animated ' + animation);
+                //}, 2000);
 
                 options = $("#restaurantId option");
 
@@ -204,6 +230,7 @@
                 });
                 if (hasMatch === false) {
                     $(".errorMessage").html("<p>The restaurant you entered was not found. Would you like to add it to our site?</p>");
+                    $("#basicModal").modal();
                     $(".createRestaurantLink").show();
                 }
             });
