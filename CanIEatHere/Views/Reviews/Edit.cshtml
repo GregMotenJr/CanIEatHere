@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Review</h4>
         <hr />
@@ -52,7 +52,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TimeStamp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TimeStamp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TimeStamp, new { htmlAttributes = new { @class = "form-control", id = "timeStamp" } })
                 @Html.ValidationMessageFor(model => model.TimeStamp, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -106,7 +106,7 @@
 }
 
 <!--This needs to be outside the "using" statement-->
-     <!--DISPLAY THE UPLOADED IMAGE-->
+<!--DISPLAY THE UPLOADED IMAGE-->
 <div id="image-container">
 </div>
 <p>Are these the photos you want in your review?</p>
@@ -121,6 +121,10 @@
 }
 
 <script>
+    //set TimeStamp field to current datetime
+    var currentDate = new Date().toLocaleString();
+    $('#timeStamp').val(currentDate);
+
     displayImagesForEdit();
     addAddImagesButton();
     $('#image-container').on('click', '.deleteImage', deleteSelectedImage);

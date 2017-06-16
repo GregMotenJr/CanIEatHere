@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace CanIEatHere.Controllers
 {
+    
     public class ReviewsController : Controller
     {
         private CanIEatHereEntities db = new CanIEatHereEntities();
@@ -46,6 +47,7 @@ namespace CanIEatHere.Controllers
             return View(review);
         }
 
+        [Authorize]
         // GET: Reviews/Create
         public ActionResult Create()
         {
