@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CanIEatHere.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CanIEatHere.Controllers
 {
@@ -41,7 +42,8 @@ namespace CanIEatHere.Controllers
         {
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID");
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email");
-            return View();
+            var viewModel = new ReviewCreateViewModel();
+            return View(viewModel);
         }
 
         // POST: Reviews/Create
@@ -53,6 +55,7 @@ namespace CanIEatHere.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.UserID = User.Identity.GetUserId();
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,6 +63,7 @@ namespace CanIEatHere.Controllers
 
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
+            
             return View(review);
         }
 

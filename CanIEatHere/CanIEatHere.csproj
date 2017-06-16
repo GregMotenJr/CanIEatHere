@@ -290,6 +290,7 @@
     <Compile Include="Models\Review.cs">
       <DependentUpon>CanIEatHere.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReviewCreateViewModel.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>CanIEatHere.tt</DependentUpon>
     </Compile>
