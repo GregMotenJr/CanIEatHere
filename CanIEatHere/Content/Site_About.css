@@ -21,7 +21,8 @@ html {
 /* FONT FAMILY */
 .lobster-font {
     font-family: 'Lobster', cursive;
-    color: #FFFFF0;
+    /*color: #FFFFF0;*/
+    color: black;
 }
 
 
@@ -38,22 +39,37 @@ html {
     -webkit-animation-duration: 2s;
     -moz-animation-duration: 2s;
     -ms-transition-animation-duration: 2s;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    color: white;
 }
 
 #Greg {
     -webkit-animation-duration: 3s;
     -moz-animation-duration: 3s;
     -ms-transition-animation-duration: 3s;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    color: white;
+    margin-top: 10px;
 }
 
 #Megan {
     -webkit-animation-duration: 4s;
     -moz-animation-duration: 4s;
     -ms-transition-animation-duration: 4s;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    color: white;
+    margin-top: 10px;
 }
 
 #Anthony {
     -webkit-animation-duration: 5s;
     -moz-animation-duration: 5s;
     -ms-transition-animation-duration: 5s;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    color: white;
+    margin-top: 10px;
 }
