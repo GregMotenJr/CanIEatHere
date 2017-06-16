@@ -32,6 +32,19 @@ namespace CanIEatHere.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.Image1 = db.Reviews
+                .Where(r => r.RestaurantID == id)
+                .Select(r => r.Img1).ToString();
+
+            ViewBag.Image2 = db.Reviews
+                .Where(r => r.RestaurantID == id)
+                .Select(r => r.Img2).ToString();
+
+            ViewBag.Image3 = db.Reviews
+                .Where(r => r.RestaurantID == id)
+                .Select(r => r.Img3).ToString();
+
             return View(restaurant);
         }
 
