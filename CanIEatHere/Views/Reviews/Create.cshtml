@@ -71,7 +71,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TimeStamp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TimeStamp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TimeStamp, new { htmlAttributes = new { @class = "form-control", id = "timeStamp" } })
                 @Html.ValidationMessageFor(model => model.TimeStamp, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -151,14 +151,16 @@
     $(document).ready(function () {
 
         //Get the image src from filestack and store it in the Img inputs
-
         $('#fileStackButton').click(showPicker);
         $('#image-container').on('click', '#addAnother', addMoreImages);
         $('#image-container').on('click', '.deleteImage', deleteSelectedImage);
         $('#getUrl').click(storeImagesInReview);
 
-        var searchStringValue = "";
+        //set TimeStamp field to current datetime
+        var currentDate = new Date().toLocaleString();
+        $('#timeStamp').val(currentDate);
 
+        var searchStringValue = "";
 
         //Allows user to enter a search term for restaurant
         //and displays top results from the google places api
