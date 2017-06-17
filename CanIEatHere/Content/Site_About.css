@@ -5,7 +5,6 @@
 html { 
     height:100%;
 }
-
 #back {
     position: absolute;
     top: 0;
@@ -21,73 +20,39 @@ html {
 /* FONT FAMILY */
 .lobster-font {
     font-family: 'Lobster', cursive;
-    /*color: #FFFFF0;*/
-    color: black;
 }
+/* END FONT FAMILY*/
 
-
-
-/* CUSTOM ANIMATE.CSS */
-
+/* ANIMATED TITLE */
 #aboutUsTitle {
     -webkit-animation-duration: 2s;
     -moz-animation-duration: 2s;
     -ms-transition-animation-duration: 2s;
 }
+/* END ANIMATED TITLE */
 
-#Liberty {
-    -webkit-animation-duration: 2s;
-    -moz-animation-duration: 2s;
-    -ms-transition-animation-duration: 2s;
-    /*background-color: rgba(0,0,0, 0.7);*/
-    border-radius: 25px;
-    color: #FFFFF0;
+body {
+    background-color: #E3E0DB;
 }
 
-#Greg {
-    -webkit-animation-duration: 3s;
-    -moz-animation-duration: 3s;
-    -ms-transition-animation-duration: 3s;
-    /*background-color: rgba(0,0,0,0.7);*/
-    border-radius: 25px;
-    color: black;
-    margin-top: 10px;
+.photo-banner {
+    height: 75%;
+    width: 100%;
 }
 
-#Megan {
-    -webkit-animation-duration: 4s;
-    -moz-animation-duration: 4s;
-    -ms-transition-animation-duration: 4s;
-    /*background-color: rgba(0,0,0,0.7);*/
-    border-radius: 25px;
-    color: black;
-    margin-top: 10px;
+.about-paragraph-and-image-links-row {
+    height: 400px;
 }
 
-#Anthony {
-    -webkit-animation-duration: 5s;
-    -moz-animation-duration: 5s;
-    -ms-transition-animation-duration: 5s;
-    /*background-color: rgba(0,0,0,0.7);*/
-    border-radius: 25px;
-    color: black;
-    margin-top: 10px;
+.about-paragraph {
+    position: relative;
+    float: left;
 }
 
-img {
-    border-radius: 10%;
-    height: 175px;
+.image-link-1 {
+    height: 200px;
 }
 
-.profileImage {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.centered {
-    position: center;
-}
-
-.shadow {
-    background-color: black;
+.image-link-2 {
+    height: 200px;
 }
