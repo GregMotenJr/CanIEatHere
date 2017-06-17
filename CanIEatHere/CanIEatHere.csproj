@@ -308,6 +308,10 @@
     <Content Include="Content\custom-REVIEW.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\Anthony.jpg" />
+    <Content Include="Content\Images\basil_about.jpg" />
+    <Content Include="Content\Images\filler_1.jpg" />
+    <Content Include="Content\Images\filler_2.jpg" />
     <Content Include="Content\Images\Greg.jpg" />
     <Content Include="Content\Images\homeIndex_slicedTomatoes.jpg" />
     <Content Include="Content\Images\homepage-kale.jpg" />
@@ -315,9 +319,12 @@
     <Content Include="Content\Images\homepage-salad.jpg" />
     <Content Include="Content\Images\home_about_artichokes.jpg" />
     <Content Include="Content\Images\home_about_artichoke_alt.jpg" />
+    <Content Include="Content\Images\IMG_5899.JPG" />
     <Content Include="Content\Images\Liberty.jpg" />
+    <Content Include="Content\Images\Liberty2.jpg" />
     <Content Include="Content\Images\Megan.jpg" />
     <Content Include="Content\Images\Sulezich.Anthony Headshot 2.jpg" />
+    <Content Include="Content\Images\TowerCity.jpg" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\logo2.png" />
     <Content Include="Content\Site_About.css" />

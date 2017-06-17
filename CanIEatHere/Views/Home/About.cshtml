@@ -2,6 +2,9 @@
     ViewBag.Title = "About Us";
 }
 
+@*Font Awesome CDN:*@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 @*ADDED ANIMATE.CSS BY DANE EDEN*@
 <link href="~/Content/animate.css" rel="stylesheet" />
 
@@ -15,118 +18,152 @@
 <div id="back"></div>
 
 <center>
-    <div class="animated fadeInDown lobster-font" id="aboutUsTitle"><h1>About Us</h1></div>
+    <div class="animated fadeInDown josefin-font" id="aboutUsTitle"><h1>About Us</h1></div>
 </center>
 
-<center>
-<div class="container">
-    <div class="row">
+
+<div class="container-fluid">
+    <div class="row box">
         <div class="col-sm-12">
             <!-- BANNER IMAGE -->
-            <img src="~/Content/Images/homeIndex_slicedTomatoes.jpg" class="img-responsive photo-banner"/>
+            <div class="banner animated slideInRight" style="background-color:rgba(0,0,0,0.5);width:100%;height:50px;"></div>
+            @*<img src="~/Content/Images/homepage-salad.jpg" class="img-responsive photo-banner" />*@
+            @*<img src="~/Content/Images/basil_about.jpg" class="img-responsive photo-banner"/>*@
+            @*<img src="~/Content/Images/homeIndex_slicedTomatoes.jpg" class="img-responsive photo-banner"/>*@
         </div>
     </div>
 
-    <div class="row about-paragraph-and-image-links-row">
-        <div class="col-sm-9 about-paragraph">
+    <div class="row box">
+        <div class="col-sm-8 animated slideInLeft" style="padding-right:15px;">
+            <div class="about-us inner josefin-font">
             <!-- ABOUT PARAGRAPH HERE -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius, nisl at ultrices aliquam,
+            <div class="about-us-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius, nisl at ultrices aliquam,
              eros nulla ornare mi, nec interdum ante nibh nec elit. Donec imperdiet nisl sit amet nibh porta pretium. 
             Quisque cursus, quam vel ullamcorper pharetra, dolor turpis pharetra ante, sit amet malesuada libero quam 
             sed velit. Pellentesque fringilla placerat lorem, vitae egestas urna feugiat vel. Aenean risus urna, tincidunt 
             vel aliquam pretium, rhoncus at eros. Aenean in diam quam. Vestibulum iaculis, mi ut dapibus semper, 
-            risus nunc iaculis ante, quis suscipit nunc mauris sit amet massa.</p>
+            risus nunc iaculis ante, quis suscipit nunc mauris sit amet massa.</div>
+            </div>
         </div>
-        <div class="col-sm-3">
-            <div class="row img-responsive">
-                <div class="col-sm-12">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-sm-12 animated slideInRight image-link-1">
                     <!-- RESPONSIVE IMAGE LINK TO RESTAURANTS -->
-                    
+                    <img src="~/Content/Images/filler_1.jpg" class="img-responsive" />
                 </div>
             </div>
-            <div class="row img-responsive">
-                <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-12 animated slideInRight image-link-2" id="second">
                     <!-- RESPONSIVE IMAGE LINK TO RESTAURANTS -->
-                    <p>RESPONSIVE IMAGE</p>
+                    <img src="~/Content/Images/filler_2.jpg" class="img-responsive" />
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-3">
+    <div class="row box">
+        <div class="col-sm-4 animated slideInLeft">
+            <div class="contact inner josefin-font">
             <!-- CONTACT INFORMATION FOR STARTMART -->
-            <p>CONTACT INFO</p>
+            <p>216 220 0200</p>
+            <p>Info@StartMart.us</p>
+            <p>StartMart.us</p>
+            <br />
+            <p>50 Public Square,</p>
+            <p>Suite 200</p>
+            <p>Cleveland, OH 44113</p>
+            </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-8 animated slideInRight">
             <!-- PHOTO OF STARTMART HERE -->
-            <p>PHOTO OF STARTMART</p>
+            <img src="~/Content/Images/IMG_5899.JPG" class="img-responsive start-mart"/>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12">
+    <div class="row box">
+        <div class="col-sm-12 animated slideInLeft">
             <!-- IMAGES OR IMAGE CAROUSEL -->
-            <p>IMAGE CAROUSEL?</p>
+            <div class="banner" style="background-color:rgba(0,0,0,0.5);width:100%;height:50px;"></div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12">
+    <div class="row box">
+        <div class="col-sm-12 animated zoomInDown under">
             <!-- MEET THE TEAM -->
-            <p>MEET THE TEAM</p>
+            <center><h1>Meet the team.</h1></center>
+            <br />
         </div>
     </div>
 
-    <div class="row">
+    <div class="row box">
         <!-- PERSON 1 -->
         <div class="col-sm-6">
             <div class="col-sm-6">
                 <!-- PHOTO -->
-                <p>PHOTO</p>
+                <img src="~/Content/Images/Liberty.jpg" class="img-circle img-responsive img-size" />    
             </div>
             <div class="col-sm-6">
-                <p>ABOUT</p>
+                <!-- ABOUT -->
+                <h2>Liberty Wesley</h2>
+                <h3>Software Apprentice</h3>
+                <hr />
+                <p><i class="fa fa-github" aria-hidden="true"></i>  Liberty's portfolio</p>
+                <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>  Liberty's LinkedIn</p>
             </div>
         </div>
         <!-- PERSON 2 -->
         <div class="col-sm-6">
             <div class="col-sm-6">
                 <!-- PHOTO -->
-                <p>PHOTO</p>
+                <img src="~/Content/Images/Greg.jpg" class="img-circle img-responsive img-size"/>
             </div>
             <div class="col-sm-6">
-                <p>ABOUT</p>
+                <!-- ABOUT -->
+                <h2>Greg Moten, Jr.</h2>
+                <h3>Software Apprentice</h3>
+                <hr />
+                <p><i class="fa fa-github" aria-hidden="true"></i>  Greg's portfolio</p>
+                <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>  Greg's LinkedIn</p>
             </div>
         </div>
     </div>
-
-    <div class="row">
+    <br />
+    <div class="row box">
         <!-- PERSON 3 -->
         <div class="col-sm-6">
             <div class="col-sm-6">
                 <!-- PHOTO -->
-                <p>PHOTO</p>
+                <img src="~/Content/Images/Anthony.jpg" class="img-circle img-responsive img-size" />
             </div>
             <div class="col-sm-6">
-                <p>ABOUT</p>
+                <!-- ABOUT -->
+                <h2>Anthony Sulezich</h2>
+                <h3>Software Apprentice</h3>
+                <hr />
+                <p><i class="fa fa-github" aria-hidden="true"></i>  ansulez.github.io</p>
+                <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>  linkedin.com/ansulez</p>
             </div>
         </div>
         <!-- PERSON 4 -->
         <div class="col-sm-6">
             <div class="col-sm-6">
                 <!-- PHOTO -->
-                <p>PHOTO</p>
+                <img src="~/Content/Images/Megan.jpg" class="img-circle img-responsive img-size" />
             </div>
             <div class="col-sm-6">
-                <p>ABOUT</p>
+                <!-- ABOUT -->
+                <h2>Megan Korpics</h2>
+                <h3>Software Apprentice</h3>
+                <hr />
+                <p><i class="fa fa-github" aria-hidden="true"></i>  Megan's portfolio</p>
+                <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>  Megan's LinkedIn</p>
             </div>
         </div>
     </div>
 
 
 </div>
-</center>
+
 
 
 

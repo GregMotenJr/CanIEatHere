@@ -1,5 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Lobster|Lobster+Two');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
 /* BACKGROUND IMAGE w/custom jQuery: */
 html { 
@@ -17,42 +19,79 @@ html {
 /* END BACKGROUND IMAGE */
 
 
-/* FONT FAMILY */
-.lobster-font {
-    font-family: 'Lobster', cursive;
-}
-/* END FONT FAMILY*/
-
 /* ANIMATED TITLE */
 #aboutUsTitle {
     -webkit-animation-duration: 2s;
     -moz-animation-duration: 2s;
     -ms-transition-animation-duration: 2s;
+    padding-top: 30px;
 }
 /* END ANIMATED TITLE */
 
+
+/* BORDERS */
+.box {
+    padding: 15px 15px 15px 15px;
+}
+.box .inner {
+    background-color: white;
+}
+/* END BORDERS*/
+
+
 body {
     background-color: #E3E0DB;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
+.under {
+    text-decoration: underline;
+}
+
+/* SLIDE-IN BANNER */
 .photo-banner {
-    height: 75%;
+    height: 50%;
     width: 100%;
 }
+/* END SLIDE-IN BANNER*/
 
-.about-paragraph-and-image-links-row {
-    height: 400px;
+
+.about-us {
+    width: 100%;
+    height: 83%;
 }
 
-.about-paragraph {
-    position: relative;
-    float: left;
+.about-us-p {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
 }
 
+/* SETS HALF OF PADDING BETWEEN link-1 and link-2 */
 .image-link-1 {
-    height: 200px;
+    padding-bottom: 15px;
 }
 
+/* SETS HALF OF PADDING BETWEEN link-1 and link-2 */
 .image-link-2 {
-    height: 200px;
+    padding-top: 15px;
+}
+
+/* MAKES link-2 SLIDE MORE SLOWLY*/
+#second {
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -ms-transition-animation-duration: 1.5s;
+}
+
+.contact {
+    height: 100%;
+}
+
+.start-mart img {
+    height: 50%;
+}
+
+.img-size {
+    width: 80%;
 }
