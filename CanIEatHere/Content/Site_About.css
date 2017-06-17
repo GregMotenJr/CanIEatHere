@@ -21,10 +21,9 @@ html {
 
 /* ANIMATED TITLE */
 #aboutUsTitle {
-    -webkit-animation-duration: 2s;
-    -moz-animation-duration: 2s;
-    -ms-transition-animation-duration: 2s;
-    padding-top: 30px;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -ms-transition-animation-duration: 1.5s;
 }
 /* END ANIMATED TITLE */
 
@@ -42,6 +41,7 @@ html {
 body {
     background-color: #E3E0DB;
     font-family: 'Josefin Sans', sans-serif;
+    overflow-x: hidden;
 }
 
 .under {
@@ -59,12 +59,15 @@ body {
 .about-us {
     width: 100%;
     height: 83%;
+    display: table;
 }
 
 .about-us-p {
-    text-align: center;
-    vertical-align: middle;
+    padding-right: 60px;
+    padding-left: 60px;
     display: table-cell;
+    vertical-align: middle;
+    font-size: 20px;
 }
 
 /* SETS HALF OF PADDING BETWEEN link-1 and link-2 */
@@ -78,20 +81,33 @@ body {
 }
 
 /* MAKES link-2 SLIDE MORE SLOWLY*/
-#second {
-    -webkit-animation-duration: 1.5s;
-    -moz-animation-duration: 1.5s;
-    -ms-transition-animation-duration: 1.5s;
-}
+/*#second {
+    -webkit-animation-duration: 1.25s;
+    -moz-animation-duration: 1.25s;
+    -ms-transition-animation-duration: 1.25s;
+}*/
 
 .contact {
     height: 100%;
+}
+
+.contact-font {
+    font-size: 20px;
+    padding-top: 30px;
+    padding-left: 60px;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 .start-mart img {
     height: 50%;
 }
 
+/* RESIZES TEAM PICTURES */
 .img-size {
-    width: 80%;
+    width: 85%;
+}
+
+#meet {
+    font-weight: bold;
 }

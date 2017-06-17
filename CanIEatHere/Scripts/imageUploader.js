@@ -108,19 +108,3 @@ function addAddImagesButton() {
     }
 }
 
-function displayImages() {
-    var imageSrc1 = $('#firstImage').val();
-    var imageSrc2 = $('#secondImage').val();
-    var imageSrc3 = $('#thirdImage').val();
-
-    if (imageSrc1 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc1 + '"/></div>'
-    }
-    if (imageSrc2 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc2 + '"/></div>'
-    }
-    if (imageSrc3 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc3 + '"/></div>'
-    }
-}
-
