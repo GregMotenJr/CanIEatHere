@@ -5,3 +5,9 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     overflow-x: hidden;
 }
+
+.theBulk {
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -ms-transition-animation-duration: 1s;
+}
