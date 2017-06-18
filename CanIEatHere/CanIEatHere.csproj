@@ -308,6 +308,7 @@
     <Content Include="Content\custom-REVIEW.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\image-styling.css" />
     <Content Include="Content\Images\homeIndex_slicedTomatoes.jpg" />
     <Content Include="Content\Images\homepage-kale.jpg" />
     <Content Include="Content\Images\homepage-salad-darker.png" />
