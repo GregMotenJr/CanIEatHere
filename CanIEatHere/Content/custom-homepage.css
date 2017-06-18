@@ -1,9 +1,15 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Lobster|Lobster+Two');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 
 /*BACKGROUND IMAGE:*/
 html { 
     height:100%;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    overflow-x: hidden;
 }
 
 #back {
