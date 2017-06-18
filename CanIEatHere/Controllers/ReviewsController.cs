@@ -44,6 +44,15 @@ namespace CanIEatHere.Controllers
             {
                 return HttpNotFound();
             }
+
+            var loggedInUser = User.Identity.GetUserId();
+
+            var userReviewIDs = db.Reviews
+                 .Where(r => r.UserID == loggedInUser)
+                 .Select(r => r.ReviewID);
+
+            ViewBag.LoggedInUsersReviews = userReviewIDs.ToList();
+
             return View(review);
         }
 

@@ -7,6 +7,9 @@
 @*Custom CSS here:*@
 <link href="~/Content/custom-REVIEW.css" rel="stylesheet" />
 
+@*Animate CSS:*@
+<link href="~/Content/animate.css" rel="stylesheet" />
+
 @*Custom jQuery here:*@
 <script src="~/Scripts/custom-jquery-REVIEW.js"></script>
 
@@ -20,119 +23,141 @@
 @foreach (var item in Model)
 {
     <div class="row">
-        <div class="col-md-offset-2 col-md-8">
+        <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
             <p class="hide" id="placeID">@Html.DisplayFor(modelItem => item.Restaurant.PlaceID)</p>
             <h3 id="restaurantName"></h3>
-            <p>Overall Experience: @Html.DisplayFor(modelItem => item.OverallRating)</p>
-            <p>Number of Food Options: @Html.DisplayFor(modelItem => item.NumFoodOptionsRating)</p>
-            <p>Price: @Html.DisplayFor(modelItem => item.RestaurantPriceRating)</p>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <p>Overall Experience: @Html.DisplayFor(modelItem => item.OverallRating)</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Food Options: @Html.DisplayFor(modelItem => item.NumFoodOptionsRating)</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Price: @Html.DisplayFor(modelItem => item.RestaurantPriceRating)</p>
+                </div>
+            </div>
+            <p class="darkerBackground text-center">@Html.DisplayFor(modelItem => item.GeneralComments)</p>
             @*<p>@Html.DisplayFor(modelItem => item.NumFoodOptions)</p>*@
-            @Html.DisplayFor(modelItem => item.GeneralComments)
-            @Html.DisplayFor(modelItem => item.TimeStamp)
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </div>
-    </div>
-}
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NumFoodOptions)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumFoodOptionsRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GeneralComments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OverallRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeStamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RestaurantPriceRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Img1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Img2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Img3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Restaurant.PlaceID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumFoodOptions)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumFoodOptionsRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GeneralComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OverallRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeStamp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantPriceRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Img1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Img2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Img3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Restaurant.PlaceID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-            </td>
+            <p class="text-center appended"> Posted by: @Html.DisplayFor(modelItem => item.AspNetUser.Email)</p>
+            <p class="text-center">Last Modified: @Html.DisplayFor(modelItem => item.TimeStamp)</p>
+            <p>@Html.ActionLink("Details", "Details", new { id = item.ReviewID })</p>
 
             @foreach (var r in ViewBag.LoggedInUsersReviews)
             {
                 if (r == item.ReviewID)
                 {
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ReviewID }) |
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID })
                         @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
-                    </td>
+                    </p>
                 }
             }
-        </tr>
-    }
+        </div>
+    </div>
+}
 
-</table>
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NumFoodOptions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumFoodOptionsRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GeneralComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverallRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantPriceRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant.PlaceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumFoodOptions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumFoodOptionsRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GeneralComments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OverallRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestaurantPriceRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Img1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Img2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Img3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Restaurant.PlaceID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                </td>
+
+                @foreach (var r in ViewBag.LoggedInUsersReviews)
+                {
+                    if (r == item.ReviewID)
+                    {
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ReviewID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
+                        </td>
+                    }
+                }
+            </tr>
+        }
+
+    </table>*@
 
 <script>
-    var placeID = $("#placeID").text();
-
     $(document).ready(function () {
 
-        $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
-            console.log(response);
-            $("#restaurantName").text(response.result.name);
+        var review = $('.reviewDisplay');
+        $.each(review, function() {
+            var placeID = $("#placeID").text();
+            $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
+                console.log(response);
+                $("#restaurantName").text(response.result.name);
+            });
         });
     });
 </script>
