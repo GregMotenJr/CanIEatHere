@@ -16,6 +16,24 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <p class="hide" id="placeID">@Html.DisplayFor(modelItem => item.Restaurant.PlaceID)</p>
+            <h3 id="restaurantName"></h3>
+            <p>Overall Experience: @Html.DisplayFor(modelItem => item.OverallRating)</p>
+            <p>Number of Food Options: @Html.DisplayFor(modelItem => item.NumFoodOptionsRating)</p>
+            <p>Price: @Html.DisplayFor(modelItem => item.RestaurantPriceRating)</p>
+            @*<p>@Html.DisplayFor(modelItem => item.NumFoodOptions)</p>*@
+            @Html.DisplayFor(modelItem => item.GeneralComments)
+            @Html.DisplayFor(modelItem => item.TimeStamp)
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </div>
+    </div>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -106,3 +124,15 @@
     }
 
 </table>
+
+<script>
+    var placeID = $("#placeID").text();
+
+    $(document).ready(function () {
+
+        $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
+            console.log(response);
+            $("#restaurantName").text(response.result.name);
+        });
+    });
+</script>
