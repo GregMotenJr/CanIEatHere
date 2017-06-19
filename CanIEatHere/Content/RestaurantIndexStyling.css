@@ -1,4 +1,11 @@
-﻿.restaurantThumbnail{
+﻿@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+.restaurantThumbnail{
     background-color: #dfdfdf;
     min-height: 225px;
 }

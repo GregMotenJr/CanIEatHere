@@ -4,7 +4,11 @@
 
 /*BACKGROUND IMAGE:*/
 html { 
-    height:100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 body {
@@ -19,7 +23,8 @@ body {
     left: 0;
     right: 0;
     z-index: -100;
-    background-size: 100%;
+    background-size: cover;
+    background-attachment: fixed;
 }
 /*END BACKGROUND IMAGE*/
 
