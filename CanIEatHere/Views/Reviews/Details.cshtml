@@ -44,6 +44,7 @@
                 </div>
                 <p class="text-center">Number of Food Options: @Html.DisplayFor(model => model.NumFoodOptions)</p>
             </div>
+            <p class="text-center darkerBackground">@Html.DisplayFor(model => model.GeneralComments)</p>
 
             @{string firstImage = Html.DisplayFor(model => model.Img1).ToString();
             string secondImage = Html.DisplayFor(model => model.Img2).ToString();
@@ -54,19 +55,19 @@
             <div id="image-container">
                 @if (firstImage != null)
                 {
-                    <div class="image-thumbnail">
+                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
                         <img class="uploadedImage" src="@firstImage" />
                     </div>
                 }
                 @if (secondImage != null)
                 {
-                    <div class="image-thumbnail">
+                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
                         <img class="uploadedImage" src="@secondImage" />
                     </div>
                 }
                 @if (thirdImage != null)
                 {
-                    <div class="image-thumbnail">
+                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
                         <img class="uploadedImage" src="@thirdImage" />
                     </div>
                 }
@@ -89,7 +90,7 @@
                     </div>
                 }
             </div>
-            <p class="text-center darkerBackground">@Html.DisplayFor(model => model.GeneralComments)</p>
+           
             <div class="smallMarginTopBottom">
                 <p>Last Modified: @Html.DisplayFor(model => model.TimeStamp)</p>
                 <p>Reviewed By: @Html.DisplayFor(model => model.AspNetUser.Email)</p>

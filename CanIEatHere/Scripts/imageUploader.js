@@ -1,6 +1,7 @@
 ﻿// THE FILESTACK CLIENT
 //var client = filestack.init('AbbxbmtG7Qzmx3N6F8qgmz');
-var client = filestack.init('AjOmEuqLOQsmThwy9glYKz');
+//var client = filestack.init('AjOmEuqLOQsmThwy9glYKz');
+var client = filestack.init('AxndkFoi1TWCvxUj0bN8pz');
 var imageSrc;
 function showPicker() {
     client.pick({
@@ -17,7 +18,7 @@ function showPicker() {
 // PRINTING THE URL AFTER UPLOAD INSIDE ITS OWN DIV
 function show() {
     //document.getElementById(uploadedImage).src = event.fpfile.url;
-    document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4">' + '<img class="img-responsive uploadedImage" src="' + imageSrc + '"/></div>'
+    document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 darkerBackground">' + '<img class="img-responsive uploadedImage" src="' + imageSrc + '"/></div>'
     $('#containerForImageControls').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary' />");
 
     var deleteCount = $('.deleteImage').length;
@@ -91,13 +92,13 @@ function displayImagesForEdit() {
     var imageSrc3 = $('#thirdImage').val();
 
     if (imageSrc1 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc1 + '"/><input type="button" value="Delete Image" class="deleteImage btn" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail darkerBackground col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc1 + '"/><div class="caption"><input type="button" value="Delete Image" class="deleteImage btn" /></div></div>';
     }
     if (imageSrc2 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc2 + '"/><input type="button" value="Delete Image" class="deleteImage btn" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail darkerBackground col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc2 + '"/><div class="caption"><input type="button" value="Delete Image" class="deleteImage btn" /></div></div>';
     }
     if (imageSrc3 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc3 + '"/><input type="button" value="Delete Image" class="deleteImage btn" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail darkerBackground col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc3 + '"/><div class="caption"><input type="button" value="Delete Image" class="deleteImage btn" /></div></div>';
     }
 }
 
