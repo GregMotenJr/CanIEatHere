@@ -317,6 +317,7 @@
     <Content Include="Content\Images\home_about_artichoke_alt.jpg" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\logo2.png" />
+    <Content Include="Content\RestaurantIndexStyling.css" />
     <Content Include="Content\Site_About.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
