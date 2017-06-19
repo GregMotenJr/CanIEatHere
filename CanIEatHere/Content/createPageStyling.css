@@ -1,0 +1,19 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('Images/basil_about.jpg');
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('Images/basil_about.jpg');
+    background-image: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url('Images/basil_about.jpg');
+    background-image: linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.4)),url('Images/basil_about.jpg');
+    background-position: 0% -10%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+

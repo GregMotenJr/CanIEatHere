@@ -91,13 +91,13 @@ function displayImagesForEdit() {
     var imageSrc3 = $('#thirdImage').val();
 
     if (imageSrc1 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc1 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc1 + '"/><input type="button" value="Delete Image" class="deleteImage btn" /></div>';
     }
     if (imageSrc2 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc2 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc2 + '"/><input type="button" value="Delete Image" class="deleteImage btn" /></div>';
     }
     if (imageSrc3 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc3 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc3 + '"/><input type="button" value="Delete Image" class="deleteImage btn" /></div>';
     }
 }
 
@@ -105,7 +105,7 @@ function addAddImagesButton() {
     var deleteCount = $('.deleteImage').length;
 
     if (deleteCount < 3) {
-        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
+        $('#image-container').append("<input type='button' value='Add Image' id='addAnother' class='btn'/>");
     }
 }
 

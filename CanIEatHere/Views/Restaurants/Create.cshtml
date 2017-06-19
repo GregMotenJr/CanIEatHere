@@ -1,5 +1,7 @@
 ﻿@model CanIEatHere.Models.Restaurant
 
+<link href="~/Content/restaurantPageStyling.css" rel="stylesheet" />
+
 @{
     ViewBag.Title = "Create";
 }
@@ -13,7 +15,7 @@
         <input id="userSearchBar" name="searchBar" class="form-control" type="text" />
 </div>
 <div class="container text-center input-group" id="createSearchButtonContainer">
-    <button class="btn btn-primary">Search</button>
+    <button class="btn btn-primary smallMarginTopBottom">Search</button>
 </div>
 <div class="col-md-12">
     @*<h1>Get Place ID is <span data-bind="text:Object.results[1].place_id"></span></h1>*@
@@ -50,8 +52,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn">@Html.ActionLink("Back to Restaurants", "Index")</button>
 </div>
+
 <script>
         var placesID = Object();
         var searchStringValue = "";
@@ -65,7 +68,7 @@
                     console.log(response);
 
                     for (var i = 0; i < 10; i++) {
-                        $("#resultsList").append("<div class='resultItems col-md-12 alert alert-success'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid hide'>" + response.results[i].place_id + "</p></div>");
+                        $("#resultsList").append("<div class='resultItems col-md-12 alert alert-success darkerBackground'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid hide'>" + response.results[i].place_id + "</p></div>");
                     }
 
 

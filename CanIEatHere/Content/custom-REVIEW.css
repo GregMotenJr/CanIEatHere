@@ -30,3 +30,33 @@ html {
     background-color: rgba(0,0,0,.6);
     padding: 1em 1em;
 }
+
+.btn{
+      background-color: rgba(0,0,0,.6);
+      color: white;
+      border: 1px outset white;
+}
+
+.btn a{
+    color: white;
+}
+
+.smallMarginTopBottom{
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+}
+
+.mediumMarginTopBottom{
+    margin-top: 4em;
+    margin-bottom: 4em;
+}
+
+.smallMarginBottom{
+    margin-bottom: 2em;
+}
+
+.paddedButton{
+    padding-right: 4em;
+    padding-left: 4em;
+}

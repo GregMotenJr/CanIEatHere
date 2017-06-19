@@ -26,3 +26,7 @@ textarea {
 .createRestaurantLink{
     display: none;
 }
+
+.homepageButton{
+    margin-top: 20px;
+}

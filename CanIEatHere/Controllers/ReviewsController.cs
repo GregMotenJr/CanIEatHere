@@ -294,6 +294,55 @@ namespace CanIEatHere.Controllers
             {
                 return HttpNotFound();
             }
+
+            //get food items attached to the particular review
+            var reviewFoodItems = db.FoodItems
+                .Where(f => f.ReviewID == id)
+                .Select(f => f);
+
+            ViewBag.FoodItems = reviewFoodItems;
+
+            //get the three possible dietary restrictions that might be attached to the food item
+            var dr1 = (from d in db.DietaryRestrictions
+                       join f in db.FoodItems
+                       on d.DietaryRestrictionID equals f.DietaryRestrictionID
+                       where f.ReviewID == id
+                       select d.DietType).FirstOrDefault();
+
+            var dr2 = (from d in db.DietaryRestrictions
+                       join f in db.FoodItems
+                       on d.DietaryRestrictionID equals f.DietaryRestrictionID2
+                       where f.ReviewID == id
+                       select d.DietType).FirstOrDefault();
+
+            var dr3 = (from d in db.DietaryRestrictions
+                       join f in db.FoodItems
+                       on d.DietaryRestrictionID equals f.DietaryRestrictionID3
+                       where f.ReviewID == id
+                       select d.DietType).FirstOrDefault();
+
+            ViewBag.DietaryRestriction1 = dr1;
+            ViewBag.DietaryRestriction2 = dr2;
+            ViewBag.DietaryRestriction3 = dr3;
+
+            //get the course
+            var courses = (db.Courses
+                .Select(c => c));
+
+            var foodItemCourse = (db.FoodItems
+               .Where(f => f.ReviewID == id)
+               .Select(f => f.CourseID).FirstOrDefault());
+
+            var course = "";
+            foreach (var c in courses)
+            {
+                if (foodItemCourse == c.CourseID)
+                {
+                    course = c.CourseType;
+                }
+            }
+
+            ViewBag.Course = course;
             return View(review);
         }
 

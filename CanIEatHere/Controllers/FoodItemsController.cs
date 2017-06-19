@@ -84,8 +84,8 @@ namespace CanIEatHere.Controllers
             {
                 db.FoodItems.Add(foodItem);
                 db.SaveChanges();
-                int reviewID = foodItem.ReviewID;
-                return RedirectToAction("Create", "FoodItems", new { id = reviewID });
+                int ReviewID = foodItem.ReviewID;
+                return RedirectToAction("Create", "FoodItems", new { reviewID = ReviewID });
             }
 
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseType", foodItem.CourseID);
