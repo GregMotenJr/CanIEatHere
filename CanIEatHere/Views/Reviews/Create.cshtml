@@ -4,26 +4,50 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-<p class="errorMessage"></p>
-<p class="createRestaurantLink">@Html.ActionLink("New Restaurant", "Create", "Restaurants")</p>
+<div class="page-header">
+    <h2 class="text-center">Write a New Review</h2>
+    
+</div>
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @*<div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+            </div>*@
+            <div class="modal-body">
+                
+                <h3 class="errorMessage"></h3>
+            </div>
+            <div class="modal-footer">
+                <button class="btn createRestaurantLink">@Html.ActionLink("Add New Restaurant", "Create", "Restaurants")</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="form-horizontal">
     <div class="form-group">
-        <label for="restaurantSearchBar" class="col-md-2">What restaurant are you reviewing?</label>
-        <div class="col-md-10">
+        <label for="restaurantSearchBar" class="col-md-4 text-right">What restaurant are you reviewing?</label>
+        <div class="col-md-8">
             <input class="form-control" id="restaurantSearchBar" name="restaurantSearchBar" type="text" />
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+    <div class="form-group text-center">
+        <div class="col-md-12">
             <button class="btn btn-primary searchButton">Search</button>
         </div>
     </div>
     <div class="form-group">
-        <div class="col-md-12">
-            <ul id="resultsList"></ul>
+        <div class="col-md-12 col-sm-12 text-center">
+            <ul id="resultsList" class="col-sm-12 text-center"></ul>
         </div>
+        <p class="text-center googleAttribution">Search Results provided by Google Places</p>
     </div>
 
 </div>
@@ -33,45 +57,45 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Review</h4>
-        <hr />
+        
+       
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumFoodOptions, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.NumFoodOptions, "How many menu options did you have?", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.NumFoodOptions, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumFoodOptions, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumFoodOptionsRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.NumFoodOptionsRating, "Rate your number of options (1 for awful, 5 for awesome)", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.NumFoodOptionsRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumFoodOptionsRating, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GeneralComments, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GeneralComments, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.GeneralComments, "Tell us about your experience", htmlAttributes : new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.GeneralComments, new { @class = "form-control", @rows = "5", @placeholder = "What did you eat ? How did you like it ?" } )
                 @Html.ValidationMessageFor(model => model.GeneralComments, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OverallRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.OverallRating, "Rate your experience overall (1 for awful, 5 for awesome)", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.OverallRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OverallRating, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TimeStamp, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.TimeStamp, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.TimeStamp, new { htmlAttributes = new { @class = "form-control", id = "timeStamp" } })
                 @Html.ValidationMessageFor(model => model.TimeStamp, "", new { @class = "text-danger" })
             </div>
@@ -79,56 +103,58 @@
 
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("RestaurantID", null, htmlAttributes: new { @class = "form-control", id = "restaurantId" })
                 @Html.ValidationMessageFor(model => model.RestaurantID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RestaurantPriceRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.RestaurantPriceRating, "How expensive was this restaurant (1 for cheap 5 for expensive)",htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.RestaurantPriceRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RestaurantPriceRating, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Img1, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.Img1, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Img1, new { htmlAttributes = new { @class = "form-control", id = "firstImage" } })
                 @Html.ValidationMessageFor(model => model.Img1, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Img2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.Img2, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Img2, new { htmlAttributes = new { @class = "form-control", id = "secondImage" } })
                 @Html.ValidationMessageFor(model => model.Img2, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Img3, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.Img3, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.Img3, new { htmlAttributes = new { @class = "form-control", id = "thirdImage" } })
                 @Html.ValidationMessageFor(model => model.Img3, "", new { @class = "text-danger" })
             </div>
         </div>
 
        
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+
+        <div class="form-group text-center">
+            <div class="col-md-12">
                 <input type="submit" value="Create" name="action"class="btn btn-default" id="create" />
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+        <div class="form-group text-center">
+            <div class="col-md-12">
                 <input type="submit" value="CreateFoodItems" name="action" class="btn btn-default" id="create" />
+
             </div>
         </div>
     </div>
@@ -138,21 +164,21 @@
 <!--FILESTACK BUTTON-->
 <section id="filestack">
 
-    <div>
-        <input type="button" value="FileStackButton" id="fileStackButton" />
+    <div class="text-center col-md-12">
+        <input type="button" value="Upload Photos" id="fileStackButton" class="btn btn-primary"/>
     </div>
 
     <!--DISPLAY THE UPLOADED IMAGE-->
-    <div id="image-container">
+    <div class="container-fluid text-center" id="containerForImageControls">
+        <div id="image-container" class="row text-center">
+        </div>
     </div>
-
-    <p>Are these the photos you want in your review?</p>
-    <button id="getUrl">Add photos to review.</button>
+    <div id="addImagesControls" class="text-center">
+        <h3>Are these all the photos you want in your review?</h3>
+        <button id="getUrl" class="btn btn-primary">Yes! Add these photos!</button>
+    </div>
 </section>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 <script>
 
@@ -160,9 +186,13 @@
 
         //Get the image src from filestack and store it in the Img inputs
         $('#fileStackButton').click(showPicker);
-        $('#image-container').on('click', '#addAnother', addMoreImages);
+        $('#containerForImageControls').on('click', '#addAnother', addMoreImages);
         $('#image-container').on('click', '.deleteImage', deleteSelectedImage);
         $('#getUrl').click(storeImagesInReview);
+        $('#getUrl').click(function () {
+            $("#addImagesControls").html("<h3>Great! Your images have been added!</h3>");
+            $("#addAnother").hide();
+        });
 
         //set TimeStamp field to current datetime
         var currentDate = new Date().toLocaleString();
@@ -181,7 +211,7 @@
 
                 console.log(response);
                 for (var i = 0; i < 10; i++) {
-                    $("#resultsList").append("<div class='resultItems col-md-12'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='placeid'>" + response.results[i].place_id + "</p></div>");
+                    $("#resultsList").append("<div class='resultItems alert alert-success'><h3>" + response.results[i].name + " </h3><p>" + response.results[i].formatted_address + "</p><p class='hide placeid'>" + response.results[i].place_id + "</p></div>");
                 }
 
             });
@@ -194,6 +224,12 @@
             var options = [];
             var hasMatch = false;
             $("#resultsList").on('click', '.resultItems', function () {
+
+                $(this).removeClass("alert-success").addClass("alert-info").addClass("animated bounce");
+                $(".alert-success").fadeOut("slow", "swing");
+                //window.setTimeout(function () {
+                //    element.removeClass('animated ' + animation);
+                //}, 2000);
 
                 options = $("#restaurantId option");
 
@@ -210,6 +246,7 @@
                 });
                 if (hasMatch === false) {
                     $(".errorMessage").html("<p>The restaurant you entered was not found. Would you like to add it to our site?</p>");
+                    $("#basicModal").modal();
                     $(".createRestaurantLink").show();
                 }
             });

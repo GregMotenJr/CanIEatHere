@@ -17,19 +17,19 @@ function showPicker() {
 // PRINTING THE URL AFTER UPLOAD INSIDE ITS OWN DIV
 function show() {
     //document.getElementById(uploadedImage).src = event.fpfile.url;
-    document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc + '"/></div>'
-    $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
+    document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4">' + '<img class="img-responsive uploadedImage" src="' + imageSrc + '"/></div>'
+    $('#containerForImageControls').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary' />");
 
     var deleteCount = $('.deleteImage').length;
 
     if (deleteCount === 0) {
-        $('#image-container div:nth-child(1)').append("<input type='button' value='Delete Image' class='deleteImage' />");
+        $('#image-container .image-thumbnail:nth-child(1)').append("<div class='caption'><input type='button' value='Delete Image' class='btn btn-primary deleteImage' /></div>");
     }
     else if (deleteCount === 1) {
-        $('#image-container div:nth-child(2)').append("<input type='button' value='Delete Image' class='deleteImage' />");
+        $('#image-container .image-thumbnail:nth-child(2)').append("<div class='caption'><input type='button' value='Delete Image' class='btn btn-primary deleteImage' /></div>");
     }
     else if (deleteCount === 2) {
-        $('#image-container div:nth-child(3)').append("<input type='button' value='Delete Image' class='deleteImage' />");
+        $('#image-container .image-thumbnail:nth-child(3)').append("<div class='caption'><input type='button' value='Delete Image' class='btn btn-primary deleteImage' /></div>");
     }
     //$('.image-thumbnail').append("<input type='button' value='Delete Image' class='deleteImage' />");
 }
@@ -52,19 +52,19 @@ function deleteSelectedImage() {
         $('#image-container div:nth-child(1)').remove();
         $(this).remove();
         $('#addAnother').remove();
-        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
+        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary' />");
     }
     else if (deleteButton === 1) {
         $('#image-container div:nth-child(2)').remove();
         $(this).remove();
         $('#addAnother').remove();
-        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
+        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary'/>");
     }
     else if (deleteButton === 2) {
         $('#image-container div:nth-child(3)').remove();
         $(this).remove();
         $('#addAnother').remove();
-        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' />");
+        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary'/>");
     }
 }
 
@@ -82,6 +82,7 @@ function storeImagesInReview() {
     if (thirdImageUrl != null) {
         $('#thirdImage').val(thirdImageUrl);
     }
+
 }
 
 function displayImagesForEdit() {
@@ -90,13 +91,13 @@ function displayImagesForEdit() {
     var imageSrc3 = $('#thirdImage').val();
 
     if (imageSrc1 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc1 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc1 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
     }
     if (imageSrc2 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc2 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc2 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
     }
     if (imageSrc3 != "") {
-        document.getElementById('image-container').innerHTML += '<div class="image-thumbnail">' + '<img class="uploadedImage" src="' + imageSrc3 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
+        document.getElementById('image-container').innerHTML += '<div class="thumbnail image-thumbnail col-md-4 col-sm-12">' + '<img class="img-responsive uploadedImage" src="' + imageSrc3 + '"/><input type="button" value="Delete Image" class="deleteImage" /></div>';
     }
 }
 

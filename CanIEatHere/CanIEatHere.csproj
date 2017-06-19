@@ -312,9 +312,8 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\Anthony.jpg" />
     <Content Include="Content\Images\basil_about.jpg" />
-    <Content Include="Content\Images\filler_1.jpg" />
-    <Content Include="Content\Images\filler_2.jpg" />
     <Content Include="Content\Images\Greg.jpg" />
+    <Content Include="Content\image-styling.css" />
     <Content Include="Content\Images\homeIndex_slicedTomatoes.jpg" />
     <Content Include="Content\Images\homepage-kale.jpg" />
     <Content Include="Content\Images\homepage-salad-darker.png" />
@@ -330,6 +329,7 @@
     <Content Include="Content\Login.css" />
     <Content Include="Content\logo1.png" />
     <Content Include="Content\logo2.png" />
+    <Content Include="Content\RestaurantIndexStyling.css" />
     <Content Include="Content\Site_About.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

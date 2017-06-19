@@ -4,19 +4,21 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Restaurant</h4>
-    <hr />
+
+<div class="jumbotron">
 
     <p class="hide" id="placeID">@Html.DisplayFor(model => model.PlaceID)</p>
-    <h2 id="restaurantName"></h2>
+   
+     <h2 id="restaurantName" class="text-center"></h2>
+ 
+   
     <h3>Address: <span id="restaurantAddress"></span></h3>
     <h3>Phone: <span id="restaurantPhoneNumber"></span></h3>
     <h3>Open Now? <span id="openNow"></span></h3>
     <h3>Hours: </h3>
     <ul id="restaurantHours"></ul>
+
 
 </div>
 <hr />
@@ -52,13 +54,13 @@
             }
         </div>
 
-        <dl class="class-horizontal">
+        @*<dl class="class-horizontal">
             @*<dt>
                     @Html.DisplayNameFor(model => review.UserID)
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => review.UserID)
-                </dd>*@
+                </dd>
             <dt>
                 @Html.DisplayNameFor(model => review.NumFoodOptions)
             </dt>
@@ -70,9 +72,62 @@
             </dt>
             <dd>
                 @Html.DisplayFor(model => review.GeneralComments)
-            </dd>
+            </dd>*@
+    <br />
+    <h5>Restaurant Details courtesy of Google Places</h5>
+</div>
+<hr />
+<div>
+    <h2 class="text-center">Reviews</h2>
+    <div class="row">
 
-            <dt>
+        @foreach (var review in Model.Reviews)
+        {
+            <div class="col-md-4 col-sm-12">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <dl class="class-horizontal">
+                            @*<dt>
+                    @Html.DisplayNameFor(model => review.UserID)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => review.UserID)
+                </dd>*@
+                            <dt>
+                                @Html.LabelFor(model => review.GeneralComments, "Review :")
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => review.GeneralComments)
+                            </dd>
+
+                            <dt>
+                                @Html.LabelFor(model => review.NumFoodOptionsRating, "Number of Food Options:")
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => review.NumFoodOptions)
+                            </dd>
+                         
+                            <dt>
+                                @Html.LabelFor(model => review.OverallRating, "Overall Rating")
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => review.OverallRating)
+                            </dd>
+                            <dt>
+                               @Html.LabelFor(model => review.TimeStamp, "Date:")
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => review.TimeStamp)
+                            </dd>
+                            <dt>
+                               @Html.LabelFor(model => review.RestaurantPriceRating, "Restaurant Price Rating:")
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => review.RestaurantPriceRating)
+                            </dd>
+
+
+            @*<dt>
                 @Html.DisplayNameFor(model => review.OverallRating)
             </dt>
             <dd>
@@ -90,8 +145,19 @@
             <dd>
                 @Html.DisplayFor(model => review.RestaurantPriceRating)
             </dd>
-        </dl>
+        </dl>*@
     }
+
+
+
+                        </dl>
+                        <button class="btn btn-default">@Html.ActionLink("See Full Review", "Details", "Reviews", new { id = review.ReviewID }, new { @class="detailsButton"})</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
 
 
 </div>
