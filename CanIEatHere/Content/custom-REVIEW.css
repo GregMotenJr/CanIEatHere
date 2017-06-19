@@ -56,6 +56,10 @@ html {
     margin-bottom: 2em;
 }
 
+.smallMarginTop{
+    margin-top: 1em;
+}
+
 .paddedButton{
     padding-right: 4em;
     padding-left: 4em;

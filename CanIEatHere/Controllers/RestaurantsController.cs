@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CanIEatHere.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CanIEatHere.Controllers
 {
@@ -44,6 +45,26 @@ namespace CanIEatHere.Controllers
             ViewBag.Image3 = db.Reviews
                 .Where(r => r.RestaurantID == id)
                 .Select(r => r.Img3).ToString();
+
+            var loggedInUser = User.Identity.GetUserId();
+
+            //get a list of the reviews that are connected with the current logged in user
+            //then can use the list to filter edit/delete permissions on reviews
+            var userReviewIDs = db.Reviews
+                 .Where(r => r.UserID == loggedInUser)
+                 .Select(r => r.ReviewID);
+
+            ViewBag.LoggedInUsersReviews = userReviewIDs.ToList();
+
+            //get food items to display on the reviews index
+            var reviewFoodItems = db.FoodItems
+            .Select(f => f);
+
+            var dietaryRestrictions = db.DietaryRestrictions
+                .Select(d => d);
+
+            ViewBag.FoodItems = reviewFoodItems;
+            ViewBag.DietaryRestrictions = dietaryRestrictions;
 
             return View(restaurant);
         }

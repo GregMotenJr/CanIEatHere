@@ -1,12 +1,14 @@
 ﻿@model CanIEatHere.Models.Restaurant
 
+<link href="~/Content/restaurantPageStyling.css" rel="stylesheet" />
+
 @{
     ViewBag.Title = "Details";
 }
 
 
 
-<div class="jumbotron">
+<div class="jumbotron darkerBackground smallMarginTopBottom">
 
     <p class="hide" id="placeID">@Html.DisplayFor(model => model.PlaceID)</p>
    
@@ -33,62 +35,61 @@
             //string secondImage = Html.DisplayFor(model => review.Img2).ToString();
             //string thirdImage = Html.DisplayFor(model => review.Img3).ToString();
 
-            <div class="col-md-4 col-sm-12">
-                <div class="thumbnail">
-               
-                    
-                    
-                    <!--DISPLAY THE UPLOADED IMAGE-->
-                    <div id="image-container">
-                        @if (firstImage != null)
-                        {
-                            <div class="image-thumbnail">
-                                <img class="uploadedImage" src="@firstImage" />
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <p>Overall Experience: @Html.DisplayFor(model => review.OverallRating)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Food Options: @Html.DisplayFor(model => review.NumFoodOptionsRating)</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Price: @Html.DisplayFor(model => review.RestaurantPriceRating)</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="darkerBackground">
+                            <div class="col-md-12">
+                                <p class="col-md-3">Friendly For: </p>
+                                @foreach (var d in ViewBag.DietaryRestrictions)
+                                {
+                                    foreach (var f in ViewBag.FoodItems)
+                                    {
+                                        if (f.ReviewID == review.ReviewID)
+                                        {
+                                            if (f.DietaryRestrictionID == d.DietaryRestrictionID)
+                                            {
+                                                <p class="col-md-3">@d.DietType</p>
+                                            }
+                                        }
+                                    }
+                                }
                             </div>
-                        }
-                      
+                            <p class="text-center">@Html.DisplayFor(model => review.GeneralComments)</p>
+                        </div>
                     </div>
-                    <div class="caption">
-                        <dl class="class-horizontal">
-                           
-                            <dt>
-                                @Html.LabelFor(model => review.GeneralComments, "Review :")
-                            </dt>
-                            <dd>
-                                @Html.DisplayFor(model => review.GeneralComments)
-                            </dd>
+                    <div class="row smallMarginTop">
+                        <div class="col-md-6">
+                            <p class="text-center"> Posted by: @Html.DisplayFor(model => review.AspNetUser.Email)</p>
+                        </div>
+                            <div class="col-md-6">
+                            <p class="text-center">Last Modified: @Html.DisplayFor(model => review.TimeStamp)</p>
+                        </div>
+                    </div>
+                    <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Details", "Details", new { id = review.ReviewID })</button></p>
 
-                            <dt>
-                                @Html.LabelFor(model => review.NumFoodOptionsRating, "Number of Food Options:")
-                            </dt>
-                            <dd>
-                                @Html.DisplayFor(model => review.NumFoodOptions)
-                            </dd>
-                         
-                            <dt>
-                                @Html.LabelFor(model => review.OverallRating, "Overall Rating")
-                            </dt>
-                            <dd>
-                                @Html.DisplayFor(model => review.OverallRating)
-                            </dd>
-                            <dt>
-                               @Html.LabelFor(model => review.TimeStamp, "Date:")
-                            </dt>
-                            <dd>
-                                @Html.DisplayFor(model => review.TimeStamp)
-                            </dd>
-                            <dt>
-                               @Html.LabelFor(model => review.RestaurantPriceRating, "Restaurant Price Rating:")
-                            </dt>
-                            <dd>
-                                @Html.DisplayFor(model => review.RestaurantPriceRating)
-                            </dd>
-                  </dl>
-                        <button class="btn btn-default">@Html.ActionLink("See Full Review", "Details", "Reviews", new { id = review.ReviewID }, new { @class="detailsButton"})</button>
-                    </div>
+                    @foreach (var r in ViewBag.LoggedInUsersReviews)
+                {
+                    if (r == review.ReviewID)
+                    {
+                            <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Edit", "Edit", new { id = review.ReviewID })</button></p>
+                            <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Delete", "Delete", new { id = review.ReviewID })</button></p>
+                        }
+                    }
                 </div>
             </div>
-        }
+                                }
 
     </div>
 

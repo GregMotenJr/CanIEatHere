@@ -19,3 +19,7 @@
 .alert-success{
     color: white;
 }
+
+.restaurantThumbnail .caption, .restaurantThumbnail .caption a{
+    color: white;
+}
