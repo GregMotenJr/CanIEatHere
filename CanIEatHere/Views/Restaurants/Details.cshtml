@@ -18,81 +18,39 @@
     <h3>Open Now? <span id="openNow"></span></h3>
     <h3>Hours: </h3>
     <ul id="restaurantHours"></ul>
-
-
-</div>
-<hr />
-<div>
-    <h2>Reviews</h2>
-
-    @foreach (var review in Model.Reviews)
-    {
-
-        string firstImage = Html.DisplayFor(model => review.Img1).ToString();
-        string secondImage = Html.DisplayFor(model => review.Img2).ToString();
-        string thirdImage = Html.DisplayFor(model => review.Img3).ToString();
-
-    <!--DISPLAY THE UPLOADED IMAGE-->
-        <div id="image-container">
-            @if (firstImage != null)
-            {
-                <div class="image-thumbnail">
-                    <img class="uploadedImage" src="@firstImage" />
-                </div>
-            }
-            @if (secondImage != null)
-            {
-                <div class="image-thumbnail">
-                    <img class="uploadedImage" src="@secondImage" />
-                </div>
-            }
-            @if (thirdImage != null)
-            {
-                <div class="image-thumbnail">
-                    <img class="uploadedImage" src="@thirdImage" />
-                </div>
-            }
-        </div>
-
-        @*<dl class="class-horizontal">
-            @*<dt>
-                    @Html.DisplayNameFor(model => review.UserID)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => review.UserID)
-                </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.NumFoodOptions)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.NumFoodOptions)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.GeneralComments)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.GeneralComments)
-            </dd>*@
-    <br />
     <h5>Restaurant Details courtesy of Google Places</h5>
+
 </div>
-<hr />
+
+
 <div>
     <h2 class="text-center">Reviews</h2>
     <div class="row">
 
         @foreach (var review in Model.Reviews)
         {
+            string firstImage = Html.DisplayFor(model => review.Img1).ToString();
+            //string secondImage = Html.DisplayFor(model => review.Img2).ToString();
+            //string thirdImage = Html.DisplayFor(model => review.Img3).ToString();
+
             <div class="col-md-4 col-sm-12">
                 <div class="thumbnail">
+               
+                    
+                    
+                    <!--DISPLAY THE UPLOADED IMAGE-->
+                    <div id="image-container">
+                        @if (firstImage != null)
+                        {
+                            <div class="image-thumbnail">
+                                <img class="uploadedImage" src="@firstImage" />
+                            </div>
+                        }
+                      
+                    </div>
                     <div class="caption">
                         <dl class="class-horizontal">
-                            @*<dt>
-                    @Html.DisplayNameFor(model => review.UserID)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => review.UserID)
-                </dd>*@
+                           
                             <dt>
                                 @Html.LabelFor(model => review.GeneralComments, "Review :")
                             </dt>
@@ -125,32 +83,7 @@
                             <dd>
                                 @Html.DisplayFor(model => review.RestaurantPriceRating)
                             </dd>
-
-
-            @*<dt>
-                @Html.DisplayNameFor(model => review.OverallRating)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.OverallRating)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.TimeStamp)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.TimeStamp)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => review.RestaurantPriceRating)
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => review.RestaurantPriceRating)
-            </dd>
-        </dl>*@
-    }
-
-
-
-                        </dl>
+                  </dl>
                         <button class="btn btn-default">@Html.ActionLink("See Full Review", "Details", "Reviews", new { id = review.ReviewID }, new { @class="detailsButton"})</button>
                     </div>
                 </div>
@@ -162,10 +95,7 @@
 
 </div>
 
-@*<p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.restaurant.RestaurantID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
+
 <script>
     var placeID = $("#placeID").text();
 
