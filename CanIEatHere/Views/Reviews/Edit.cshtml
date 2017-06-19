@@ -4,6 +4,15 @@
     ViewBag.Title = "Edit";
 }
 
+@*Custom CSS here:*@
+<link href="~/Content/custom-REVIEW.css" rel="stylesheet" />
+
+@*Animate CSS:*@
+<link href="~/Content/animate.css" rel="stylesheet" />
+
+@*Custom jQuery here:*@
+<script src="~/Scripts/custom-jquery-REVIEW.js"></script>
+
 <h2>Edit</h2>
 
 
@@ -18,7 +27,7 @@
         @Html.HiddenFor(model => model.ReviewID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumFoodOptions, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NumFoodOptions, "How many menu options did you have?", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumFoodOptions, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumFoodOptions, "", new { @class = "text-danger" })
@@ -26,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumFoodOptionsRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NumFoodOptionsRating, "Rate your number of options (1 for awful, 5 for awesome)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumFoodOptionsRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumFoodOptionsRating, "", new { @class = "text-danger" })
@@ -34,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GeneralComments, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GeneralComments, "Tell us about your experience", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.GeneralComments, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GeneralComments, "", new { @class = "text-danger" })
@@ -42,14 +51,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.OverallRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.OverallRating, "Rate your overall experience (1 for awful, 5 for awesome)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.OverallRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.OverallRating, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.TimeStamp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TimeStamp, new { htmlAttributes = new { @class = "form-control", id = "timeStamp" } })
@@ -57,7 +66,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.RestaurantID, "RestaurantID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("RestaurantID", null, htmlAttributes: new { @class = "form-control" })
@@ -66,14 +75,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RestaurantPriceRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RestaurantPriceRating, "How expensive was this restaurant (1 for cheap, 5 for expensive)", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.RestaurantPriceRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RestaurantPriceRating, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.Img1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Img1, new { htmlAttributes = new { @class = "form-control", id = "firstImage" } })
@@ -81,7 +90,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.Img2, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Img2, new { htmlAttributes = new { @class = "form-control", id = "secondImage" } })
@@ -89,7 +98,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hide">
             @Html.LabelFor(model => model.Img3, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Img3, new { htmlAttributes = new { @class = "form-control", id = "thirdImage" } })
@@ -97,9 +106,34 @@
             </div>
         </div>
 
+        <p>Food Items Reviewed:</p>
+        <div class="row">
+            @foreach (var item in ViewBag.FoodItems)
+            {
+                <div class="col-md-4 col-md-offset-1 darkerBackground">
+                    <p>@item.FoodItemName</p>
+                    <p>Rating: @item.FoodItemRating</p>
+                    <p>Course: @ViewBag.Course</p>
+                    <p>Ingredients: @item.ListIngredients</p>
+                    <p>Friendly For:</p>
+                    <p>@ViewBag.DietaryRestriction1</p>
+                    <p>@ViewBag.DietaryRestriction2</p>
+                    <p>@ViewBag.DietaryRestriction3</p>
+                    @{ int foodItemID = @item.FoodItemID;  }
+                </div>
+            }
+        </div>
+
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" name="action" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="SaveAndEditFoodItems" name="action" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -109,8 +143,8 @@
 <!--DISPLAY THE UPLOADED IMAGE-->
 <div id="image-container">
 </div>
-<p>Are these the photos you want in your review?</p>
-<button id="getUrl">Add photos to review.</button>
+<p>Are these all the photos you want in your review?</p>
+<button id="getUrl">Yes! Add these photos!</button>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

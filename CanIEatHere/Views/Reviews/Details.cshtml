@@ -4,103 +4,93 @@
     ViewBag.Title = "Details";
 }
 
+@*Custom CSS here:*@
+<link href="~/Content/custom-REVIEW.css" rel="stylesheet" />
+
+@*Animate CSS:*@
+<link href="~/Content/animate.css" rel="stylesheet" />
+
+@*Custom jQuery here:*@
+<script src="~/Scripts/custom-jquery-REVIEW.js"></script>
+
 <h2>Details</h2>
 
 <div>
     <h4>Review</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NumFoodOptions)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumFoodOptions)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumFoodOptionsRating)
-        </dt>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
 
-        <dd>
-            @Html.DisplayFor(model => model.NumFoodOptionsRating)
-        </dd>
+            <div class="darkerBackground">
+                <p class="hide" id="placeID">@Html.DisplayFor(model => model.Restaurant.PlaceID)</p>
+                <h3 id="restaurantName"></h3>
+                <div class="row">
+                    <div class="col-md-8"><p>Address: <span id="restaurantAddress"></span></p></div>
+                    <div class="col-md-4"><p>Phone: <span id="restaurantPhoneNumber"></span></p></div>
+                </div>
+                <p>@Html.ActionLink("View Restaurant", "Details", "Restaurants", new { id = Model.Restaurant.RestaurantID }, new { })</p>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GeneralComments)
-        </dt>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <p>Overall Experience: @Html.DisplayFor(model => model.OverallRating)</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Food Options: @Html.DisplayFor(model => model.NumFoodOptionsRating)</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Price: @Html.DisplayFor(model => model.RestaurantPriceRating)</p>
+                </div>
+            </div>
+            <p class="text-center">Number of Food Options: @Html.DisplayFor(model => model.NumFoodOptions)</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.GeneralComments)
-        </dd>
+            <div class="row">
+                @foreach (var item in ViewBag.FoodItems)
+                {
+                    <div class="col-md-4 col-md-offset-1 darkerBackground">
+                        <p>@item.FoodItemName</p>
+                        <p>Rating: @item.FoodItemRating</p>
+                        <p>Course: @ViewBag.Course</p>
+                        <p>Ingredients: @item.ListIngredients</p>
+                        <p>Friendly For:</p>
+                        <p>@ViewBag.DietaryRestriction1</p>
+                        <p>@ViewBag.DietaryRestriction2</p>
+                        <p>@ViewBag.DietaryRestriction3</p>
+                    </div>
+                }
+            </div>
+            <p class="text-center darkerBackground">@Html.DisplayFor(model => model.GeneralComments)</p>
+            <p class="appended">Last Modified: @Html.DisplayFor(model => model.TimeStamp)</p>
+            <p>Reviewed By: @Html.DisplayFor(model => model.AspNetUser.Email)</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OverallRating)
-        </dt>
+            @foreach (var r in ViewBag.LoggedInUsersReviews)
+            {
+                if (r == Model.ReviewID)
+                {
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewID })
+                    </p>
+                }
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.OverallRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeStamp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TimeStamp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RestaurantPriceRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RestaurantPriceRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Img1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Img1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Img2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Img2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Img3)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Img3)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Restaurant.PlaceID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Restaurant.PlaceID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUser.Email)
-        </dd>
-
-    </dl>
+            <p>
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<script>
+    $(document).ready(function () {
+
+        var placeID = $("#placeID").text();
+        $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
+            console.log(response);
+            $("#restaurantName").text(response.result.name);
+            $("#restaurantAddress").text(response.result.formatted_address);
+            $("#restaurantPhoneNumber").text(response.result.formatted_phone_number);
+        });
+    });
+</script>

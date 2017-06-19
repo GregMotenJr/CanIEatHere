@@ -283,6 +283,7 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MultiButtonAttribute.cs" />
     <Compile Include="Models\PlacesAPI.cs" />
     <Compile Include="Models\Restaurant.cs">
       <DependentUpon>CanIEatHere.tt</DependentUpon>

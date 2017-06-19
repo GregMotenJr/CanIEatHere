@@ -15,9 +15,13 @@ namespace CanIEatHere.Controllers
         private CanIEatHereEntities db = new CanIEatHereEntities();
 
         // GET: FoodItems
-        public ActionResult Index()
+        public ActionResult Index(int ReviewID)
         {
-            var foodItems = db.FoodItems.Include(f => f.Course).Include(f => f.DietaryRestriction).Include(f => f.DietaryRestriction1).Include(f => f.DietaryRestriction2).Include(f => f.Review);
+            var foodItems = db.FoodItems.Include(f => f.Course).Include(f => f.DietaryRestriction).Include(f => f.DietaryRestriction1).Include(f => f.DietaryRestriction2).Include(f => f.Review)
+                .Where(f=>f.ReviewID == ReviewID).Select(f=>f);
+
+            ViewBag.ReviewID = ReviewID;
+            
             return View(foodItems.ToList());
         }
 
@@ -37,13 +41,13 @@ namespace CanIEatHere.Controllers
         }
 
         // GET: FoodItems/Create
-        public ActionResult Create()
+        public ActionResult Create(int reviewID)
         {
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseType");
             ViewBag.DietaryRestrictionID = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType");
             ViewBag.DietaryRestrictionID2 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType");
             ViewBag.DietaryRestrictionID3 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType");
-            ViewBag.ReviewID = new SelectList(db.Reviews, "ReviewID", "UserID");
+            ViewBag.ReviewID = new SelectList(db.Reviews.Where(r => r.ReviewID == reviewID).Select(r => r), "ReviewID", "UserID");
             return View();
         }
 
@@ -52,13 +56,36 @@ namespace CanIEatHere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "Create")]
         public ActionResult Create([Bind(Include = "FoodItemID,FoodItemName,ListIngredients,FoodItemRating,CourseID,ReviewID,DietaryRestrictionID,DietaryRestrictionID2,DietaryRestrictionID3")] FoodItem foodItem)
         {
             if (ModelState.IsValid)
             {
                 db.FoodItems.Add(foodItem);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int reviewID = foodItem.ReviewID;
+                return RedirectToAction("Details", "Reviews", new { id = reviewID });
+            }
+
+            ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseType", foodItem.CourseID);
+            ViewBag.DietaryRestrictionID = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", foodItem.DietaryRestrictionID);
+            ViewBag.DietaryRestrictionID2 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", foodItem.DietaryRestrictionID2);
+            ViewBag.DietaryRestrictionID3 = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", foodItem.DietaryRestrictionID3);
+            ViewBag.ReviewID = new SelectList(db.Reviews, "ReviewID", "UserID", foodItem.ReviewID);
+            return View(foodItem);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "CreateAnotherFoodItem")]
+        public ActionResult CreateAnotherFoodItem([Bind(Include = "FoodItemID,FoodItemName,ListIngredients,FoodItemRating,CourseID,ReviewID,DietaryRestrictionID,DietaryRestrictionID2,DietaryRestrictionID3")] FoodItem foodItem)
+        {
+            if (ModelState.IsValid)
+            {
+                db.FoodItems.Add(foodItem);
+                db.SaveChanges();
+                int reviewID = foodItem.ReviewID;
+                return RedirectToAction("Create", "FoodItems", new { id = reviewID });
             }
 
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseType", foodItem.CourseID);
@@ -100,7 +127,8 @@ namespace CanIEatHere.Controllers
             {
                 db.Entry(foodItem).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int reviewID = foodItem.ReviewID;
+                return RedirectToAction("Index", new { ReviewID = reviewID});
             }
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseType", foodItem.CourseID);
             ViewBag.DietaryRestrictionID = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", foodItem.DietaryRestrictionID);
@@ -131,9 +159,10 @@ namespace CanIEatHere.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             FoodItem foodItem = db.FoodItems.Find(id);
+            int reviewID = foodItem.ReviewID;
             db.FoodItems.Remove(foodItem);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { ReviewID = reviewID });
         }
 
         protected override void Dispose(bool disposing)

@@ -12,3 +12,21 @@ html {
     z-index: -100;
     background-size: 100%;
 }
+
+.reviewDisplay {
+    color: white;
+    background-color: rgba(0,0,0,.5);
+    margin-bottom: 2em;
+    padding: 1em 3em;
+}
+
+.appended{
+    margin-top: 1em;
+}
+
+.darkerBackground{
+    border: 1px inset black;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,.6);
+    padding: 1em 1em;
+}

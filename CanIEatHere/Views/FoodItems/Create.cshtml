@@ -66,7 +66,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DietaryRestrictionID2, "DietaryRestrictionID2", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("DietaryRestrictionID2", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("DietaryRestrictionID2", null, "None", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID2, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -74,14 +74,22 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DietaryRestrictionID3, "DietaryRestrictionID3", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("DietaryRestrictionID3", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("DietaryRestrictionID3", null, "None", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID3, "", new { @class = "text-danger" })
             </div>
         </div>
 
+        @*normal create button, but redirects users to the review page that it is attached to*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" name="action" class="btn btn-default" />
+            </div>
+        </div>
+
+        @*allow users to add more food items to the review*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CreateAnotherFoodItem" name="action" class="btn btn-default" />
             </div>
         </div>
     </div>
