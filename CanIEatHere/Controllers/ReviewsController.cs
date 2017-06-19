@@ -266,15 +266,16 @@ namespace CanIEatHere.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [MultiButton(MatchFormKey = "foodItemID", MatchFormValue = "SaveAndEditFoodItems")]
-        public ActionResult SaveAndEditFoodItems([Bind(Include = "ReviewID,UserID,NumFoodOptions,NumFoodOptionsRating,GeneralComments,OverallRating,TimeStamp,RestaurantID,RestaurantPriceRating,Img1,Img2,Img3")] Review review, int foodItemID)
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "SaveAndEditFoodItems")]
+        public ActionResult SaveAndEditFoodItems([Bind(Include = "ReviewID,UserID,NumFoodOptions,NumFoodOptionsRating,GeneralComments,OverallRating,TimeStamp,RestaurantID,RestaurantPriceRating,Img1,Img2,Img3")] Review review)
         {
             if (ModelState.IsValid)
             {
                 review.UserID = User.Identity.GetUserId();
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit","FoodItems", new { id = foodItemID });
+                int reviewID = review.ReviewID;
+                return RedirectToAction("Index","FoodItems", new { ReviewID = reviewID });
             }
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
             //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);

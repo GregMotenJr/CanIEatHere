@@ -15,9 +15,13 @@ namespace CanIEatHere.Controllers
         private CanIEatHereEntities db = new CanIEatHereEntities();
 
         // GET: FoodItems
-        public ActionResult Index()
+        public ActionResult Index(int ReviewID)
         {
-            var foodItems = db.FoodItems.Include(f => f.Course).Include(f => f.DietaryRestriction).Include(f => f.DietaryRestriction1).Include(f => f.DietaryRestriction2).Include(f => f.Review);
+            var foodItems = db.FoodItems.Include(f => f.Course).Include(f => f.DietaryRestriction).Include(f => f.DietaryRestriction1).Include(f => f.DietaryRestriction2).Include(f => f.Review)
+                .Where(f=>f.ReviewID == ReviewID).Select(f=>f);
+
+            ViewBag.ReviewID = ReviewID;
+            
             return View(foodItems.ToList());
         }
 
@@ -123,7 +127,8 @@ namespace CanIEatHere.Controllers
             {
                 db.Entry(foodItem).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                int reviewID = foodItem.ReviewID;
+                return RedirectToAction("Index", new { ReviewID = reviewID});
             }
             ViewBag.CourseID = new SelectList(db.Courses, "CourseID", "CourseType", foodItem.CourseID);
             ViewBag.DietaryRestrictionID = new SelectList(db.DietaryRestrictions, "DietaryRestrictionID", "DietType", foodItem.DietaryRestrictionID);
@@ -154,9 +159,10 @@ namespace CanIEatHere.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             FoodItem foodItem = db.FoodItems.Find(id);
+            int reviewID = foodItem.ReviewID;
             db.FoodItems.Remove(foodItem);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { ReviewID = reviewID });
         }
 
         protected override void Dispose(bool disposing)
