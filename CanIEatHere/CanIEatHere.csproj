@@ -355,7 +355,9 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\carbonad.js" />
     <Content Include="Scripts\custom-jquery.js" />
+    <Content Include="Scripts\githubicons.js" />
     <Content Include="Scripts\imageUploader.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />

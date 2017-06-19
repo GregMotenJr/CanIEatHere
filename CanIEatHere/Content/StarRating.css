@@ -18,6 +18,7 @@
   background: url("../img/stars.svg");
   background-position: 0 0;
   cursor: pointer;
+  background-color:black;
 }
 
 .c-rating__item:hover,
