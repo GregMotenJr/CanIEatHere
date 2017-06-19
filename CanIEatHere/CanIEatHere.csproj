@@ -311,8 +311,10 @@
     <Content Include="Content\custom-REVIEW.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\foodPagesStyling.css" />
     <Content Include="Content\Images\Anthony.jpg" />
     <Content Include="Content\Images\basil_about.jpg" />
+    <Content Include="Content\Images\blueberries-2278921_1920.jpg" />
     <Content Include="Content\Images\Greg.jpg" />
     <Content Include="Content\image-styling.css" />
     <Content Include="Content\Images\homeIndex_slicedTomatoes.jpg" />
@@ -326,6 +328,7 @@
     <Content Include="Content\Images\Liberty.jpg" />
     <Content Include="Content\Images\Liberty2.jpg" />
     <Content Include="Content\Images\Megan.jpg" />
+    <Content Include="Content\Images\strawberries.jpg" />
     <Content Include="Content\Images\Sulezich.Anthony Headshot 2.jpg" />
     <Content Include="Content\Images\TowerCity.jpg" />
     <Content Include="Content\Login.css" />

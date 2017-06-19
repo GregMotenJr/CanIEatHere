@@ -4,100 +4,107 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<link href="~/Content/foodPagesStyling.css" rel="stylesheet" />
+
+<h2 class="text-center extraSmallMarginTopBottom">Create A Food Item</h2>
+<hr class="smallMarginBottom"/>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>FoodItem</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.FoodItemName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.FoodItemName, "What is the name of this food item?", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.FoodItemName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FoodItemName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ListIngredients, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ListIngredients, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.ListIngredients, "What ingredients were included in this item?", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.ListIngredients, new { @class = "form-control", @rows = "2" })
                 @Html.ValidationMessageFor(model => model.ListIngredients, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FoodItemRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.FoodItemRating, "Rate your enjoyment of this item (1 for awful, 5 for awesome)", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.FoodItemRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FoodItemRating, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CourseID, "CourseID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.CourseID, "Course", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("CourseID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CourseID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReviewID, "ReviewID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.ReviewID, "ReviewID", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("ReviewID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ReviewID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DietaryRestrictionID, "DietaryRestrictionID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.DietaryRestrictionID, "DietaryRestriction", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("DietaryRestrictionID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DietaryRestrictionID2, "DietaryRestrictionID2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.DietaryRestrictionID2, "DietaryRestriction", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("DietaryRestrictionID2", null, "None", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID2, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DietaryRestrictionID3, "DietaryRestrictionID3", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.DietaryRestrictionID3, "DietaryRestriction", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("DietaryRestrictionID3", null, "None", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID3, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @*normal create button, but redirects users to the review page that it is attached to*@
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" name="action" class="btn btn-default" />
-            </div>
-        </div>
 
-        @*allow users to add more food items to the review*@
-        <div class="form-group">
+        <div class="row darkerBackground smallMarginTopBottom">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="CreateAnotherFoodItem" name="action" class="btn btn-default" />
+                <div class="form-group text-center col-md-5 col-sm-12">
+                    <div>
+                        <p>Add another food item</p>
+                        <input type="submit" value="CreateAnotherFoodItem" name="action" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="form-group text-center col-md-6 col-sm-12">
+                    <div>
+                        <p>Add this item and return to review</p>
+                        <input type="submit" value="Create" name="action" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+@*<div>
+    <p><button class="btn">@Html.ActionLink("Back to Review", "Details", "Reviews", new { id =  }, null)</button></p>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

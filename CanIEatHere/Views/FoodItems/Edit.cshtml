@@ -3,8 +3,9 @@
 @{
     ViewBag.Title = "Edit";
 }
+<link href="~/Content/foodPagesStyling.css" rel="stylesheet" />
 
-<h2>Edit</h2>
+<h2 class="text-center smallMarginTop">Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -12,86 +13,85 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>FoodItem</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.FoodItemID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FoodItemName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.FoodItemName, "What is the name of this food item?", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.FoodItemName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FoodItemName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ListIngredients, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ListIngredients, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.ListIngredients, "What ingredients were included in this item?", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.ListIngredients, new { @class = "form-control", @rows = "2" })
                 @Html.ValidationMessageFor(model => model.ListIngredients, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FoodItemRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.FoodItemRating, "Rate your enjoyment of this item (1 for awful, 5 for awesome)", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.FoodItemRating, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FoodItemRating, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CourseID, "CourseID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.CourseID, "Course", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("CourseID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CourseID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReviewID, "ReviewID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="form-group hide">
+            @Html.LabelFor(model => model.ReviewID, "ReviewID", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("ReviewID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ReviewID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DietaryRestrictionID, "DietaryRestrictionID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.DietaryRestrictionID, "DietaryRestriction", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
                 @Html.DropDownList("DietaryRestrictionID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DietaryRestrictionID2, "DietaryRestrictionID2", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DietaryRestrictionID2", null, htmlAttributes: new { @class = "form-control" })
+            @Html.LabelFor(model => model.DietaryRestrictionID2, "DietaryRestriction", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.DropDownList("DietaryRestrictionID2", null, "None", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID2, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DietaryRestrictionID3, "DietaryRestrictionID3", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DietaryRestrictionID3", null, htmlAttributes: new { @class = "form-control" })
+            @Html.LabelFor(model => model.DietaryRestrictionID3, "DietaryRestriction", htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.DropDownList("DietaryRestrictionID3", null, "None", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.DietaryRestrictionID3, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-offset-4 col-md-10 smallMarginTop">
+                <input type="submit" value="Save" class="btn btn-default paddedButton" />
             </div>
         </div>
     </div>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
