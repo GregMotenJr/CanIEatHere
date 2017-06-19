@@ -100,42 +100,43 @@
 
     </dl>
 </div>
-<!--STAR SYSTEM-->
-<ul class="c-rating">
-    <li class="c-rating__item is-active" data-index="0"></li>
-    <li class="c-rating__item is-active" data-index="1"></li>
-    <li class="c-rating__item is-active" data-index="2"></li>
-    <li class="c-rating__item" data-index="3"></li>
-    <li class="c-rating__item" data-index="4"></li>
-</ul>
 
-@* <!--RATING 2-->
-    <div class="rating">
-    <span id="star1">☆</span><span id="star2">☆</span><span id="star3">☆</span><span id="star4">☆</span><span id="star5">☆</span>
-</div>*@
-<!--RATING 3 STYLE BIGGER-->
-@*<input id="input-1-ltr-star-xs" name="input-1-ltr-star-xs" class="kv-ltr-theme-fa-star rating-loading" value="1" dir="ltr" data-size="xs">
-@*<br />
-<input id="input-2-ltr-star-sm" name="input-2-ltr-star-sm" class="kv-ltr-theme-fa-star rating-loading" value="2" dir="ltr" data-size="sm">
-<br />
-<input id="input-3-ltr-star-md" name="input-3-ltr-star-md" class="kv-ltr-theme-fa-star rating-loading" value="3" dir="ltr" data-size="md">
-<br />
-<input id="input-4-ltr-star-lg" name="input-4-ltr-star-lg" class="kv-ltr-theme-fa-star rating-loading" value="4" dir="ltr" data-size="lg">
-<br />
-<input id="input-5-ltr-star-xl" name="input-5-ltr-star-xl" class="kv-ltr-theme-fa-star rating-loading" value="5" dir="ltr" data-size="xl">
-<br />*@
 
-@* GOES WITH RATING 3
-    
-    <script>
-$(document).on('ready', function(){
-    $('.kv-ltr-theme-fa-star').rating({
-        hoverOnClear: false,
-        theme: 'krajee-fa'
-    });
-});
-</script>*@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ReviewID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@*STAR RATING*@
+@{int OvrRating = (Model.OverallRating); }
+<h1>Below is a test of the star rating for over all rating</h1>
+@if  (OvrRating == 1) 
+{
+    <div class="rating">
+        <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+}
+else if (OvrRating == 2)
+{
+    <div class="rating">
+        <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+}
+else if (OvrRating == 3)
+{
+    <div class="rating">
+        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+    </div>
+}
+else if (OvrRating == 4)
+{
+    <div class="rating">
+        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+    </div>
+}
+else if (OvrRating == 5)
+{
+    <div class="rating">
+        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+    </div>
+}
