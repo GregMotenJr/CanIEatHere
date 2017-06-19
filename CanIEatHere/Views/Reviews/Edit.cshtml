@@ -184,6 +184,10 @@
     displayImagesForEdit();
     addAddImagesButton();
     $('#image-container').on('click', '.deleteImage', deleteSelectedImage);
-    $('#image-container').on('click', '#addAnother', addMoreImages);
+    $('#containerForImageControls').on('click', '#addAnother', addMoreImages);
     $('#getUrl').click(storeImagesInReview);
+    $('#getUrl').click(function () {
+        $("#addImagesControls").html("<h3>Great! Your images have been added!</h3>");
+        $("#addAnother").hide();
+    });
 </script>

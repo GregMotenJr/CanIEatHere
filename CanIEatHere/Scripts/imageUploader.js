@@ -53,19 +53,19 @@ function deleteSelectedImage() {
         $('#image-container div:nth-child(1)').remove();
         $(this).remove();
         $('#addAnother').remove();
-        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary' />");
+        $('#containerForImageControls').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary' />");
     }
     else if (deleteButton === 1) {
         $('#image-container div:nth-child(2)').remove();
         $(this).remove();
         $('#addAnother').remove();
-        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary'/>");
+        $('#containerForImageControls').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary'/>");
     }
     else if (deleteButton === 2) {
         $('#image-container div:nth-child(3)').remove();
         $(this).remove();
         $('#addAnother').remove();
-        $('#image-container').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary'/>");
+        $('#containerForImageControls').append("<input type='button' value='Add Another Image' id='addAnother' class='btn btn-primary'/>");
     }
 }
 
@@ -106,7 +106,7 @@ function addAddImagesButton() {
     var deleteCount = $('.deleteImage').length;
 
     if (deleteCount < 3) {
-        $('#image-container').append("<input type='button' value='Add Image' id='addAnother' class='btn'/>");
+        $('#containerForImageControls').append("<input type='button' value='Add Image' id='addAnother' class='btn col-md-12'/>");
     }
 }
 
