@@ -25,18 +25,18 @@
 
 {
 
-    foreach (var fI in ViewBag.FoodItems)
-    {
-        if (fI.ReviewID == item.ReviewID)
+    @*foreach (var fI in ViewBag.FoodItems)
         {
-            <p>@fI.FoodItemName</p>
-        }
-    }
+            if (fI.ReviewID == item.ReviewID)
+            {
+                <p>@fI.FoodItemName</p>
+            }
+        }*@
 
     <div class="row">
         <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
-            <p class="hide" id="placeID">@Html.DisplayFor(modelItem => item.Restaurant.PlaceID)</p>
-           <div id="restaurantList"></div>
+            @*<p class="hide" id="placeID">@Html.DisplayFor(modelItem => item.Restaurant.PlaceID)</p>
+                <div id="restaurantList"></div>*@
             <div class="row text-center">
                 <div class="col-md-4">
                     <p>Overall Experience: @Html.DisplayFor(modelItem => item.OverallRating)</p>
@@ -48,16 +48,36 @@
                     <p>Price: @Html.DisplayFor(modelItem => item.RestaurantPriceRating)</p>
                 </div>
             </div>
-            <p class="darkerBackground text-center">@Html.DisplayFor(modelItem => item.GeneralComments)</p>
-            @*<p>@Html.DisplayFor(modelItem => item.NumFoodOptions)</p>*@
+            <div class="row">
+                <div class="col-md-4">
+                    @{string firstImage = Html.DisplayFor(modelItem => item.Img1).ToString();
+
+                        if (firstImage != null)
+                        {
+                            <div class="image-thumbnail">
+                                <img class="uploadedImage" src="@firstImage" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="image-thumbnail">
+                                <img src="~/Content/Images/homeIndex_slicedTomatoes.jpg" />
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="col-md-8 darkerBackground">
+                    <p class="text-center">@Html.DisplayFor(modelItem => item.GeneralComments)</p>
+                </div>
+            </div>
             <p class="text-center appended"> Posted by: @Html.DisplayFor(modelItem => item.AspNetUser.Email)</p>
             <p class="text-center">Last Modified: @Html.DisplayFor(modelItem => item.TimeStamp)</p>
             <p>@Html.ActionLink("Details", "Details", new { id = item.ReviewID })</p>
 
             @foreach (var r in ViewBag.LoggedInUsersReviews)
-            {
-                if (r == item.ReviewID)
                 {
+                    if (r == item.ReviewID)
+                    {
                     <p>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID })
                         @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
@@ -66,7 +86,8 @@
             }
         </div>
     </div>
-}
+
+                        }
 
 @*<table class="table">
         <tr>
@@ -160,7 +181,7 @@
     </table>*@
 
 <script>
-   @foreach(var item in Model)
+    @*@foreach(var item in Model)
         {
             var placeID = Html.DisplayFor(modelItem => item.Restaurant.PlaceID);
             <text>
@@ -169,7 +190,7 @@
         console.log(response);
         $("#restaurantList").append('<div class="col-md-4 col-sm-12"><div class="thumbnail restaurantThumbnail"><div class="caption"><h2>' + response.result.name + '</h2><h4>' + response.result.formatted_address + '</h4><h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID })</h3></div></div></div>');
         @*$("#restaurantList").append('<h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID }) </h3>')*@
-    });
-    </text>
-        }
+    //});
+    //</text>
+    //}
 </script>
