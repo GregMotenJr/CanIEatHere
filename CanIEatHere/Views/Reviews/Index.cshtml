@@ -21,11 +21,22 @@
 </p>
 
 @foreach (var item in Model)
+
+
 {
+
+    foreach (var fI in ViewBag.FoodItems)
+    {
+        if (fI.ReviewID == item.ReviewID)
+        {
+            <p>@fI.FoodItemName</p>
+        }
+    }
+
     <div class="row">
         <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
             <p class="hide" id="placeID">@Html.DisplayFor(modelItem => item.Restaurant.PlaceID)</p>
-            <h3 id="restaurantName"></h3>
+           <div id="restaurantList"></div>
             <div class="row text-center">
                 <div class="col-md-4">
                     <p>Overall Experience: @Html.DisplayFor(modelItem => item.OverallRating)</p>
@@ -149,15 +160,16 @@
     </table>*@
 
 <script>
-    $(document).ready(function () {
-
-        var review = $('.reviewDisplay');
-        $.each(review, function() {
-            var placeID = $("#placeID").text();
-            $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
-                console.log(response);
-                $("#restaurantName").text(response.result.name);
-            });
-        });
+   @foreach(var item in Model)
+        {
+            var placeID = Html.DisplayFor(modelItem => item.Restaurant.PlaceID);
+            <text>
+    var placeID = "@placeID";
+    $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
+        console.log(response);
+        $("#restaurantList").append('<div class="col-md-4 col-sm-12"><div class="thumbnail restaurantThumbnail"><div class="caption"><h2>' + response.result.name + '</h2><h4>' + response.result.formatted_address + '</h4><h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID })</h3></div></div></div>');
+        @*$("#restaurantList").append('<h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID }) </h3>')*@
     });
+    </text>
+        }
 </script>

@@ -23,11 +23,19 @@ namespace CanIEatHere.Controllers
 
             var loggedInUser = User.Identity.GetUserId();
 
+            //get a list of the reviews that are connected with the current logged in user
+            //then can use the list to filter edit/delete permissions on reviews
             var userReviewIDs = db.Reviews
                  .Where(r => r.UserID == loggedInUser)
                  .Select(r => r.ReviewID);
 
             ViewBag.LoggedInUsersReviews = userReviewIDs.ToList();
+
+            //get food items to display on the reviews index
+            var reviewFoodItems = db.FoodItems
+            .Select(f => f);
+
+            ViewBag.FoodItems = reviewFoodItems;
 
             return View(reviews.ToList());
         }
@@ -45,6 +53,7 @@ namespace CanIEatHere.Controllers
                 return HttpNotFound();
             }
 
+            //again check who is logged in to see if have permission to edit from details page
             var loggedInUser = User.Identity.GetUserId();
 
             var userReviewIDs = db.Reviews
@@ -52,6 +61,37 @@ namespace CanIEatHere.Controllers
                  .Select(r => r.ReviewID);
 
             ViewBag.LoggedInUsersReviews = userReviewIDs.ToList();
+
+            //get food items attached to the particular review
+            var reviewFoodItems = db.FoodItems
+                .Where(f => f.ReviewID == id)
+                .Select(f => f);
+
+            ViewBag.FoodItems = reviewFoodItems;
+
+            //get the three possible dietary restrictions that might be attached to the food item
+            var dr1 = from d in db.DietaryRestrictions
+                      join f in db.FoodItems
+                      on d.DietaryRestrictionID equals f.DietaryRestrictionID
+                      where f.ReviewID == id
+                      select d.DietType;
+
+            var dr2 = from d in db.DietaryRestrictions
+                      join f in db.FoodItems
+                      on d.DietaryRestrictionID equals f.DietaryRestrictionID2
+                      where f.ReviewID == id
+                      select d.DietType;
+
+            var dr3 = from d in db.DietaryRestrictions
+                      join f in db.FoodItems
+                      on d.DietaryRestrictionID equals f.DietaryRestrictionID3
+                      where f.ReviewID == id
+                      select d.DietType;
+
+            ViewBag.DietaryRestriction1 = dr1;
+            ViewBag.DietaryRestriction2 = dr2;
+            ViewBag.DietaryRestriction3 = dr3;
+
 
             return View(review);
         }
@@ -65,11 +105,10 @@ namespace CanIEatHere.Controllers
             return View();
         }
 
-        // POST: Reviews/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "Create")]
         public ActionResult Create([Bind(Include = "ReviewID,UserID,NumFoodOptions,NumFoodOptionsRating,GeneralComments,OverallRating,TimeStamp,RestaurantID,RestaurantPriceRating,Img1,Img2,Img3")] Review review)
         {
             if (ModelState.IsValid)
@@ -78,6 +117,29 @@ namespace CanIEatHere.Controllers
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+
+            ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
+            //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
+            return View(review);
+        }
+
+        // POST: Reviews/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "CreateFoodItems")]
+        public ActionResult CreateFoodItems([Bind(Include = "ReviewID,UserID,NumFoodOptions,NumFoodOptionsRating,GeneralComments,OverallRating,TimeStamp,RestaurantID,RestaurantPriceRating,Img1,Img2,Img3")] Review review)
+        {
+            if (ModelState.IsValid)
+            {
+                review.UserID = User.Identity.GetUserId();
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                int Reviewid = review.ReviewID;
+                return RedirectToAction("Create", "FoodItems", new { reviewID = Reviewid });
+
             }
 
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);

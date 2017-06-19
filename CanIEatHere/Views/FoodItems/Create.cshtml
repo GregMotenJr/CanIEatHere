@@ -79,9 +79,17 @@
             </div>
         </div>
 
+        @*normal create button, but redirects users to the review page that it is attached to*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" name="action" class="btn btn-default" />
+            </div>
+        </div>
+
+        @*allow users to add more food items to the review*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CreateAnotherFoodItem" name="action" class="btn btn-default" />
             </div>
         </div>
     </div>

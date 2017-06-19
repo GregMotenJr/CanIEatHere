@@ -19,6 +19,26 @@
     <h4>Review</h4>
     <hr />
 
+    @foreach (var item in ViewBag.FoodItems)
+    {
+        <p>@item.FoodItemName</p>
+        <p>@item.ListIngredients</p>
+        <p>@item.FoodItemRating</p>
+    }
+    @foreach (var d in ViewBag.DietaryRestriction1)
+    {
+        <p>@d</p>
+    }
+    @foreach (var d in ViewBag.DietaryRestriction2)
+    {
+        <p>@d</p>
+    }
+    @foreach (var d in ViewBag.DietaryRestriction3)
+    {
+        <p>@d</p>
+    }
+
+
     <div class="row">
         <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
             <p class="hide" id="placeID">@Html.DisplayFor(model => model.Restaurant.PlaceID)</p>
