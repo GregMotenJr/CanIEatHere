@@ -47,21 +47,23 @@
 
 <script>
 
-    $(document).ready(function () {
-        var testArray = [];
+    $(document).ready(function (){
+        //var testArray = [];
         @foreach(var item in Model)
         {
             var placeID = Html.DisplayFor(modelItem => item.PlaceID);
+
             <text>
-        var placeID = "@placeID";
 
-        $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
-            console.log(response);
-            $("#restaurantList").append('<div class="col-md-4 col-sm-12"><div class="thumbnail restaurantThumbnail"><div class="caption"><h2>' + response.result.name + '</h2><h4>'+response.result.formatted_address+'</h4><h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID })</h3></div></div></div>');
-            @*$("#restaurantList").append('<h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID }) </h3>')*@
-        });
+                var placeID = "@placeID";
 
-        </text>
+                $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
+                    console.log(response);
+                    $("#restaurantList").append('<div class="col-md-4 col-sm-12"><div class="thumbnail restaurantThumbnail"><div class="caption"><h2>' + response.result.name + '</h2><h4>'+response.result.formatted_address+'</h4><h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID })</h3></div></div></div>');
+                    @*$("#restaurantList").append('<h3>@Html.ActionLink("See Reviews", "Details", new { id = item.RestaurantID }) </h3>')*@
+                });
+
+            </text>
 
 
         }
@@ -69,29 +71,6 @@
 
 
     });
-    @*var placeID = $("#placeID").text();
-        $.get("@Url.Action("GetDetailsFromPlaceID", "Restaurants", new { placeIdString = "tempVar" })".replace("tempVar", placeID), function (response) {
-            console.log(response);
-            $("#restaurantName").text(response.result.name);
-            $("#restaurantAddress").text(response.result.formatted_address);
-            $("#restaurantPhoneNumber").text(response.result.formatted_phone_number);
 
-            if(response.result.opening_hours.open_now == false)
-            {
-                $("#openNow").text("Nope, try again later");
-            }
-            else if(response.result.opening_hours.open_now == "true")
-            {
-                $("#openNow").text("Yep, come on down");
-            }
-
-            (response.result.opening_hours.weekday_text).forEach(function (day) {
-
-                day = day.replace('â€“', '-')
-                $("#restaurantHours").append("<li>" + day + "</li>")
-
-            });
-
-        });*@
 
 </script>
