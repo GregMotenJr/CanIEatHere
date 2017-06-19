@@ -24,15 +24,6 @@
 
 
 {
-
-    @*foreach (var fI in ViewBag.FoodItems)
-        {
-            if (fI.ReviewID == item.ReviewID)
-            {
-                <p>@fI.FoodItemName</p>
-            }
-        }*@
-
     <div class="row">
         <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
             @*<p class="hide" id="placeID">@Html.DisplayFor(modelItem => item.Restaurant.PlaceID)</p>
@@ -67,6 +58,22 @@
                     }
                 </div>
                 <div class="col-md-8 darkerBackground">
+                    <div class="row">
+                        <p class="col-md-3">Friendly For: </p>
+                        @foreach (var d in ViewBag.DietaryRestrictions)
+                        {
+                            foreach (var f in ViewBag.FoodItems)
+                            {
+                                if (f.ReviewID == item.ReviewID)
+                                {
+                                    if (f.DietaryRestrictionID == d.DietaryRestrictionID)
+                                    {
+                                        <p class="col-md-3">@d.DietType</p>
+                                    }
+                                }
+                            }
+                        }
+                    </div>
                     <p class="text-center">@Html.DisplayFor(modelItem => item.GeneralComments)</p>
                 </div>
             </div>
