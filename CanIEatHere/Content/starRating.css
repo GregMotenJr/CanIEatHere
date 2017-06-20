@@ -1,0 +1,13 @@
+﻿.rating {
+  unicode-bidi: bidi-override;
+  direction: ltr;
+  text-align: center;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.on{
+   color: gold;
+}

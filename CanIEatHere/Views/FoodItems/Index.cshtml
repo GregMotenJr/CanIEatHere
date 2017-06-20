@@ -1,16 +1,18 @@
 ﻿@model IEnumerable<CanIEatHere.Models.FoodItem>
 
-@{
-    ViewBag.Title = "Index";
-}
+    @{
+        ViewBag.Title = "Index";
+    }
 
-<link href="~/Content/foodPagesStyling.css" rel="stylesheet" />
+    <link href="~/Content/foodPagesStyling.css" rel="stylesheet" />
 
-<h2>Food Items</h2>
+    <h2>Food Items</h2>
 
-@{ int reviewID = @ViewBag.ReviewID;}
-    <p><button class="btn">@Html.ActionLink("Back to Review", "Details", "Reviews", new { id = reviewID }, null)</button>
-    <button class="btn">@Html.ActionLink("Create New Item", "Create", new { reviewID = reviewID })</button></p>
+    @{ int reviewID = @ViewBag.ReviewID;}
+    <p>
+        <button class="btn">@Html.ActionLink("Back to Review", "Details", "Reviews", new { id = reviewID }, null)</button>
+        <button class="btn">@Html.ActionLink("Create New Item", "Create", new { reviewID = reviewID })</button>
+    </p>
 
     <div class="row">
         @foreach (var item in Model)
@@ -24,7 +26,39 @@
                         <p>@Html.DisplayNameFor(model => model.ListIngredients)</p>
                     </div>
                     <div class="col-md-8">
-                        <p>@Html.DisplayFor(modelItem => item.FoodItemRating)</p>
+                        <p>
+                            @{int foodItemRating = (item.FoodItemRating); }
+                            @if (foodItemRating == 1)
+                            {
+                                <div class="rating">
+                                    <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                </div>
+                            }
+                            else if (foodItemRating == 2)
+                            {
+                                <div class="rating">
+                                    <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                                </div>
+                            }
+                            else if (foodItemRating == 3)
+                            {
+                                <div class="rating">
+                                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                                </div>
+                            }
+                            else if (foodItemRating == 4)
+                            {
+                                <div class="rating">
+                                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                                </div>
+                            }
+                            else if (foodItemRating == 5)
+                            {
+                                <div class="rating">
+                                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                                </div>
+                            }
+                        </p>
                         <p>@Html.DisplayFor(modelItem => item.Course.CourseType)</p>
                         <p>@Html.DisplayFor(modelItem => item.ListIngredients)</p>
                     </div>
@@ -38,6 +72,5 @@
                 <p class="col-md-2"><button class="btn">@Html.ActionLink("Edit", "Edit", new { id = item.FoodItemID })</button></p>
                 <p class="col-md-2"><button class="btn">@Html.ActionLink("Delete", "Delete", new { id = item.FoodItemID })</button></p>
             </div>
-
-        }
+                                }
     </div>
