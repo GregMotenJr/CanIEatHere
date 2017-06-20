@@ -19,12 +19,12 @@
     <h3>Are you sure you want to delete this?</h3>
 
 </div>
-<hr/>
+<hr />
 
-    <div class="row">
-        <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight mediumMarginTopBottom">
+<div class="row">
+    <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight mediumMarginTopBottom">
 
-            @*<div class="darkerBackground">
+        @*<div class="darkerBackground">
                 <p class="hide" id="placeID">@Html.DisplayFor(model => model.Restaurant.PlaceID)</p>
                 <h3 id="restaurantName"></h3>
                 <div class="row">
@@ -34,77 +34,208 @@
                 <p><button class="btn">@Html.ActionLink("View Restaurant", "Details", "Restaurants", new { id = Model.Restaurant.RestaurantID }, new { })</button></p>
             </div>*@
 
-            <div class="row text-center smallMarginTopBottom">
-                <div class="col-md-4">
-                    <p>Overall Experience: @Html.DisplayFor(model => model.OverallRating)</p>
-                </div>
-                <div class="col-md-4">
-                    <p>Food Options: @Html.DisplayFor(model => model.NumFoodOptionsRating)</p>
-                </div>
-                <div class="col-md-4">
-                    <p>Price: @Html.DisplayFor(model => model.RestaurantPriceRating)</p>
-                </div>
-                <p class="text-center">Number of Food Options: @Html.DisplayFor(model => model.NumFoodOptions)</p>
+        <div class="row text-center smallMarginTopBottom">
+            <div class="col-md-4">
+                <p>
+                    Overall Experience: @{int OvrRating = (Model.OverallRating); }
+                    @if (OvrRating == 1)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (OvrRating == 2)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (OvrRating == 3)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (OvrRating == 4)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                        </div>
+                    }
+                    else if (OvrRating == 5)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                        </div>
+                    }
+                </p>
             </div>
+            <div class="col-md-4">
+                <p>
+                    Food Options: @{int foodRating = (Model.NumFoodOptionsRating); }
+                    @if (foodRating == 1)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (foodRating == 2)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (foodRating == 3)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (foodRating == 4)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                        </div>
+                    }
+                    else if (foodRating == 5)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                        </div>
+                    }
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    Price: @{int priceRating = (Model.RestaurantPriceRating); }
+                    @if (priceRating == 1)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (priceRating == 2)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (priceRating == 3)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                        </div>
+                    }
+                    else if (priceRating == 4)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                        </div>
+                    }
+                    else if (priceRating == 5)
+                    {
+                        <div class="rating">
+                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                        </div>
+                    }
+                </p>
+            </div>
+            <p class="text-center">Number of Food Options: @Html.DisplayFor(model => model.NumFoodOptions)</p>
+        </div>
 
-            @{string firstImage = Html.DisplayFor(model => model.Img1).ToString();
+        @{string firstImage = Html.DisplayFor(model => model.Img1).ToString();
             string secondImage = Html.DisplayFor(model => model.Img2).ToString();
             string thirdImage = Html.DisplayFor(model => model.Img3).ToString();}
 
-            <!--DISPLAY THE UPLOADED IMAGE-->
+        <!--DISPLAY THE UPLOADED IMAGE-->
 
-            <div id="image-container">
-                @if (firstImage != null)
-                {
-                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
-                        <img class="uploadedImage" src="@firstImage" />
-                    </div>
-                }
-                @if (secondImage != null)
-                {
-                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
-                        <img class="uploadedImage" src="@secondImage" />
-                    </div>
-                }
-                @if (thirdImage != null)
-                {
-                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
-                        <img class="uploadedImage" src="@thirdImage" />
-                    </div>
-                }
-
-            </div>
-
-
-            <div class="row">
-                @foreach (var item in ViewBag.FoodItems)
-                {
-                    <div class="col-md-4 col-md-offset-1 darkerBackground smallMarginBottom">
-                        <p>@item.FoodItemName</p>
-                        <p>Rating: @item.FoodItemRating</p>
-                        <p>Course: @ViewBag.Course</p>
-                        <p>Ingredients: @item.ListIngredients</p>
-                        <p>Friendly For:</p>
-                        <p>@ViewBag.DietaryRestriction1</p>
-                        <p>@ViewBag.DietaryRestriction2</p>
-                        <p>@ViewBag.DietaryRestriction3</p>
-                    </div>
-                }
-            </div>
-            <p class="text-center darkerBackground">@Html.DisplayFor(model => model.GeneralComments)</p>
-            <div class="smallMarginTopBottom">
-                <p>Last Modified: @Html.DisplayFor(model => model.TimeStamp)</p>
-                <p>Reviewed By: @Html.DisplayFor(model => model.AspNetUser.Email)</p>
-            </div>
-
-            @using (Html.BeginForm())
+        <div id="image-container" class="row">
+            @if (firstImage != "")
             {
-                @Html.AntiForgeryToken()
-
-                <div class="form-actions no-color text-center">
-                    <input type="submit" value="Delete" class="btn smallMarginBottom paddedButton" /> 
-                    <p><button class="btn">@Html.ActionLink("Back to Review", "Details", new { id = Model.ReviewID })</button></p>
+                <div class="thumbnail image-thumbnail-details darkerBackground detailsPageImage col-md-4">
+                    <img class="uploadedImage" src="@firstImage" />
                 </div>
             }
+            @if (secondImage != "")
+            {
+                <div class="thumbnail image-thumbnail-details darkerBackground detailsPageImage col-md-4">
+                    <img class="uploadedImage" src="@secondImage" />
+                </div>
+            }
+            @if (thirdImage != "")
+            {
+                <div class="thumbnail image-thumbnail-details darkerBackground detailsPageImage col-md-4">
+                    <img class="uploadedImage" src="@thirdImage" />
+                </div>
+            }
+
         </div>
+
+
+        <div class="row">
+            @foreach (var item in ViewBag.FoodItems)
+            {
+                <div class="col-md-4 col-sm-12 darkerBackground smallMarginBottom smallMarginRight">
+                    <p class="text-center">@item.FoodItemName</p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p>Food Item Rating: </p>
+                            <p>Course: </p>
+                            <p>Ingredients:</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p>
+                                @{int foodItemRating = @item.FoodItemRating;}
+                                @if (foodItemRating == 1)
+                                {
+
+                                    <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                }
+                                else if (foodItemRating == 2)
+                                {
+                                    <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                                }
+                                else if (foodItemRating == 3)
+                                {
+                                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                                }
+                                else if (foodItemRating == 4)
+                                {
+                                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                                }
+                                else if (foodItemRating == 5)
+                                {
+                                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                                }
+                            </p>
+                            <p>@ViewBag.Course</p>
+                            <p>@item.ListIngredients</p>
+                        </div>
+                    </div>
+                    <div class="row darkerBackground ">
+                        <p class="text-center">Friendly for:</p>
+                        <p class="col-md-6">@ViewBag.DietaryRestriction1</p>
+                        <p class="col-md-6">@ViewBag.DietaryRestriction2</p>
+                        <p class="col-md-6">@ViewBag.DietaryRestriction3</p>
+                        @{ int foodItemID = @item.FoodItemID;  }
+                    </div>
+                </div>
+                            }
+        </div>
+        <p class="text-center darkerBackground">@Html.DisplayFor(model => model.GeneralComments)</p>
+        <div class="smallMarginTopBottom">
+            <p>Last Modified: @Html.DisplayFor(model => model.TimeStamp)</p>
+            <p>Reviewed By: @Html.DisplayFor(model => model.AspNetUser.Email)</p>
+        </div>
+
+        @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color text-center">
+                <input type="submit" value="Delete" class="btn smallMarginBottom paddedButton" />
+                <p><button class="btn">@Html.ActionLink("Back to Review", "Details", new { id = Model.ReviewID })</button></p>
+            </div>
+        }
     </div>
+</div>
