@@ -122,7 +122,28 @@
                             <p>Ingredients:</p>
                         </div>
                         <div class="col-md-8">
-                            <p>@item.FoodItemRating</p>
+                            <p>@{int foodItemRating = @item.FoodItemRating;}
+                            @if (foodItemRating == 1)
+                            {
+
+                                <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                            }
+                            else if (foodItemRating == 2)
+                            {
+                                <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                            }
+                            else if (foodItemRating == 3)
+                            {
+                                <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                            }
+                            else if (foodItemRating == 4)
+                            {
+                                <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                            }
+                            else if (foodItemRating == 5)
+                            {
+                                <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                            }</p>
                             <p>@ViewBag.Course</p>
                             <p>@item.ListIngredients</p>
                         </div>

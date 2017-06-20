@@ -35,13 +35,108 @@
                 <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
                     <div class="row text-center">
                         <div class="col-md-4">
-                            <p>Overall Experience: @Html.DisplayFor(model => review.OverallRating)</p>
+                            <p>Overall Experience: @{int OvrRating = (review.OverallRating); }
+                                @if (OvrRating == 1)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (OvrRating == 2)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (OvrRating == 3)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (OvrRating == 4)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (OvrRating == 5)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                                    </div>
+                                }
+                            </p>
                         </div>
                         <div class="col-md-4">
-                            <p>Food Options: @Html.DisplayFor(model => review.NumFoodOptionsRating)</p>
+                            <p>
+                                Food Options: @{int foodRating = (review.NumFoodOptionsRating); }
+                                @if (foodRating == 1)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (foodRating == 2)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (foodRating == 3)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (foodRating == 4)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (foodRating == 5)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                                    </div>
+                                }
+                            </p>
                         </div>
                         <div class="col-md-4">
-                            <p>Price: @Html.DisplayFor(model => review.RestaurantPriceRating)</p>
+                            <p>
+                                Price: @{int priceRating = (review.RestaurantPriceRating); }
+                                @if (priceRating == 1)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (priceRating == 2)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (priceRating == 3)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (priceRating == 4)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                                    </div>
+                                }
+                                else if (priceRating == 5)
+                                {
+                                    <div class="rating">
+                                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                                    </div>
+                                }
+                            </p>
                         </div>
                     </div>
                     <div class="row">
