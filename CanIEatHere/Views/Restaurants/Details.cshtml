@@ -79,8 +79,8 @@
                 {
                     if (r == review.ReviewID)
                     {
-                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Edit", "Edit", new { id = review.ReviewID })</button></p>
-                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Delete", "Delete", new { id = review.ReviewID })</button></p>
+                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Edit", "Edit", "Reviews", new { id = review.ReviewID }, null)</button></p>
+                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Delete", "Delete", "Reviews", new { id = review.ReviewID }, null)</button></p>
                         }
                     }
                 </div>
