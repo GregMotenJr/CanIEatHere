@@ -11,17 +11,25 @@ namespace CanIEatHere.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class FoodItem
     {
         public int FoodItemID { get; set; }
+        [Display(Name = "Food Item")]
         public string FoodItemName { get; set; }
+        [Display(Name = "Ingredients")]
         public string ListIngredients { get; set; }
+        [Display(Name = "Rating")]
         public int FoodItemRating { get; set; }
+        [Display(Name ="Course")]
         public int CourseID { get; set; }
         public int ReviewID { get; set; }
+        [Display(Name ="Dietary Restriction")]
         public int DietaryRestrictionID { get; set; }
+        [Display(Name = "Dietary Restriction")]
         public Nullable<int> DietaryRestrictionID2 { get; set; }
+        [Display(Name = "Dietary Restriction")]
         public Nullable<int> DietaryRestrictionID3 { get; set; }
     
         public virtual Course Course { get; set; }
