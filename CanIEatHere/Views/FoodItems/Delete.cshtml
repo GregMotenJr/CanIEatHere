@@ -32,7 +32,37 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FoodItemRating)
+            @{int foodItemRating = (Model.FoodItemRating); }
+            @if (foodItemRating == 1)
+            {
+                <div class="rating">
+                    <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
+            }
+            else if (foodItemRating == 2)
+            {
+                <div class="rating">
+                    <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+                </div>
+            }
+            else if (foodItemRating == 3)
+            {
+                <div class="rating">
+                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+                </div>
+            }
+            else if (foodItemRating == 4)
+            {
+                <div class="rating">
+                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+                </div>
+            }
+            else if (foodItemRating == 5)
+            {
+                <div class="rating">
+                    <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+                </div>
+            }
         </dd>
 
         <dt>
