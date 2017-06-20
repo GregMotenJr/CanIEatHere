@@ -3,86 +3,47 @@
 @{
     ViewBag.Title = "Delete";
 }
+<link href="~/Content/foodPagesStyling.css" rel="stylesheet" />
 
-<h2>Delete</h2>
+<div class="darkerBackground text-center smallMarginTopBottom">
+    <h2>Delete</h2>
+    <h3>Are you sure you want to delete this?</h3>
+</div>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>FoodItem</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FoodItemName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FoodItemName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ListIngredients)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ListIngredients)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FoodItemRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FoodItemRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Course.CourseType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Course.CourseType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DietaryRestriction.DietType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DietaryRestriction.DietType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DietaryRestriction1.DietType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DietaryRestriction1.DietType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DietaryRestriction2.DietType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DietaryRestriction2.DietType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Review.UserID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Review.UserID)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 reviewDisplay">
+            <p class="text-center">@Html.DisplayFor(model => model.FoodItemName)</p>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3">
+                    <p>@Html.DisplayNameFor(model => model.FoodItemRating)</p>
+                    <p>@Html.DisplayNameFor(model => model.Course.CourseType)</p>
+                    <p>@Html.DisplayNameFor(model => model.ListIngredients)</p>
+                </div>
+                <div class="col-md-6">
+                    <p>@Html.DisplayFor(model => model.FoodItemRating)</p>
+                    <p>@Html.DisplayFor(model => model.Course.CourseType)</p>
+                    <p>@Html.DisplayFor(model => model.ListIngredients)</p>
+                </div>
+            </div>
+            <div class="row darkerBackground ">
+                <p class="text-center">Friendly for:</p>
+                <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction.DietType)</p>
+                <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction1.DietType)</p>
+                <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction2.DietType)</p>
+            </div>
         </div>
-    }
+    </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color text-center">
+                <input type="submit" value="Delete" class="btn btn-default paddedButton extraSmallMarginTopBottom" />
+                <p><button class="btn">@Html.ActionLink("Back to Items", "Index", new { ReviewID = @Html.DisplayFor(model => model.ReviewID)})</button></p>
+            </div>
+        }
+ 
 </div>
