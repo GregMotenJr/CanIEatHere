@@ -63,7 +63,9 @@ body {
 }
 
 .about-us-p {
+    padding-top: 98px;
     padding-right: 60px;
+    padding-bottom: 98px;
     padding-left: 60px;
     display: table-cell;
     vertical-align: middle;
@@ -94,6 +96,7 @@ body {
 .contact-font {
     font-size: 20px;
     padding-top: 30px;
+    padding-bottom: 83px;
     padding-left: 60px;
     text-decoration: underline;
     font-weight: bold;
