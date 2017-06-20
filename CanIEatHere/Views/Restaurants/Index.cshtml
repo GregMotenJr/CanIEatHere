@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<CanIEatHere.Models.Restaurant>
+<link href="~/Content/animate.css" rel="stylesheet" />
 <link href="~/Content/restaurantPageStyling.css" rel="stylesheet" />
 @{
     ViewBag.Title = "Index";
@@ -13,7 +14,7 @@
 @*Fade-in ID here:*@
 <div id="back"></div>
 
-<p>
+<p id="createNew">
     @Html.ActionLink("Create New", "Create")
 </p>
 @*<table class="table">
@@ -36,7 +37,7 @@
         </td>
     </tr>*@
 
-    <div id="restaurantList" class="row">
+    <div id="restaurantList" class="row animated bounceInRight">
 
     </div>
 
