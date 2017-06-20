@@ -138,7 +138,7 @@ namespace CanIEatHere.Controllers
                 review.UserID = User.Identity.GetUserId();
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Restaurants");
             }
 
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
@@ -257,7 +257,7 @@ namespace CanIEatHere.Controllers
                 review.UserID = User.Identity.GetUserId();
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Reviews", new { id = review.ReviewID});
             }
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
             //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
