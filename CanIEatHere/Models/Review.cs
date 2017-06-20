@@ -11,7 +11,8 @@ namespace CanIEatHere.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Review
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,11 +24,14 @@ namespace CanIEatHere.Models
         public int ReviewID { get; set; }
         public string UserID { get; set; }
         public string NumFoodOptions { get; set; }
+        [Range(1,5,ErrorMessage="Please enter a number between 1 and 5")]
         public int NumFoodOptionsRating { get; set; }
         public string GeneralComments { get; set; }
+        [Range(1, 5, ErrorMessage = "Please enter a number between 1 and 5")]
         public int OverallRating { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public int RestaurantID { get; set; }
+        [Range(1, 5, ErrorMessage = "Please enter a number between 1 and 5")]
         public int RestaurantPriceRating { get; set; }
         public string Img1 { get; set; }
         public string Img2 { get; set; }

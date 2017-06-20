@@ -9,7 +9,7 @@ $(document).ready(function () {
     //ANIMATED LINE:
     $("#box2").delay(1700).fadeIn(100).animate({ width: "50%" }, 1500);
     //ANIMATED BACKGROUND:
-    $('#back').animate({ opacity: 0 }, 0).css({ 'background-image': 'url(https://preview.ibb.co/hONP3Q/home_about_artichokes.jpg)', 'background-attachment': 'fixed', 'background-repeat': 'no-repeat', 'background-size': 'cover'}).animate({ opacity: 1 }, 2500);
+    $('#back').animate({ opacity: 0 }, 0).css({ 'background-image': 'url(https://preview.ibb.co/hONP3Q/home_about_artichokes.jpg)', 'padding-top': '50px', 'background-attachment': 'fixed', 'background-repeat': 'no-repeat', 'background-position' : '0% -10%', 'background-size': 'cover', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover'}).animate({ opacity: 1 }, 2500);
 
 
 });

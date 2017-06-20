@@ -73,14 +73,14 @@
                             <p class="text-center">Last Modified: @Html.DisplayFor(model => review.TimeStamp)</p>
                         </div>
                     </div>
-                    <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Full Review ", "Details", "Reviews", new { id = review.ReviewID }, null)</button></p>
+                    <p class="col-md-2 col-sm-4 col-xs-4"><button class="btn smallMarginTop">@Html.ActionLink("Full Review ", "Details", "Reviews", new { id = review.ReviewID }, null)</button></p>
 
                     @foreach (var r in ViewBag.LoggedInUsersReviews)
                 {
                     if (r == review.ReviewID)
                     {
-                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Edit", "Edit", "Reviews", new { id = review.ReviewID }, null)</button></p>
-                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Delete", "Delete", "Reviews", new { id = review.ReviewID }, null)</button></p>
+                            <p class="col-md-1 col-sm-2 col-xs-2"><button class="btn smallMarginTop">@Html.ActionLink("Edit", "Edit", "Reviews", new { id = review.ReviewID }, null)</button></p>
+                            <p class="col-md-1 col-sm-4 col-xs-4"><button class="btn smallMarginTop">@Html.ActionLink("Delete", "Delete", "Reviews", new { id = review.ReviewID }, null)</button></p>
                         }
                     }
                 </div>

@@ -20,12 +20,12 @@
             <div class="col-md-4 col-sm-12 darkerBackground smallMarginBottom">
                 <p class="text-center">@Html.DisplayFor(modelItem => item.FoodItemName)</p>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
                         <p>@Html.DisplayNameFor(model => model.FoodItemRating)</p>
                         <p>@Html.DisplayNameFor(model => model.Course.CourseType)</p>
                         <p>@Html.DisplayNameFor(model => model.ListIngredients)</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
                         <p>
                             @{int foodItemRating = (item.FoodItemRating); }
                             @if (foodItemRating == 1)
