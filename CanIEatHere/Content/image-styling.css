@@ -18,3 +18,7 @@ input, select, textarea {
     margin-top: 2em;
     margin-bottom: 2em;
 }
+
+.image-thumbnail-details {
+    max-width: 250px;
+}

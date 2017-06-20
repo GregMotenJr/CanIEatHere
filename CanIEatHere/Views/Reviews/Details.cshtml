@@ -52,22 +52,22 @@
 
             <!--DISPLAY THE UPLOADED IMAGE-->
             
-            <div id="image-container">
-                @if (firstImage != null)
+            <div id="image-container" class="row">
+                @if (firstImage != "")
                 {
-                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
+                    <div class="thumbnail image-thumbnail-details darkerBackground detailsPageImage col-md-4">
                         <img class="uploadedImage" src="@firstImage" />
                     </div>
                 }
-                @if (secondImage != null)
+                @if (secondImage != "")
                 {
-                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
+                    <div class="thumbnail image-thumbnail-details darkerBackground detailsPageImage col-md-4">
                         <img class="uploadedImage" src="@secondImage" />
                     </div>
                 }
-                @if (thirdImage != null)
+                @if (thirdImage != "")
                 {
-                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
+                    <div class="thumbnail image-thumbnail-details darkerBackground detailsPageImage col-md-4">
                         <img class="uploadedImage" src="@thirdImage" />
                     </div>
                 }
@@ -78,17 +78,31 @@
             <div class="row">
                 @foreach (var item in ViewBag.FoodItems)
                 {
-                    <div class="col-md-4 col-md-offset-1 darkerBackground smallMarginBottom">
-                        <p>@item.FoodItemName</p>
-                        <p>Rating: @item.FoodItemRating</p>
-                        <p>Course: @ViewBag.Course</p>
-                        <p>Ingredients: @item.ListIngredients</p>
-                        <p>Friendly For:</p>
-                        <p>@ViewBag.DietaryRestriction1</p>
-                        <p>@ViewBag.DietaryRestriction2</p>
-                        <p>@ViewBag.DietaryRestriction3</p>
+                    <div class="col-md-4 col-sm-12 darkerBackground smallMarginBottom smallMarginRight">
+                        <p class="text-center">@item.FoodItemName</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>Rating: </p>
+                                <p>Course: </p>
+                                <p>Ingredients:</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p>@item.FoodItemRating</p>
+                                <p>@ViewBag.Course</p>
+                                <p>@item.ListIngredients</p>
+                            </div>
+                        </div>
+                        <div class="row darkerBackground ">
+                            <p class="text-center">Friendly for:</p>
+                            <p class="col-md-4">@ViewBag.DietaryRestriction1</p>
+                            <p class="col-md-4">@ViewBag.DietaryRestriction2</p>
+                            <p class="col-md-4">@ViewBag.DietaryRestriction3</p>
+                            @{ int foodItemID = @item.FoodItemID;  }
+                        </div>
+                        <p class="col-md-3"><button class="btn">@Html.ActionLink("Edit", "Edit", new { id = item.FoodItemID })</button></p>
+                        <p class="col-md-3"><button class="btn">@Html.ActionLink("Delete", "Delete", new { id = item.FoodItemID })</button></p>
                     </div>
-                }
+                                }
             </div>
            
             <div class="smallMarginTopBottom">
