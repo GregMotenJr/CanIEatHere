@@ -11,7 +11,7 @@
 </div>
 
 <div>
-        
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2 reviewDisplay">
             <p class="text-center">@Html.DisplayFor(model => model.FoodItemName)</p>
@@ -22,58 +22,60 @@
                     <p>@Html.DisplayNameFor(model => model.ListIngredients)</p>
                 </div>
                 <div class="col-md-6 col-sm-8 col-xs-8">
-                    <p>@{int foodItemRating = (Model.FoodItemRating); }
+                    <p>
+                        @{int foodItemRating = (Model.FoodItemRating); }
                     @if (foodItemRating == 1)
-            {
-                        <div class="rating">
-                            <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+                    {
+
+                        <span class="on">★</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+
                     }
                     else if (foodItemRating == 2)
                     {
-                        <div class="rating">
-                            <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
-                        </div>
+
+                        <span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span><span>☆</span>
+
                     }
                     else if (foodItemRating == 3)
                     {
-                        <div class="rating">
-                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
-                        </div>
+
+                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span><span>☆</span>
+
                     }
                     else if (foodItemRating == 4)
                     {
-                        <div class="rating">
-                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
-                        </div>
+
+                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span>☆</span>
+
                     }
                     else if (foodItemRating == 5)
                     {
-                        <div class="rating">
-                            <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
-                        </div>
-                    }</p>
-                    <p>@Html.DisplayFor(model => model.Course.CourseType)</p>
-                    <p>@Html.DisplayFor(model => model.ListIngredients)</p>
-                </div>
-            </div>
-            <div class="row darkerBackground ">
-                <p class="text-center">Friendly for:</p>
-                <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction.DietType)</p>
-                <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction1.DietType)</p>
-                <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction2.DietType)</p>
+
+                        <span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span><span class="on">★</span>
+
+                    }
+                </p>
+                <p>@Html.DisplayFor(model => model.Course.CourseType)</p>
+                <p>@Html.DisplayFor(model => model.ListIngredients)</p>
             </div>
         </div>
+        <div class="row darkerBackground ">
+            <p class="text-center">Friendly for:</p>
+            <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction.DietType)</p>
+            <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction1.DietType)</p>
+            <p class="col-md-4">@Html.DisplayFor(model => model.DietaryRestriction2.DietType)</p>
+        </div>
     </div>
+</div>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color text-center">
-                <input type="submit" value="Delete" class="btn btn-default paddedButton extraSmallMarginTopBottom" />
-                <p><button class="btn">@Html.ActionLink("Back to Items", "Index", new { ReviewID = @Html.DisplayFor(model => model.ReviewID)})</button></p>
-            </div>
-        }
- 
+    <div class="form-actions no-color text-center">
+        <input type="submit" value="Delete" class="btn btn-default paddedButton extraSmallMarginTopBottom" />
+        <p><button class="btn">@Html.ActionLink("Back to Items", "Index", new { ReviewID = @Html.DisplayFor(model => model.ReviewID) })</button></p>
+    </div>
+}
+
 </div>
