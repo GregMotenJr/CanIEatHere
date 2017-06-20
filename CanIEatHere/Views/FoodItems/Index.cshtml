@@ -8,35 +8,36 @@
 
 <h2>Food Items</h2>
 
-    @{ int reviewID = @ViewBag.ReviewID;}
-    <p><button class="btn">@Html.ActionLink("Back to Review", "Details", "Reviews", new { id = reviewID }, null)</button></p>
+@{ int reviewID = @ViewBag.ReviewID;}
+    <p><button class="btn">@Html.ActionLink("Back to Review", "Details", "Reviews", new { id = reviewID }, null)</button>
+    <button class="btn">@Html.ActionLink("Create New Item", "Create", new { reviewID = reviewID })</button></p>
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4 col-sm-12 darkerBackground smallMarginBottom smallMarginRight">
-            <p class="text-center">@Html.DisplayFor(modelItem => item.FoodItemName)</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <p>@Html.DisplayNameFor(model => model.FoodItemRating)</p>
-                    <p>@Html.DisplayNameFor(model => model.Course.CourseType)</p>
-                    <p>@Html.DisplayNameFor(model => model.ListIngredients)</p>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-sm-12 darkerBackground smallMarginBottom smallMarginRight">
+                <p class="text-center">@Html.DisplayFor(modelItem => item.FoodItemName)</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>@Html.DisplayNameFor(model => model.FoodItemRating)</p>
+                        <p>@Html.DisplayNameFor(model => model.Course.CourseType)</p>
+                        <p>@Html.DisplayNameFor(model => model.ListIngredients)</p>
+                    </div>
+                    <div class="col-md-8">
+                        <p>@Html.DisplayFor(modelItem => item.FoodItemRating)</p>
+                        <p>@Html.DisplayFor(modelItem => item.Course.CourseType)</p>
+                        <p>@Html.DisplayFor(modelItem => item.ListIngredients)</p>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <p>@Html.DisplayFor(modelItem => item.FoodItemRating)</p>
-                    <p>@Html.DisplayFor(modelItem => item.Course.CourseType)</p>
-                    <p>@Html.DisplayFor(modelItem => item.ListIngredients)</p>
+                <div class="row darkerBackground ">
+                    <p class="text-center">Friendly for:</p>
+                    <p class="col-md-4">@Html.DisplayFor(modelItem => item.DietaryRestriction.DietType)</p>
+                    <p class="col-md-4">@Html.DisplayFor(modelItem => item.DietaryRestriction1.DietType)</p>
+                    <p class="col-md-4">@Html.DisplayFor(modelItem => item.DietaryRestriction2.DietType)</p>
                 </div>
+                <p class="col-md-2"><button class="btn">@Html.ActionLink("Edit", "Edit", new { id = item.FoodItemID })</button></p>
+                <p class="col-md-2"><button class="btn">@Html.ActionLink("Delete", "Delete", new { id = item.FoodItemID })</button></p>
             </div>
-            <div class="row darkerBackground ">
-                <p class="text-center">Friendly for:</p>
-                <p class="col-md-4">@Html.DisplayFor(modelItem => item.DietaryRestriction.DietType)</p>
-                <p class="col-md-4">@Html.DisplayFor(modelItem => item.DietaryRestriction1.DietType)</p>
-                <p class="col-md-4">@Html.DisplayFor(modelItem => item.DietaryRestriction2.DietType)</p>
-            </div>
-            <p class="col-md-2"><button class="btn">@Html.ActionLink("Edit", "Edit", new { id = item.FoodItemID })</button></p>
-            <p class="col-md-2"><button class="btn">@Html.ActionLink("Delete", "Delete", new { id = item.FoodItemID })</button></p>
-        </div>
 
-    }
-</div>
+        }
+    </div>
