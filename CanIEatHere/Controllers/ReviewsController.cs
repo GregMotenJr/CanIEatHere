@@ -138,7 +138,7 @@ namespace CanIEatHere.Controllers
                 review.UserID = User.Identity.GetUserId();
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Restaurants");
             }
 
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
@@ -151,7 +151,7 @@ namespace CanIEatHere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [MultiButton(MatchFormKey = "action", MatchFormValue = "CreateFoodItems")]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "Add")]
         public ActionResult CreateFoodItems([Bind(Include = "ReviewID,UserID,NumFoodOptions,NumFoodOptionsRating,GeneralComments,OverallRating,TimeStamp,RestaurantID,RestaurantPriceRating,Img1,Img2,Img3")] Review review)
         {
             if (ModelState.IsValid)
@@ -257,7 +257,7 @@ namespace CanIEatHere.Controllers
                 review.UserID = User.Identity.GetUserId();
                 db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Reviews", new { id = review.ReviewID});
             }
             ViewBag.RestaurantID = new SelectList(db.Restaurants, "RestaurantID", "PlaceID", review.RestaurantID);
             //ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", review.UserID);
@@ -266,7 +266,7 @@ namespace CanIEatHere.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [MultiButton(MatchFormKey = "action", MatchFormValue = "SaveAndEditFoodItems")]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "Continue")]
         public ActionResult SaveAndEditFoodItems([Bind(Include = "ReviewID,UserID,NumFoodOptions,NumFoodOptionsRating,GeneralComments,OverallRating,TimeStamp,RestaurantID,RestaurantPriceRating,Img1,Img2,Img3")] Review review)
         {
             if (ModelState.IsValid)

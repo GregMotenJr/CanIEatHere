@@ -56,7 +56,7 @@ namespace CanIEatHere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [MultiButton(MatchFormKey = "action", MatchFormValue = "Create")]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "Complete")]
         public ActionResult Create([Bind(Include = "FoodItemID,FoodItemName,ListIngredients,FoodItemRating,CourseID,ReviewID,DietaryRestrictionID,DietaryRestrictionID2,DietaryRestrictionID3")] FoodItem foodItem)
         {
             if (ModelState.IsValid)
@@ -77,7 +77,7 @@ namespace CanIEatHere.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [MultiButton(MatchFormKey = "action", MatchFormValue = "CreateAnotherFoodItem")]
+        [MultiButton(MatchFormKey = "action", MatchFormValue = "Add")]
         public ActionResult CreateAnotherFoodItem([Bind(Include = "FoodItemID,FoodItemName,ListIngredients,FoodItemRating,CourseID,ReviewID,DietaryRestrictionID,DietaryRestrictionID2,DietaryRestrictionID3")] FoodItem foodItem)
         {
             if (ModelState.IsValid)

@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight mediumMarginTopBottom">
 
-            <div class="darkerBackground">
+            @*<div class="darkerBackground">
                 <p class="hide" id="placeID">@Html.DisplayFor(model => model.Restaurant.PlaceID)</p>
                 <h3 id="restaurantName"></h3>
                 <div class="row">
@@ -32,7 +32,7 @@
                     <div class="col-md-4"><p>Phone: <span id="restaurantPhoneNumber"></span></p></div>
                 </div>
                 <p><button class="btn">@Html.ActionLink("View Restaurant", "Details", "Restaurants", new { id = Model.Restaurant.RestaurantID }, new { })</button></p>
-            </div>
+            </div>*@
 
             <div class="row text-center smallMarginTopBottom">
                 <div class="col-md-4">
@@ -56,19 +56,19 @@
             <div id="image-container">
                 @if (firstImage != null)
                 {
-                    <div class="image-thumbnail">
+                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
                         <img class="uploadedImage" src="@firstImage" />
                     </div>
                 }
                 @if (secondImage != null)
                 {
-                    <div class="image-thumbnail">
+                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
                         <img class="uploadedImage" src="@secondImage" />
                     </div>
                 }
                 @if (thirdImage != null)
                 {
-                    <div class="image-thumbnail">
+                    <div class="thumbnail image-thumbnail darkerBackground detailsPageImage">
                         <img class="uploadedImage" src="@thirdImage" />
                     </div>
                 }

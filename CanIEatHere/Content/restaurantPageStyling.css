@@ -26,3 +26,8 @@ body {
 .restaurantThumbnail .caption, .restaurantThumbnail .caption a{
     color: white;
 }
+
+.smallMarginLeftRight{
+    margin-right: 1em;
+    margin-left: 1em;
+}

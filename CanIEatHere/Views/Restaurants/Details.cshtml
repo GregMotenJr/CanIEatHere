@@ -31,11 +31,7 @@
 
         @foreach (var review in Model.Reviews)
         {
-            string firstImage = Html.DisplayFor(model => review.Img1).ToString();
-            //string secondImage = Html.DisplayFor(model => review.Img2).ToString();
-            //string thirdImage = Html.DisplayFor(model => review.Img3).ToString();
-
-            <div class="row">
+             <div class="row">
                 <div class="col-md-offset-2 col-md-8 reviewDisplay animated slideInRight">
                     <div class="row text-center">
                         <div class="col-md-4">
@@ -77,14 +73,14 @@
                             <p class="text-center">Last Modified: @Html.DisplayFor(model => review.TimeStamp)</p>
                         </div>
                     </div>
-                    <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Details", "Details", new { id = review.ReviewID })</button></p>
+                    <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Full Review ", "Details", "Reviews", new { id = review.ReviewID }, null)</button></p>
 
                     @foreach (var r in ViewBag.LoggedInUsersReviews)
                 {
                     if (r == review.ReviewID)
                     {
-                            <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Edit", "Edit", new { id = review.ReviewID })</button></p>
-                            <p class="col-md-2"><button class="btn smallMarginTop">@Html.ActionLink("Delete", "Delete", new { id = review.ReviewID })</button></p>
+                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Edit", "Edit", new { id = review.ReviewID })</button></p>
+                            <p class="col-md-1"><button class="btn smallMarginTop">@Html.ActionLink("Delete", "Delete", new { id = review.ReviewID })</button></p>
                         }
                     }
                 </div>
