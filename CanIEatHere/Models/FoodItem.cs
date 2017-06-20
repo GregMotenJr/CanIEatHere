@@ -21,6 +21,7 @@ namespace CanIEatHere.Models
         [Display(Name = "Ingredients")]
         public string ListIngredients { get; set; }
         [Display(Name = "Rating")]
+        [Range(1, 5, ErrorMessage = "Please enter a number between 1 and 5")]
         public int FoodItemRating { get; set; }
         [Display(Name ="Course")]
         public int CourseID { get; set; }
